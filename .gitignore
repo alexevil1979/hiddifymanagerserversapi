@@ -1,0 +1,18 @@
+# Рабочие карточки и секреты
+inventory.yml
+inventory.json
+inventory/
+users.yml
+.env
+
+# Ключи. Каталог целиком, включая файлы без расширения.
+keys/
+*.pem
+*.key
+*.pub
+id_rsa
+id_ed25519
+
+# Логи apply, бэкапы панели, ссылки подписок
+artifacts/
+*.log
