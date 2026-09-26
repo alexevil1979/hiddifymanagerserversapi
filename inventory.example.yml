@@ -30,9 +30,12 @@ servers:
     tags: [prod]
     auth:
       method: key
-    cloudflare_zone: linkusers3.online
-    subdomain: mvp22
-    domain: mvp22.linkusers3.online
+    cloudflare_zones: all
+    subdomain: vp22
+    domains:
+      - vp22.sdfsdfsdfsd.store
+      - vp22.losttv.site
+      - vp22.linkusers3.online
     panel_domain: null
     admin_proxy_path: null
     admin_uuid: null

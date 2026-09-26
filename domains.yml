@@ -1,6 +1,7 @@
 # Зоны, которыми можно пользоваться. Другие домены не добавлять.
 # Имя записи: поле subdomain в карточке сервера плюс зона.
-# Пример: subdomain mvp22 и зона linkusers3.online -> mvp22.linkusers3.online
+# Поддомен сервера создаётся на каждой зоне, если у сервера cloudflare_zones: all.
+# Пример: subdomain vp22 -> vp22.sdfsdfsdfsd.store, vp22.losttv.site, vp22.linkusers3.online
 # Токен Cloudflare: CLOUDFLARE_API_TOKEN в локальном .env, не здесь.
 
 zones:

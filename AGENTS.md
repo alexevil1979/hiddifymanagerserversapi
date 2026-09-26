@@ -76,9 +76,12 @@ servers:
     tags: [prod]
     auth:
       method: key
-    cloudflare_zone: linkusers3.online   # только зона из domains.yml
-    subdomain: mvp22                      # метка DNS, без зоны
-    domain: mvp22.linkusers3.online       # subdomain + зона, так и создаётся запись
+    cloudflare_zones: all
+    subdomain: vp22
+    domains:
+      - vp22.sdfsdfsdfsd.store
+      - vp22.losttv.site
+      - vp22.linkusers3.online
     panel_domain: null
     admin_proxy_path: null       # заполнить после установки
     admin_uuid: null
@@ -110,9 +113,9 @@ servers:
 - `auth.method`: `key`, `password` или `agent`
 - `auth.key_path_env`, `auth.key_env` — имена переменных для ключа, не сам ключ
 - `auth.password_env` — имя переменной с паролем, не пароль
-- `cloudflare_zone` — зона из `domains.yml`
-- `subdomain` — метка слева от зоны, без точки и без имени зоны. Пустое поле — DNS не создавать
-- `domain` — полное имя `{subdomain}.{cloudflare_zone}`, его же прописывать в панели
+- `cloudflare_zones` — `all` или список зон из `domains.yml`
+- `subdomain` — одна метка на все выбранные зоны, без точки и без имени зоны. Пустое поле — DNS не создавать
+- `domains` — полные имена `{subdomain}.{зона}` для каждой выбранной зоны
 - `panel_domain`, `admin_proxy_path`, `admin_uuid`
 - `desired.domain_modes`, `desired.protocols`, `desired.users_preset`, `desired.create_users`
 - `state`
@@ -207,7 +210,7 @@ API после установки: домены, IP, custom proxies, users, dump
 
 Все три делегированы на Cloudflare. DNS менять только API-токеном из `CLOUDFLARE_API_TOKEN` в локальном `.env`. Токен в git, правила и отчёт не писать. Если токена нет, домены не создавать и не угадывать записи: попросить токен.
 
-На сервере запись собирается так: `{subdomain}.{cloudflare_zone}`. Пример: `subdomain: mvp22` и зона `linkusers3.online` дают `mvp22.linkusers3.online`. В Cloudflare создаётся A на это имя и на IP из `host`. Корень зоны без поддомена не занимать. Если `subdomain` пустой, DNS не менять.
+У сервера одно поле `subdomain`. Если `cloudflare_zones: all`, эта метка создаётся A-записью на каждой зоне из `domains.yml`. Пример: `subdomain: vp22` даёт `vp22.sdfsdfsdfsd.store`, `vp22.losttv.site` и `vp22.linkusers3.online`. Запись смотрит на `host`, прокси Cloudflare выключен. Корень зоны не занимать. Если `subdomain` пустой, DNS не менять. Список зон на сервере можно сузить явным перечнем вместо `all`.
 
 # Пайплайн «с нуля»
 
@@ -217,7 +220,7 @@ API после установки: домены, IP, custom proxies, users, dump
 2. Дождаться SSH способом `auth` этой карточки.
 3. Поставить Hiddify только скриптом `scripts/install-hiddify.sh`. Версия всегда `12.3.3`. Не вызывать `i.hiddify.com/release` и не ставить последнюю. Не ставить поверх другой версии без фразы пользователя «переустанови».
 4. Снять с панели `admin_uuid` и `proxy_path_admin`, записать в карточку.
-5. DNS: A-запись `{subdomain}.{cloudflare_zone}` на IP сервера. Зона только из `domains.yml`. Без `subdomain` запись не создавать.
+5. DNS: A-запись `{subdomain}` на каждой зоне из `cloudflare_zones`. IP — `host`, прокси Cloudflare выключен. Без `subdomain` записи не создавать.
 6. API: добавить server IP, домены (direct, cdn, reality, sub_link_only по задаче).
 7. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла.
 8. SSH: `apply_configs.sh`. Дождаться конца, не убивать процесс сразу.
