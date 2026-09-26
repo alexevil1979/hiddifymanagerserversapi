@@ -22,9 +22,29 @@
 - Не обходи антиабьюз чужих сервисов. Автоматизируй только наши машины.
 - Apply конфигов на живом проде делай только после бэкапа панели.
 
+# Доступ к серверам
+
+На машины заходить по SSH-ключу. Пароль не запрашивать и не подбирать.
+
+Ключ брать в таком порядке:
+
+1. `ssh_key_path` этой записи в inventory — путь к приватному ключу сервера.
+2. `HIDDIFY_SSH_KEY_PATH` — общий путь, если у записи своего ключа нет.
+3. `HIDDIFY_SSH_KEY` — тело приватного ключа в env. Перед сессией записать во временный файл, доступный только текущему пользователю, после сессии удалить. В репозиторий, чат и логи ключ не писать.
+4. ssh-agent, только если в карточке сервера явно `ssh_agent: true`.
+
+Подключение и копирование — один и тот же ключ, пользователь и порт:
+
+```text
+ssh -i "<путь-к-ключу>" -p <ssh_port> -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new <ssh_user>@<host>
+scp -i "<путь-к-ключу>" -P <ssh_port> -o BatchMode=yes -o IdentitiesOnly=yes ...
+```
+
+Если ключ отклонён, остановиться и написать, какой сервер и какой путь не подошёл. Чужие ключи не перебирать. `authorized_keys` и ключ на сервере не менять без отдельной задачи.
+
 # Источники правды
 1. `inventory.yml` или `inventory.json` — список серверов.
-2. Секреты: `HIDDIFY_SSH_KEY`, Cloudflare token, API keys панелей.
+2. Секреты: `HIDDIFY_SSH_KEY` или `HIDDIFY_SSH_KEY_PATH`, Cloudflare token, API keys панелей.
 3. Факт с машины важнее догадки: SSH `uname`, `hiddify` CLI, API `/server_status/`.
 
 Минимальная карточка сервера:
@@ -34,6 +54,8 @@ servers:
     host: 1.2.3.4
     ssh_user: root
     ssh_port: 22
+    ssh_key_path: null   # путь к приватному ключу; null = общий ключ из env
+    ssh_agent: false
     location: de
     domain: de1.example.com
     panel_domain: panel-de1.example.com
@@ -52,8 +74,8 @@ servers:
 
 1. Понять intent: create | install | configure | reconfigure | repair | inspect | destroy.
 2. Выбрать сервер(а) из inventory. Если неясно — спросить, не гадать.
-3. Собрать факт:
-   - SSH: установлен ли Hiddify (`/opt/hiddify-manager`)
+3. Собрать факт по SSH-ключу из карточки или env:
+   - установлен ли Hiddify (`/opt/hiddify-manager`)
    - доступна ли панель
    - есть ли `admin_uuid` и proxy_path
 4. Составить короткий план (5–10 пунктов) и выполнить.
@@ -62,7 +84,7 @@ servers:
 # Инструменты
 
 - Облако: создать/удалить VPS, повесить firewall, узнать public IP.
-- SSH/SCP: заливка скриптов, чтение логов, apply.
+- SSH/SCP по ключу: заливка скриптов, чтение логов, apply. Парольный вход не использовать.
 - Hiddify Admin API v2:
   `https://<panel-host>/<admin_proxy_path>/api/v2/admin/`
   Header: `Hiddify-API-Key: <admin_uuid>`
@@ -76,7 +98,7 @@ API после установки: домены, IP, custom proxies, users, dump
 # Пайплайн «с нуля»
 
 1. Создать VPS в облаке (Ubuntu 22.04/24.04), открыть 22/80/443 + нужные UDP порты протоколов.
-2. Дождаться SSH.
+2. Дождаться входа по SSH-ключу из карточки или env.
 3. Поставить Hiddify официальным install-скриптом. Не ставить поверх чужой панели без явной команды.
 4. Снять с панели `admin_uuid` и `proxy_path_admin`, записать в inventory.
 5. DNS: A/AAAA домена на IP. Если есть Cloudflare token — создать записи автоматически.
@@ -137,6 +159,7 @@ API после установки: домены, IP, custom proxies, users, dump
 Спроси минимум:
 
 - какой сервер
+- путь к SSH-ключу, если его нет в inventory и в env
 - какой домен
 - какие протоколы
 - создать новых юзеров или нет
