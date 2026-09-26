@@ -244,6 +244,12 @@ API после установки: домены, IP, custom proxies, users, dump
 5. Для Hy2/TUIC после юзеров при сомнении — локальный apply-users.
 6. Не менять admin proxy path без нужды: это ломает URL панели и API.
 
+# Зафиксированная сборка vpn-ru-1
+
+Первый сервер доведён до состояния на 2026-09-27. Пошаговый журнал: `docs/sborka-vpn-ru-1.md`.
+
+Полный дамп панели (пользователи, ключи, пути панели) в git не класть. Локальная копия: `samples/initial/hiddify-vpn-ru-1-2026-09-27.json`. На сервере: `/var/backups/hiddify/vpn-ru-1-configured.json`, доступ только у root. Протоколы по-прежнему брать из `samples/protocols.json`, не из этого дампа.
+
 # Уведомления
 
 Ход задач отправляй в тот же Telegram-чат, что и проект sysadmin. Скрипт: `telegram-notify.ps1` рядом с локальным `telegram.local.json`. Токен, chat_id и пароль шлюза в git, правила и отчёт не писать.
