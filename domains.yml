@@ -1,0 +1,22 @@
+# Зоны, которыми можно пользоваться. Другие домены не добавлять.
+# Имя записи на сервере (поддомен или корень) задаётся в карточке сервера или отдельной командой.
+# Токен Cloudflare: CLOUDFLARE_API_TOKEN в локальном .env, не здесь.
+
+zones:
+  - name: sdfsdfsdfsd.store
+    dns: cloudflare
+    nameservers:
+      - lily.ns.cloudflare.com
+      - eric.ns.cloudflare.com
+
+  - name: losttv.site
+    dns: cloudflare
+    nameservers:
+      - lily.ns.cloudflare.com
+      - eric.ns.cloudflare.com
+
+  - name: linkusers3.online
+    dns: cloudflare
+    nameservers:
+      - eva.ns.cloudflare.com
+      - everton.ns.cloudflare.com

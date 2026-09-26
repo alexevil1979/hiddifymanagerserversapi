@@ -1,0 +1,1714 @@
+{
+  "version": 1,
+  "role": "protocol-settings-only",
+  "captured_at": "2026-09-26",
+  "source_snapshot": "samples/initial/hiddify-vp11.losttv.site-2026-09-26.json",
+  "domains": "ignore",
+  "users": "ignore",
+  "admin": "ignore",
+  "enabled": [
+    "h2_enable",
+    "http_proxy_enable",
+    "hysteria_enable",
+    "hysteria_obfs_enable",
+    "quic_enable",
+    "ssh_server_enable",
+    "tcp_enable",
+    "tuic_enable",
+    "vless_enable",
+    "wireguard_enable",
+    "ws_enable"
+  ],
+  "hconfigs": {
+    "wireguard_enable": true,
+    "ssh_server_enable": true,
+    "tls_fragment_enable": false,
+    "tls_mixed_case": false,
+    "tls_padding_enable": false,
+    "tls_ech_enable": false,
+    "mux_enable": false,
+    "mux_padding_enable": false,
+    "mux_brutal_enable": false,
+    "kcp_enable": false,
+    "dnstt_enable": false,
+    "http_proxy_enable": true,
+    "telegram_enable": false,
+    "v2ray_enable": false,
+    "tuic_enable": true,
+    "hysteria_enable": true,
+    "hysteria_obfs_enable": true,
+    "shadowsocks2022_enable": false,
+    "shadowtls_enable": false,
+    "ssr_enable": false,
+    "vmess_enable": false,
+    "domain_fronting_http_enable": false,
+    "domain_fronting_tls_enable": false,
+    "ws_enable": true,
+    "grpc_enable": false,
+    "httpupgrade_enable": false,
+    "xhttp_enable": false,
+    "naive_enable": false,
+    "mieru_enable": false,
+    "vless_enable": true,
+    "trojan_enable": false,
+    "reality_enable": false,
+    "tcp_enable": true,
+    "quic_enable": true,
+    "xtls_enable": false,
+    "h2_enable": true,
+    "wireguard_port": "22745",
+    "wireguard_ipv6": "fd42:42:90::1",
+    "wireguard_ipv4": "10.90.0.1",
+    "wireguard_noise_trick": "0-0",
+    "ssh_server_port": "40362",
+    "core_type": "xray",
+    "reality_fallback_domain": "i.pinimg.com",
+    "reality_server_names": "i.pinimg.com",
+    "reality_short_ids": "1e66d7644f",
+    "special_port": "22034",
+    "utls": "chrome",
+    "tls_ports": "443",
+    "tls_fragment_size": "10-100",
+    "tls_fragment_sleep": "50-200",
+    "tls_fragment_packets": "tlshello",
+    "tls_padding_length": "50-200",
+    "mux_protocol": "smux",
+    "mux_max_connections": "4",
+    "mux_min_streams": "4",
+    "mux_max_streams": "0",
+    "mux_brutal_up_mbps": "100",
+    "mux_brutal_down_mbps": "100",
+    "http_ports": "80",
+    "mieru_tcp_ports": "17871,17872,17873,17874",
+    "mieru_udp_ports": "11759,11760,11761,11762",
+    "kcp_ports": "88",
+    "decoy_domain": "phoneradar.com",
+    "telegram_lib": "telemt",
+    "telegram_fakedomain": "www.instagram.com",
+    "tuic_port": "35630",
+    "hysteria_port": "16191",
+    "hysteria_up_mbps": "150",
+    "hysteria_down_mbps": "300",
+    "shadowsocks2022_method": "2022-blake3-aes-256-gcm",
+    "shadowsocks2022_port": "41117",
+    "ssfaketls_fakedomain": "twitter.com",
+    "shadowtls_fakedomain": "web.facebook.com",
+    "domain_fronting_domain": "",
+    "naive_port": "39430",
+    "mieru_multiplexing": "MULTIPLEXING_HIGH",
+    "mieru_handshake": "HANDSHAKE_NO_WAIT"
+  },
+  "proxies": [
+    {
+      "name": "tls_h2 xhttp direct vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp direct vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp direct vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp direct vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp direct vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp direct vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 tcp direct vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 tcp direct trojan",
+      "proto": "trojan",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 tcp direct vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc direct vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc direct trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc direct vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 faketls direct ss",
+      "proto": "ss",
+      "transport": "faketls",
+      "l3": "tls_h2",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 xhttp relay vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp relay vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp relay vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp relay vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp relay vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp relay vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 tcp relay vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 tcp relay trojan",
+      "proto": "trojan",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 tcp relay vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc relay vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc relay trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc relay vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 faketls relay ss",
+      "proto": "ss",
+      "transport": "faketls",
+      "l3": "tls_h2",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 xhttp CDN vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp CDN vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp CDN vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp CDN vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp CDN vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 xhttp CDN vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls_h2 grpc CDN vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc CDN trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls_h2 grpc CDN vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls_h2",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS direct vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS direct trojan",
+      "proto": "trojan",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS direct vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade direct vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade direct vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls xhttp direct vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp direct vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp direct vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp direct vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp direct vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp direct vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls tcp direct vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls tcp direct trojan",
+      "proto": "trojan",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls tcp direct vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls grpc direct vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc direct trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc direct vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls faketls direct ss",
+      "proto": "ss",
+      "transport": "faketls",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS direct v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS relay vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS relay trojan",
+      "proto": "trojan",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS relay vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade relay vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade relay vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls xhttp relay vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp relay vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp relay vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp relay vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp relay vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp relay vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls tcp relay vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls tcp relay trojan",
+      "proto": "trojan",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls tcp relay vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "tls grpc relay vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc relay trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc relay vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls faketls relay ss",
+      "proto": "ss",
+      "transport": "faketls",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS relay v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS CDN v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS CDN vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS CDN trojan",
+      "proto": "trojan",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls WS CDN vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade CDN vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls httpupgrade CDN vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls xhttp CDN vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp CDN vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp CDN vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp CDN vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp CDN vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "tls xhttp CDN vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "tls grpc CDN vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc CDN trojan",
+      "proto": "trojan",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "tls grpc CDN vmess",
+      "proto": "vmess",
+      "transport": "grpc",
+      "l3": "tls",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http WS direct vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS direct vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade direct vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade direct vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http xhttp direct vless",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http xhttp direct vmess",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http tcp direct vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http tcp direct vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS direct v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "direct",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS relay vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS relay vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade relay vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade relay vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http xhttp relay vless",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http xhttp relay vmess",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http tcp relay vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http tcp relay vmess",
+      "proto": "vmess",
+      "transport": "tcp",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS relay v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "relay",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS CDN v2ray",
+      "proto": "v2ray",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS CDN vless",
+      "proto": "vless",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http WS CDN vmess",
+      "proto": "vmess",
+      "transport": "WS",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade CDN vless",
+      "proto": "vless",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http httpupgrade CDN vmess",
+      "proto": "vmess",
+      "transport": "httpupgrade",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "http xhttp CDN vless",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": false,
+      "params": {}
+    },
+    {
+      "name": "http xhttp CDN vmess",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "http",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "ShadowSocks2022",
+      "proto": "ss",
+      "transport": "shadowsocks",
+      "l3": "custom",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "ShadowSocks2022 Relay",
+      "proto": "ss",
+      "transport": "shadowsocks",
+      "l3": "custom",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "ShadowTLS",
+      "proto": "ss",
+      "transport": "shadowtls",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "ShadowTLS Relay",
+      "proto": "ss",
+      "transport": "shadowtls",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "SSH",
+      "proto": "ssh",
+      "transport": "ssh",
+      "l3": "ssh",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "SSH Relay",
+      "proto": "ssh",
+      "transport": "ssh",
+      "l3": "ssh",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "WireGuard",
+      "proto": "wireguard",
+      "transport": "custom",
+      "l3": "udp",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "WireGuard Relay",
+      "proto": "wireguard",
+      "transport": "custom",
+      "l3": "udp",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "reality xhttp direct vless",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "reality",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "reality tcp direct vless",
+      "proto": "vless",
+      "transport": "tcp",
+      "l3": "reality",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "reality grpc direct vless",
+      "proto": "vless",
+      "transport": "grpc",
+      "l3": "reality",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "h3_quic xhttp direct vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp direct vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp direct vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp direct vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp direct vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp direct vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "direct",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp relay vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vless dl=h1",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vless dl=h2",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vless dl=h3",
+      "proto": "vless",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vmess dl=h1",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "http/1.1"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vmess dl=h2",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h2"
+        }
+      }
+    },
+    {
+      "name": "h3_quic xhttp CDN vmess dl=h3",
+      "proto": "vmess",
+      "transport": "xhttp",
+      "l3": "h3_quic",
+      "cdn": "CDN",
+      "enable": true,
+      "params": {
+        "download": {
+          "alpn": "h3"
+        }
+      }
+    },
+    {
+      "name": "TUIC",
+      "proto": "tuic",
+      "transport": "custom",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "Hysteria2",
+      "proto": "hysteria2",
+      "transport": "custom",
+      "l3": "tls",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "TUIC Relay",
+      "proto": "tuic",
+      "transport": "custom",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "Hysteria2 Relay",
+      "proto": "hysteria2",
+      "transport": "custom",
+      "l3": "tls",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "NaiveTLS",
+      "proto": "naive",
+      "transport": "custom",
+      "l3": "tls_h2_h1",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "NaiveQuic",
+      "proto": "naive",
+      "transport": "custom",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "MieruTCP",
+      "proto": "mieru",
+      "transport": "tcp",
+      "l3": "custom",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "MieruUDP",
+      "proto": "mieru",
+      "transport": "udp",
+      "l3": "custom",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "NaiveTLS",
+      "proto": "naive",
+      "transport": "custom",
+      "l3": "tls_h2_h1",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "NaiveQuic",
+      "proto": "naive",
+      "transport": "custom",
+      "l3": "h3_quic",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "MieruTCP",
+      "proto": "mieru",
+      "transport": "tcp",
+      "l3": "custom",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "MieruUDP",
+      "proto": "mieru",
+      "transport": "udp",
+      "l3": "custom",
+      "cdn": "relay",
+      "enable": true,
+      "params": {}
+    },
+    {
+      "name": "DNSTT",
+      "proto": "dnstt",
+      "transport": "custom",
+      "l3": "custom",
+      "cdn": "direct",
+      "enable": true,
+      "params": {}
+    }
+  ]
+}
