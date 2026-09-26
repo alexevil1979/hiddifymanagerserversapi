@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "defaults": {
+    "ssh_user": "root",
+    "ssh_port": 22,
+    "auth": {
+      "method": "key",
+      "key_path_env": "HIDDIFY_SSH_KEY_PATH",
+      "key_env": "HIDDIFY_SSH_KEY",
+      "password_env": null
+    },
+    "cloudflare_zone": null,
+    "desired": {
+      "domain_modes": ["direct"],
+      "protocols": ["vless", "reality"],
+      "users_preset": "default",
+      "create_users": false
+    }
+  },
+  "servers": [
+    {
+      "id": "vpn-de-1",
+      "host": "<PUBLIC_IP>",
+      "group": "eu",
+      "location": "de",
+      "tags": ["prod"],
+      "auth": {
+        "method": "key"
+      },
+      "cloudflare_zone": "linkusers3.online",
+      "subdomain": "mvp22",
+      "domain": "mvp22.linkusers3.online",
+      "panel_domain": null,
+      "admin_proxy_path": null,
+      "admin_uuid": null,
+      "state": "empty"
+    },
+    {
+      "id": "vpn-fi-1",
+      "host": "<PUBLIC_IP>",
+      "group": "eu",
+      "location": "fi",
+      "tags": ["prod"],
+      "auth": {
+        "method": "password",
+        "password_env": "SSH_PASSWORD_VPN_FI_1"
+      },
+      "cloudflare_zone": "losttv.site",
+      "subdomain": "fi1",
+      "domain": "fi1.losttv.site",
+      "panel_domain": null,
+      "admin_proxy_path": null,
+      "admin_uuid": null,
+      "desired": {
+        "domain_modes": ["direct", "sub_link_only"],
+        "protocols": ["vless", "reality", "hysteria2"]
+      },
+      "state": "empty"
+    }
+  ]
+}
