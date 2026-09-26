@@ -4,6 +4,8 @@ inventory.json
 inventory/
 users.yml
 .env
+telegram.local.json
+tg-msg.txt
 
 # Ключи. Каталог целиком, включая файлы без расширения.
 keys/
