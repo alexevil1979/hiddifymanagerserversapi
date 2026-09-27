@@ -38,7 +38,7 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
-  sysctl --system >/dev/null
+  sysctl --system >/dev/null || true
 }
 
 ensure_swap() {
@@ -76,7 +76,10 @@ install_haproxy() {
   add-apt-repository -y ppa:vbernat/haproxy-3.0
   apt-get update
   local ver
+  # pipefail + early awk exit can SIGPIPE madison (exit 141); do not fail the install on that
+  set +o pipefail
   ver="$(apt-cache madison haproxy | awk -F'|' '/3\.0\./ {gsub(/ /,"",$2); print $2; exit}')"
+  set -o pipefail
   if [[ -z "$ver" ]]; then
     echo "no haproxy 3.0 in PPA" >&2
     exit 1
