@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "date": "2026-09-28",
+      "title": "Веб-база знаний + CDN vp2",
+      "body": "Создан docs/web. vpn-vp2 собран по образцу 12.3.3 после OS reinstall: домены в режиме CDN (Cloudflare proxied), restore 57 users / 2 admins, доступ SSH через jump 192.168.1.152 и SOCKS 1084/1085."
+    },
+    {
+      "date": "2026-09-27",
+      "title": "BS-пара console1 + vp16",
+      "body": "console1 = RU entry (whitelist), vp16 = EU exit. WireGuard 10.88.88.0/24 :51888, sockopt freedom→wg-bs-exit, Reality на exit. Артефакты в artifacts/bs-pair/."
+    },
+    {
+      "date": "2026-09-27",
+      "title": "Массовые сборки vp* по образцу",
+      "body": "Пайплайн install 12.3.3 → DNS direct → protocols.json → restore users/paths → apply_configs. Фикс HAProxy maps после restore (PhoneRadar/400 decoy). Особый SSH-порт vp6 :22022."
+    },
+    {
+      "date": "2026-09-27",
+      "title": "Закрепление 12.3.3 и зон",
+      "body": "Только тег v12.3.3, auto_update=false, package_mode=v12.3.3, first_setup=false, язык ru, country=other. Зоны: sdfsdfsdfsd.store, losttv.site, linkusers3.online."
+    }
+  ]
+}

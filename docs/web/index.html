@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hiddify Manager — база знаний парка</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">HM</div>
+        <div>
+          <div class="brand-title">Hiddify Park</div>
+          <div class="brand-sub">база знаний</div>
+        </div>
+      </div>
+      <nav id="nav">
+        <a href="#overview">Обзор</a>
+        <a href="#fleet">Парк серверов</a>
+        <a href="#ssh">SSH и доступ</a>
+        <a href="#pipeline">Пайплайн с нуля</a>
+        <a href="#restore">Restore users/paths</a>
+        <a href="#dns">DNS: direct / CDN</a>
+        <a href="#bs">BS-пара</a>
+        <a href="#maps">HAProxy maps</a>
+        <a href="#scripts">Скрипты</a>
+        <a href="#pitfalls">Грабли</a>
+        <a href="#changelog">Changelog</a>
+      </nav>
+      <p class="sidebar-note">Секреты сюда не пишем. Источник правды: inventory + .env локально.</p>
+    </aside>
+
+    <main class="content">
+      <header class="page-header">
+        <h1>Документация парка Hiddify</h1>
+        <p class="lede">Структурированный журнал того, как мы ставим, настраиваем и чиним серверы. Обновляется при каждом новом рабочем знании.</p>
+        <div class="meta-row">
+          <span class="pill" id="meta-updated">обновлено…</span>
+          <span class="pill" id="meta-count">серверов…</span>
+          <span class="pill muted">версия панели: 12.3.3</span>
+        </div>
+      </header>
+
+      <section id="overview">
+        <h2>Обзор</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Роль</h3>
+            <p>DevOps-агент по парку VPS с Hiddify Manager: create → install → configure → restore → verify. Работа идемпотентна.</p>
+          </article>
+          <article class="card">
+            <h3>Жёсткие правила</h3>
+            <ul>
+              <li>Только <strong>12.3.3</strong>, не release.</li>
+              <li>Без «переустанови» не ставить поверх другой версии.</li>
+              <li>Секреты только из env / .env / чата, не в git.</li>
+              <li>Домены только из <code>domains.yml</code>.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Источники</h3>
+            <ul>
+              <li><code>inventory.yml</code> — карточки серверов</li>
+              <li><code>samples/protocols.json</code> — протоколы</li>
+              <li><code>scripts/install-hiddify.sh</code></li>
+              <li><code>scripts/restore-users-admins.sh</code></li>
+              <li><code>AGENTS.md</code> — промпт агента</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="fleet">
+        <h2>Парк серверов</h2>
+        <p>Живая сводка из <code>docs/web/data/fleet.json</code> + результат SSH-проверки <code>ssh-status.json</code>.</p>
+        <div class="toolbar">
+          <input id="filter" type="search" placeholder="Фильтр: id, ip, loc, state…" />
+          <div class="legend">
+            <span><i class="dot ok"></i> SSH ok</span>
+            <span><i class="dot warn"></i> ок через proxy</span>
+            <span><i class="dot bad"></i> SSH fail</span>
+            <span><i class="dot mute"></i> не проверен</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="fleet-table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>host</th>
+                <th>loc</th>
+                <th>state</th>
+                <th>SSH</th>
+                <th>порт</th>
+                <th>auth</th>
+                <th>домены</th>
+                <th>заметка</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="fleet-summary" class="summary-bar"></div>
+      </section>
+
+      <section id="ssh">
+        <h2>SSH и доступ</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Способы из inventory</h3>
+            <ul>
+              <li><code>auth.method: password</code> — пароль из env <code>password_env</code>, вход через plink.</li>
+              <li><code>auth.method: key</code> — ключ из <code>key_path_env</code> (OpenSSH).</li>
+              <li><code>auth.method: agent</code> — только явный agent, без подбора чужих ключей.</li>
+            </ul>
+            <h3>Особые порты</h3>
+            <p><code>vpn-vp6</code> — SSH на <strong>:22022</strong>, не 22.</p>
+          </div>
+          <div>
+            <h3>Jump / SOCKS (vp2 и изоляция)</h3>
+            <p>Прямой SSH на <code>150.241.86.99</code> с агента часто timeout. Рабочий путь:</p>
+            <ol>
+              <li>SSH на <code>192.168.1.152</code> (как в <code>telegram.local.json</code>).</li>
+              <li>Локальные SOCKS на jump: <code>127.0.0.1:1080–1085</code> (снаружи LAN закрыты).</li>
+              <li>На vp2:22 реально ходят <strong>1084 и 1085</strong>.</li>
+              <li>Хелперы на jump: <code>/tmp/vp2-ssh.sh</code>, <code>/tmp/vp2-scp.sh</code> (sshpass + <code>nc -X 5</code>).</li>
+            </ol>
+            <pre><code>ProxyCommand: nc -X 5 -x 127.0.0.1:1084 %h %p
+sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Hostkey:</strong> после переустановки ОС ключ хоста меняется. plink <code>-batch</code> без accept падает — нужен новый hostkey или одноразовый accept. OpenSSH: <code>StrictHostKeyChecking=accept-new</code>.
+        </div>
+      </section>
+
+      <section id="pipeline">
+        <h2>Пайплайн «с нуля» (образец)</h2>
+        <ol class="steps">
+          <li>Ubuntu 22.04 jammy, SSH способом из карточки.</li>
+          <li><code>scripts/install-hiddify.sh</code> → строго <strong>12.3.3</strong>.</li>
+          <li>Lock: <code>auto_update=false</code>, <code>package_mode=v12.3.3</code>, <code>admin_lang/lang=ru</code>, <code>country=other</code>, <code>first_setup=false</code>.</li>
+          <li>Пароль владельца из <code>HIDDIFY_ADMIN_PASSWORD</code>.</li>
+          <li>DNS A-записи <code>{subdomain}.{зона}</code> на все зоны из <code>cloudflare_zones</code>.</li>
+          <li>Профиль из <code>samples/protocols.json</code> + домены (direct или cdn).</li>
+          <li><code>apply_configs.sh</code> (иногда дважды).</li>
+          <li>Restore users/admins + proxy paths из бэкапа этой машины.</li>
+          <li>Проверки: dashboard не quick-setup, API status, подписка не пустая.</li>
+        </ol>
+        <p>Если на диске уже не 12.3.3 — <strong>стоп</strong>, пока пользователь не скажет «переустанови».</p>
+      </section>
+
+      <section id="restore">
+        <h2>Restore users / admins / paths</h2>
+        <p>Скрипт <code>scripts/restore-users-admins.sh</code>. Восстанавливает <strong>только</strong>:</p>
+        <ul>
+          <li><code>admin_users</code> + <code>users</code></li>
+          <li>path-ключи: <code>proxy_path</code>, <code>proxy_path_admin</code>, <code>proxy_path_client</code></li>
+        </ul>
+        <p>Не тащит домены, протоколы, private keys, <code>package_mode=release</code>.</p>
+        <div class="callout warn">
+          После restore путей нужен полный <code>apply_configs.sh</code>, иначе HAProxy maps остаются со старыми path → админка 400/DECOY.
+          Иногда <code>hconfig()</code> читает кэш Redis: перезапуск <code>hiddify-redis</code> + <code>hiddify-panel</code> выравнивает значение.
+        </div>
+        <p>Админ-URL: <code>https://{domain}/{proxy_path_admin}/{admin_uuid}/</code></p>
+      </section>
+
+      <section id="dns">
+        <h2>DNS: direct vs CDN</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>direct (по умолчанию)</h3>
+            <ul>
+              <li>Cloudflare A-запись, <code>proxied: false</code> (DNS only).</li>
+              <li>В панели: <code>DomainType.direct</code>.</li>
+              <li>Сертификат origin через acme на самом VPS.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>cdn (vp2)</h3>
+            <ul>
+              <li>Cloudflare A-запись, <code>proxied: true</code> (оранжевое облако).</li>
+              <li>В панели: <code>DomainType.cdn</code>.</li>
+              <li>В inventory: <code>desired.domain_modes: [cdn]</code>.</li>
+              <li>Админка через CDN работает с UUID в path.</li>
+            </ul>
+          </div>
+        </div>
+        <p>Зоны: <code>sdfsdfsdfsd.store</code>, <code>losttv.site</code>, <code>linkusers3.online</code>. Токен: <code>CLOUDFLARE_API_TOKEN</code>.</p>
+      </section>
+
+      <section id="bs">
+        <h2>BS-пара (bridge/exit)</h2>
+        <ul>
+          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit.</li>
+          <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality, sockopt freedom → <code>wg-bs-exit</code>.</li>
+        </ul>
+        <p>Артефакты: <code>artifacts/bs-pair/</code> (ключи публичные, setup/fix скрипты). Подробности также в docs fullvpnservice (вне репо).</p>
+      </section>
+
+      <section id="maps">
+        <h2>HAProxy maps / PhoneRadar</h2>
+        <p>Симптом: после restore путей админка отдаёт decoy/400, CRM «не тот path».</p>
+        <ol>
+          <li>Убедиться, что в БД paths = из бэкапа.</li>
+          <li>Полный <code>apply_configs.sh</code>.</li>
+          <li><code>systemctl restart hiddify-haproxy</code> (юнит может называться <code>haproxy</code> или <code>hiddify-haproxy</code>).</li>
+          <li>Проверить maps: <code>/opt/hiddify-manager/haproxy/maps/path*</code> содержат нужный admin path.</li>
+        </ol>
+      </section>
+
+      <section id="scripts">
+        <h2>Скрипты и артефакты</h2>
+        <table>
+          <thead><tr><th>Путь</th><th>Назначение</th></tr></thead>
+          <tbody>
+            <tr><td><code>scripts/install-hiddify.sh</code></td><td>Идемпотентная установка 12.3.3 + lock панели</td></tr>
+            <tr><td><code>scripts/restore-users-admins.sh</code></td><td>Users/admins + 3 path + apply</td></tr>
+            <tr><td><code>samples/protocols.json</code></td><td>Единственный профиль протоколов</td></tr>
+            <tr><td><code>telegram-notify.ps1</code></td><td>Уведомления через jump+SOCKS</td></tr>
+            <tr><td><code>artifacts/&lt;id&gt;/</code></td><td>Локальные логи/скрипты прогона (не секреты панели)</td></tr>
+            <tr><td><code>backups/&lt;id&gt;/</code></td><td>Локальные бэкапы панели (gitignore)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="pitfalls">
+        <h2>Грабли (зафиксировано)</h2>
+        <ul class="pitfalls">
+          <li>Канал <code>release</code> уводит панель с 12.3.3 → всегда pin + <code>auto_update=false</code>.</li>
+          <li><code>first_setup=true</code> → вечный Quick Setup в UI.</li>
+          <li>Restore без path → ломаются CRM/подписки.</li>
+          <li>Hostkey mismatch после OS reinstall.</li>
+          <li>vp2: прямой :22 недоступен; SOCKS только localhost на .152; рабочие порты 1084/1085.</li>
+          <li>CDN без UUID в URL → 400 invalid request; с UUID → 200.</li>
+          <li>hconfig vs StrConfig: после path restore сверять Redis/panel restart.</li>
+          <li>Диск 92%+ на старом vp2 мешал; после OS reinstall — ок.</li>
+          <li>Не открывать тысячи SSH разом на выборке.</li>
+        </ul>
+      </section>
+
+      <section id="changelog">
+        <h2>Changelog знаний</h2>
+        <div id="changelog-list" class="timeline"></div>
+      </section>
+
+      <footer class="page-footer">
+        Открыть файл: <code>docs/web/index.html</code>. Данные: <code>docs/web/data/*.json</code>. Правило агента: всегда дополнять при новых знаниях.
+      </footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

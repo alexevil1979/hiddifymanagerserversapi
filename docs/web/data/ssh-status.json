@@ -1,0 +1,194 @@
+{
+  "checked_at": "2026-09-28T01:18",
+  "servers": [
+    {
+      "id": "vpn-ru-1",
+      "host": "84.201.133.81",
+      "port": 22,
+      "auth": "key",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | compute-vm-2-1-10-hdd-1790448310615"
+    },
+    {
+      "id": "console1",
+      "host": "84.201.131.208",
+      "port": 22,
+      "auth": "key",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | compute-vm-2-1-10-hdd-1790534476837"
+    },
+    {
+      "id": "vpn-vp1",
+      "host": "185.207.133.3",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "auth_fail",
+      "detail": "denied"
+    },
+    {
+      "id": "vpn-vp2",
+      "host": "150.241.86.99",
+      "port": 22,
+      "auth": "password",
+      "tcp": false,
+      "ssh": "ok_socks",
+      "detail": "via 192.168.1.152 socks1084/1085"
+    },
+    {
+      "id": "vpn-vp3",
+      "host": "2.26.114.11",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "auth_fail",
+      "detail": "denied"
+    },
+    {
+      "id": "vpn-vp4",
+      "host": "64.49.15.147",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA89619103"
+    },
+    {
+      "id": "vpn-vp6",
+      "host": "203.161.39.40",
+      "port": 22022,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vp17270926"
+    },
+    {
+      "id": "vpn-vp7ru",
+      "host": "108.165.250.23",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | alexevil19401.example.com"
+    },
+    {
+      "id": "vpn-vp8",
+      "host": "193.37.213.114",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vps"
+    },
+    {
+      "id": "vpn-vp9",
+      "host": "78.111.67.214",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vp9.losttv.site"
+    },
+    {
+      "id": "vpn-vp10",
+      "host": "45.43.75.173",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA56909596"
+    },
+    {
+      "id": "vpn-vp11",
+      "host": "191.217.224.93",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm1145881.hosted-by.u1host.com"
+    },
+    {
+      "id": "vpn-vp12",
+      "host": "179.198.51.155",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm1204862.hosted-by.u1host.com"
+    },
+    {
+      "id": "vpn-vp13",
+      "host": "144.31.253.250",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm1205122.hosted-by.u1host.com"
+    },
+    {
+      "id": "vpn-vp14",
+      "host": "193.124.44.61",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm233303.dl-vps.com"
+    },
+    {
+      "id": "vpn-vp16",
+      "host": "185.249.154.200",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm1263791.hosted-by.u1host.com"
+    },
+    {
+      "id": "vpn-vp17",
+      "host": "143.246.138.132",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA11927679"
+    },
+    {
+      "id": "vpn-vp18",
+      "host": "144.31.192.182",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | vm1249101.hosted-by.u1host.com"
+    },
+    {
+      "id": "vpn-vp19",
+      "host": "192.209.62.170",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA23295943"
+    },
+    {
+      "id": "vpn-vp20",
+      "host": "107.161.160.73",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA89171174"
+    },
+    {
+      "id": "vpn-vp21",
+      "host": "160.202.132.237",
+      "port": 22,
+      "auth": "password",
+      "tcp": true,
+      "ssh": "ok",
+      "detail": "OK | YTA13933302"
+    }
+  ]
+}

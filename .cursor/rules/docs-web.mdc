@@ -1,0 +1,17 @@
+---
+description: Всегда обновлять веб-документацию docs/web при новых знаниях о парке
+alwaysApply: true
+---
+
+# Документация docs/web
+
+В проекте есть веб-база знаний: `docs/web/index.html` (данные в `docs/web/data/`).
+
+После любой задачи, где появилось **новое рабочее знание** (особый SSH/порт/proxy, новый пайплайн, CDN vs direct, BS-пара, грабли maps/paths, новый сервер или смена state), агент обязан в том же прогоне:
+
+1. Обновить соответствующую секцию в `docs/web/index.html` (если это устойчивый паттерн, не разовый шум).
+2. Добавить запись в `docs/web/data/changelog.json` (дата, короткий title, body без секретов).
+3. При изменении inventory — пересобрать `docs/web/data/fleet.json` (id/host/loc/state/auth/ports/modes/notes, без паролей и ключей).
+4. При проверке SSH парка — записать результат в `docs/web/data/ssh-status.json` скриптом `scripts/check-fleet-ssh.ps1` или эквивалентом.
+
+Не писать в docs: пароли, токены, приватные ключи, полные admin URL с секретами, тела `.env` / `telegram.local.json`.
