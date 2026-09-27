@@ -96,7 +96,9 @@
     "domain_fronting_domain": "",
     "naive_port": "39430",
     "mieru_multiplexing": "MULTIPLEXING_HIGH",
-    "mieru_handshake": "HANDSHAKE_NO_WAIT"
+    "mieru_handshake": "HANDSHAKE_NO_WAIT",
+    "auto_update": false,
+    "package_mode": "v12.3.3"
   },
   "proxies": [
     {

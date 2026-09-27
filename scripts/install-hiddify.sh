@@ -5,7 +5,7 @@ set -euo pipefail
 HIDDIFY_VERSION="12.3.3"
 HIDDIFY_TAG="v12.3.3"
 export DEBIAN_FRONTEND=noninteractive
-export NEEDRESTART_MODE=a
+export NEEDRESTART_MODE=l
 export APT_LISTCHANGES_FRONTEND=none
 
 if [[ "$(id -u)" -ne 0 ]]; then
@@ -83,10 +83,25 @@ install_haproxy() {
 
 lock_panel() {
   apt-mark hold haproxy || true
+  # CLI после установки часто только в venv, не в PATH.
+  local cli=""
   if command -v hiddify-panel-cli >/dev/null 2>&1; then
-    hiddify-panel-cli set-setting -k auto_update -v false
-    hiddify-panel-cli set-setting -k package_mode -v "$HIDDIFY_TAG"
+    cli="hiddify-panel-cli"
+  elif [[ -x /opt/hiddify-manager/.venv313/bin/hiddifypanel ]]; then
+    cli="/opt/hiddify-manager/.venv313/bin/hiddifypanel"
+  elif [[ -x /opt/hiddify-manager/.venv/bin/hiddifypanel ]]; then
+    cli="/opt/hiddify-manager/.venv/bin/hiddifypanel"
   fi
+  if [[ -z "$cli" ]]; then
+    echo "WARN: hiddifypanel CLI not found, auto_update not locked yet" >&2
+    return 0
+  fi
+  (
+    cd /opt/hiddify-manager/hiddify-panel
+    "$cli" set-setting -k auto_update -v false
+    "$cli" set-setting -k package_mode -v "$HIDDIFY_TAG"
+  )
+  echo "panel locked: auto_update=false package_mode=$HIDDIFY_TAG"
 }
 
 if [[ "$installed_version" == "$HIDDIFY_VERSION" ]]; then
@@ -102,7 +117,7 @@ install_sysctl
 ensure_swap
 install_haproxy
 
-bash <(curl -fsSL "https://raw.githubusercontent.com/hiddify/Hiddify-Manager/refs/tags/${HIDDIFY_TAG}/common/download.sh") "$HIDDIFY_TAG"
+bash <(curl -fsSL "https://raw.githubusercontent.com/hiddify/Hiddify-Manager/refs/tags/${HIDDIFY_TAG}/common/download.sh") "$HIDDIFY_TAG" --no-gui
 
 got="$(tr -d ' \t\r\nv' < /opt/hiddify-manager/VERSION || true)"
 if [[ "$got" != "$HIDDIFY_VERSION" ]]; then
