@@ -17,5 +17,6 @@ id_ed25519
 
 # Логи apply, бэкапы панели, ссылки подписок
 artifacts/
+backups/
 *.log
 samples/initial/
