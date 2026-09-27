@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "Runbook: сборка по образцу",
+      "body": "Отдельная подробная инструкция: docs/obrazec-sborka.md и docs/web/obrazec.html (install 12.3.3, DNS direct/cdn, protocols, restore paths, проверки, чеклист)."
+    },
+    {
+      "date": "2026-09-28",
       "title": "vp1/vp3 SSH пароли обновлены",
       "body": "Пароли SSH_PASSWORD_VP1 и SSH_PASSWORD_VP3 обновлены; прямая проверка SSH ok на обоих хостах."
     },

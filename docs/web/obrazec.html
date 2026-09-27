@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сборка по образцу — Hiddify Park</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .doc-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.5rem; }
+    .doc-nav a {
+      color: var(--muted); text-decoration: none;
+      padding: 0.4rem 0.75rem; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--panel); font-size: 0.85rem;
+    }
+    .doc-nav a:hover { color: var(--text); border-color: var(--accent); }
+    .checklist label {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      padding: 0.45rem 0; border-bottom: 1px solid var(--line);
+    }
+    .checklist input { margin-top: 0.3rem; }
+    table.kv td:first-child { width: 38%; color: var(--muted); white-space: nowrap; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">HM</div>
+        <div>
+          <div class="brand-title">Образец</div>
+          <div class="brand-sub">runbook сборки</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">← База знаний</a>
+        <a href="#what">Что такое образец</a>
+        <a href="#inputs">Входные данные</a>
+        <a href="#pre">Предусловия</a>
+        <a href="#install">Установка 12.3.3</a>
+        <a href="#dns">DNS</a>
+        <a href="#profile">Профиль</a>
+        <a href="#restore">Restore</a>
+        <a href="#verify">Проверки</a>
+        <a href="#checklist">Чеклист</a>
+        <a href="#dont">Не делать</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <a class="back" href="index.html">← К базе знаний парка</a>
+      <header class="page-header">
+        <h1>Подробная инструкция: сборка по образцу</h1>
+        <p class="lede">Как довести один VPS до эталона парка: Hiddify 12.3.3, DNS, протоколы из samples, опциональный restore users/paths. Markdown-копия: <code>docs/obrazec-sborka.md</code>.</p>
+      </header>
+
+      <div class="doc-nav">
+        <a href="#what">образец</a>
+        <a href="#install">install</a>
+        <a href="#dns">DNS</a>
+        <a href="#profile">профиль</a>
+        <a href="#restore">restore</a>
+        <a href="#verify">проверки</a>
+      </div>
+
+      <section id="what">
+        <h2>0. Что считается «образцом»</h2>
+        <div class="table-wrap">
+          <table class="kv">
+            <tbody>
+              <tr><td>ОС</td><td>Ubuntu <strong>22.04 jammy</strong></td></tr>
+              <tr><td>Hiddify</td><td><strong>12.3.3</strong> (<code>v12.3.3</code>), не канал release</td></tr>
+              <tr><td>auto_update</td><td><code>false</code></td></tr>
+              <tr><td>package_mode</td><td><code>v12.3.3</code></td></tr>
+              <tr><td>admin_lang / lang</td><td><code>ru</code></td></tr>
+              <tr><td>country</td><td><code>other</code></td></tr>
+              <tr><td>first_setup</td><td><code>false</code></td></tr>
+              <tr><td>Протоколы</td><td>только <code>samples/protocols.json</code></td></tr>
+              <tr><td>Домены</td><td>зоны из <code>domains.yml</code>, метка <code>subdomain</code></td></tr>
+              <tr><td>Режим домена</td><td>обычно <code>direct</code>; CDN → <code>cdn</code> + CF proxied</td></tr>
+              <tr><td>Пароль владельца</td><td><code>HIDDIFY_ADMIN_PASSWORD</code></td></tr>
+              <tr><td>Users</td><td>не плодить «на всякий»; restore из бэкапа <em>этой</em> машины</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">Полный дамп чужой панели не источник протоколов и доменов.</div>
+      </section>
+
+      <section id="inputs">
+        <h2>1. Входные данные</h2>
+        <ol class="steps">
+          <li>Селектор inventory: <code>id</code> (пример <code>vpn-vp2</code>). Без селектора на парк не идти.</li>
+          <li>Карточка: <code>host</code>, SSH, <code>subdomain</code>, <code>cloudflare_zones</code>, <code>desired.domain_modes</code>.</li>
+          <li>Локальный <code>.env</code>: SSH-секрет, <code>CLOUDFLARE_API_TOKEN</code>, <code>HIDDIFY_ADMIN_PASSWORD</code>.</li>
+          <li>Для restore: бэкап в <code>backups/&lt;id&gt;/</code> с <code>admin_users</code>, <code>users</code> и тремя path в <code>hconfigs</code>.</li>
+        </ol>
+      </section>
+
+      <section id="pre">
+        <h2>2. Предусловия</h2>
+        <pre><code>. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME"   # jammy
+test -f /opt/hiddify-manager/VERSION &amp;&amp; cat /opt/hiddify-manager/VERSION || echo NO_HIDDIFY</code></pre>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Факт</th><th>Действие</th></tr></thead>
+            <tbody>
+              <tr><td>Нет Hiddify</td><td>ставить §3</td></tr>
+              <tr><td><code>VERSION=12.3.3</code></td><td>не переустанавливать; DNS/профиль при необходимости</td></tr>
+              <tr><td>Другая версия</td><td><strong>стоп</strong>, пока не скажут «переустанови»</td></tr>
+              <tr><td>Нет SSH</td><td>чинить доступ (порт / пароль / SOCKS)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Особые доступы: <code>vpn-vp6</code> порт <strong>22022</strong>; <code>vpn-vp2</code> — jump <code>192.168.1.152</code> + SOCKS <strong>1084/1085</strong>.</p>
+      </section>
+
+      <section id="install">
+        <h2>3. Установка Hiddify 12.3.3</h2>
+        <p>Только <code>scripts/install-hiddify.sh</code> (идемпотентен). Заливать с LF.</p>
+        <pre><code>scp scripts/install-hiddify.sh root@HOST:/tmp/install-hiddify.sh
+ssh root@HOST 'sed -i "s/\r$//" /tmp/install-hiddify.sh && chmod 700 /tmp/install-hiddify.sh
+setsid bash /tmp/install-hiddify.sh > /var/log/hiddify-install.log 2>&amp;1 &lt; /dev/null &amp;
+echo $! > /var/log/hiddify-install.pid'</code></pre>
+        <p>Скрипт: apt upgrade → sysctl IPv6 off → swap → HAProxy 3.0 hold → download <code>v12.3.3</code> → <code>lock_panel</code>.</p>
+        <p>Успех: в логе <code>Hiddify 12.3.3 installed</code>, файл <code>/opt/hiddify-manager/VERSION</code> = <code>12.3.3</code>.</p>
+        <p>Пароль владельца — из <code>HIDDIFY_ADMIN_PASSWORD</code> (отдельно или через restore).</p>
+      </section>
+
+      <section id="dns">
+        <h2>4. DNS (Cloudflare)</h2>
+        <p>Зоны: <code>sdfsdfsdfsd.store</code>, <code>losttv.site</code>, <code>linkusers3.online</code>.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>direct</h3>
+            <p>A → <code>host</code>, <code>proxied: false</code>. В панели <code>DomainType.direct</code>.</p>
+          </div>
+          <div class="card">
+            <h3>cdn</h3>
+            <p>A → <code>host</code>, <code>proxied: true</code>. В панели <code>DomainType.cdn</code>. Inventory: <code>domain_modes: [cdn]</code>.</p>
+          </div>
+        </div>
+        <p>Токен <code>CLOUDFLARE_API_TOKEN</code>. Пустой subdomain — DNS не трогать. Корень зоны не занимать.</p>
+      </section>
+
+      <section id="profile">
+        <h2>5. Профиль: домены + протоколы</h2>
+        <ol class="steps">
+          <li>Бэкап панели.</li>
+          <li>Залить <code>/tmp/protocols.json</code> из <code>samples/protocols.json</code>.</li>
+          <li>Добавить IP + домены <code>{subdomain}.*</code> (direct или cdn).</li>
+          <li>Применить hconfigs/proxies из JSON; снова lock-поля и <code>first_setup=false</code>.</li>
+          <li>Снять в inventory: <code>admin_uuid</code>, paths.</li>
+          <li><code>apply_configs.sh --no-gui --no-log</code> (при сомнении — дважды).</li>
+          <li>Ещё раз <code>first_setup=false</code>.</li>
+        </ol>
+      </section>
+
+      <section id="restore">
+        <h2>6. Restore users / admins / paths</h2>
+        <pre><code>export BACKUP_JSON=/tmp/restore-users.json
+export ADMIN_PASS_FILE=/tmp/admin.pass
+export SERVER_ID=vpn-vpN
+bash /tmp/restore-users-admins.sh</code></pre>
+        <p>Восстанавливает только users/admins + три path, затем <code>apply-users</code> и полный apply. Не делать полный <code>set_settings=True</code>.</p>
+        <div class="callout warn">
+          После path restore при 400/decoy: проверить paths в БД, restart redis/panel, повторный apply_configs, restart haproxy, сверить maps в <code>/opt/hiddify-manager/haproxy/maps/path*</code>.
+        </div>
+        <p>Админ-URL: <code>https://{domain}/{proxy_path_admin}/{admin_uuid}/</code></p>
+      </section>
+
+      <section id="verify">
+        <h2>7. Проверки</h2>
+        <ul>
+          <li><code>VERSION</code> = 12.3.3, <code>auto_update=false</code>, <code>package_mode=v12.3.3</code>, <code>first_setup=false</code></li>
+          <li>UI — dashboard, не Quick Setup</li>
+          <li>API <code>…/api/v2/admin/server_status/</code> + <code>Hiddify-API-Key</code> → 200</li>
+          <li>DNS резолвится в host; CDN — proxied</li>
+          <li>CDN: без UUID часто 400; с UUID — 200</li>
+          <li>Подписка не пустая (если был restore)</li>
+          <li>Inventory: <code>state: configured</code></li>
+        </ul>
+      </section>
+
+      <section id="checklist">
+        <h2>8. Чеклист</h2>
+        <div class="card checklist">
+          <label><input type="checkbox" /> карточка inventory + секреты в .env</label>
+          <label><input type="checkbox" /> SSH ок (порт / ключ / пароль / socks)</label>
+          <label><input type="checkbox" /> jammy, нет чужой версии (или «переустанови»)</label>
+          <label><input type="checkbox" /> install-hiddify.sh → 12.3.3 + lock_panel</label>
+          <label><input type="checkbox" /> пароль владельца HIDDIFY_ADMIN_PASSWORD</label>
+          <label><input type="checkbox" /> DNS A × зоны (direct / cdn)</label>
+          <label><input type="checkbox" /> protocols.json + домены + apply_configs</label>
+          <label><input type="checkbox" /> first_setup=false</label>
+          <label><input type="checkbox" /> (опц.) restore-users-admins.sh + maps ok</label>
+          <label><input type="checkbox" /> проверки UI / API / DNS</label>
+          <label><input type="checkbox" /> inventory configured + обновление docs/web при нужде</label>
+        </div>
+      </section>
+
+      <section id="dont">
+        <h2>9. Чего не делать</h2>
+        <ul class="pitfalls">
+          <li>Канал release / свежая версия поверх 12.3.3</li>
+          <li>Установка поверх другой версии без «переустанови»</li>
+          <li>Протоколы/домены из чужого полного бэкапа</li>
+          <li>Смена SSH ОС без задачи; массовые юзеры «на всякий»</li>
+          <li>Секреты и полные admin URL в git/docs</li>
+        </ul>
+      </section>
+
+      <footer class="page-footer">
+        Связано: <code>scripts/install-hiddify.sh</code>, <code>scripts/restore-users-admins.sh</code>, <code>samples/protocols.json</code>, <code>domains.yml</code>, <a href="index.html">база знаний</a>.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
