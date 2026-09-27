@@ -109,8 +109,10 @@ lock_panel() {
     "$cli" set-setting -k admin_lang -v ru
     "$cli" set-setting -k lang -v ru
     "$cli" set-setting -k country -v other
+    # mark panel configured so admin UI does not redirect to Quick Setup
+    "$cli" set-setting -k first_setup -v false
   )
-  echo "panel locked: auto_update=false package_mode=$HIDDIFY_TAG admin_lang=ru country=other"
+  echo "panel locked: auto_update=false package_mode=$HIDDIFY_TAG admin_lang=ru country=other first_setup=false"
 }
 
 if [[ "$installed_version" == "$HIDDIFY_VERSION" ]]; then

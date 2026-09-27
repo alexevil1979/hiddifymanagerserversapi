@@ -100,13 +100,15 @@
     "package_mode": "v12.3.3",
     "admin_lang": "ru",
     "lang": "ru",
-    "country": "other"
+    "country": "other",
+    "first_setup": false
   },
   "admin_password_env": "HIDDIFY_ADMIN_PASSWORD",
   "notes": {
     "auto_update": "always false after install and after profile apply",
     "admin_password": "set owner password from HIDDIFY_ADMIN_PASSWORD in local .env; never store the password in this file",
     "quick_setup": "right after install: admin_lang=ru, lang=ru, country=other (UI label Others)",
+    "first_setup": "always false after install+configure; otherwise admin UI redirects to Quick Setup wizard",
     "wireguard": "disabled on Virtuozzo/CT hosts without kernel module; keep false in sample"
   },
   "proxies": [

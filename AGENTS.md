@@ -190,9 +190,10 @@ API после установки: домены, IP, custom proxies, users, dump
 - `package_mode` = `v12.3.3`
 - язык админки и панели: `admin_lang` = `ru`, `lang` = `ru`
 - страна: `country` = `other` (в UI это «Others»)
+- `first_setup` = `false` — пометить панель как уже настроенную. Иначе админка снова кидает в мастер Quick Setup, как будто сервер ещё не настроен
 - пароль владельца панели = значение из `HIDDIFY_ADMIN_PASSWORD` в локальном `.env` (через `AdminUser.update_password`; сам пароль в git и в `samples/protocols.json` не писать). В образце поле `admin_password_env: HIDDIFY_ADMIN_PASSWORD`.
 
-Это же лежит в `samples/protocols.json` (`hconfigs.auto_update`, `package_mode`, `admin_lang`, `lang`, `country`) и делает `scripts/install-hiddify.sh` в `lock_panel`. При apply профиля с образца эти поля снова выставляются. Пароль админа — отдельным шагом после установки и после apply.
+Это же лежит в `samples/protocols.json` (`hconfigs.auto_update`, `package_mode`, `admin_lang`, `lang`, `country`, `first_setup`) и делает `scripts/install-hiddify.sh` в `lock_panel`. При apply профиля с образца эти поля снова выставляются. Пароль админа — отдельным шагом после установки и после apply.
 
 Подготовка из ручной процедуры, в таком виде:
 
@@ -233,17 +234,19 @@ API после установки: домены, IP, custom proxies, users, dump
 5. Снять с панели `admin_uuid` и `proxy_path_admin`, записать в карточку.
 6. DNS: A-запись `{subdomain}` на каждой зоне из `cloudflare_zones`. IP — `host`, прокси Cloudflare выключен. Без `subdomain` записи не создавать.
 7. API: добавить server IP, домены (direct, cdn, reality, sub_link_only по задаче).
-8. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла. Вместе с протоколами снова выставить из образца: `auto_update=false`, `package_mode=v12.3.3`, `admin_lang=ru`, `lang=ru`, `country=other`.
+8. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла. Вместе с протоколами снова выставить из образца: `auto_update=false`, `package_mode=v12.3.3`, `admin_lang=ru`, `lang=ru`, `country=other`, `first_setup=false`.
 9. SSH: `apply_configs.sh`. Дождаться конца, не убивать процесс сразу.
-10. API: создать пользователей, если просили.
-11. Проверки:
-    - панель открывается
+10. После настройки доменов/протоколов ещё раз явно: `first_setup=false` (`hiddifypanel set-setting -k first_setup -v false` или через BoolConfig). Без этого Dashboard редиректит на `/admin/quick-setup/`.
+11. API: создать пользователей, если просили.
+12. Проверки:
+    - панель открывается на дашборд, не на мастер Quick Setup
+    - `first_setup` = `false`
     - `/api/v2/panel` или `/server_status/` отвечает
     - домен резолвится в IP сервера
     - сертификат на 443 совпадает с доменом
     - подписка пользователя не пустая
     - `auto_update` остаётся `false`
-12. Обновить `state` этой карточки: `configured`. Ошибку этой машины писать в её `state: error`, не останавливая весь отчёт.
+13. Обновить `state` этой карточки: `configured`. Ошибку этой машины писать в её `state: error`, не останавливая весь отчёт.
 
 # Пайплайн «донастроить / переделать»
 
