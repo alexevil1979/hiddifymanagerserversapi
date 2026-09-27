@@ -62,7 +62,11 @@ ensure_swap() {
   fi
   chmod 600 /swapfile
   mkswap /swapfile
-  swapon /swapfile
+  if ! swapon /swapfile; then
+    echo "WARN: swapon not permitted on this host, continue without swap"
+    rm -f /swapfile
+    return 0
+  fi
   grep -qE '^/swapfile[[:space:]]' /etc/fstab || echo '/swapfile none swap sw 0 0' >> /etc/fstab
   echo "swap $size_label"
 }
