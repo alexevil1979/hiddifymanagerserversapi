@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "vp1/vp3 SSH пароли обновлены",
+      "body": "Пароли SSH_PASSWORD_VP1 и SSH_PASSWORD_VP3 обновлены; прямая проверка SSH ok на обоих хостах."
+    },
+    {
+      "date": "2026-09-28",
       "title": "Веб-база знаний + CDN vp2",
       "body": "Создан docs/web. vpn-vp2 собран по образцу 12.3.3 после OS reinstall: домены в режиме CDN (Cloudflare proxied), restore 57 users / 2 admins, доступ SSH через jump 192.168.1.152 и SOCKS 1084/1085."
     },

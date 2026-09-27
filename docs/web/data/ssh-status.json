@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-28T01:18",
+  "checked_at": "2026-09-28T01:26",
   "servers": [
     {
       "id": "vpn-ru-1",
@@ -25,8 +25,8 @@
       "port": 22,
       "auth": "password",
       "tcp": true,
-      "ssh": "auth_fail",
-      "detail": "denied"
+      "ssh": "ok",
+      "detail": "pass updated; OK"
     },
     {
       "id": "vpn-vp2",
@@ -43,8 +43,8 @@
       "port": 22,
       "auth": "password",
       "tcp": true,
-      "ssh": "auth_fail",
-      "detail": "denied"
+      "ssh": "ok",
+      "detail": "pass updated; OK"
     },
     {
       "id": "vpn-vp4",
