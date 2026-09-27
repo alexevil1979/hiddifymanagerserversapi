@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ubuntu 22.04. Hiddify Manager ?????? v12.3.3, ?? ????? release.
+# Ubuntu 22.04. Hiddify Manager only v12.3.3, never release channel.
 set -euo pipefail
 
 HIDDIFY_VERSION="12.3.3"
@@ -9,14 +9,14 @@ export NEEDRESTART_MODE=l
 export APT_LISTCHANGES_FRONTEND=none
 
 if [[ "$(id -u)" -ne 0 ]]; then
-  echo "?????????? ?? root: sudo bash $0" >&2
+  echo "run as root: sudo bash $0" >&2
   exit 1
 fi
 
 # shellcheck disable=SC1091
 . /etc/os-release
 if [[ "${VERSION_CODENAME:-}" != "jammy" ]]; then
-  echo "????? Ubuntu 22.04 (jammy). ??????: ${VERSION_ID:-unknown} ${VERSION_CODENAME:-unknown}" >&2
+  echo "need Ubuntu 22.04 jammy, got: ${VERSION_ID:-unknown} ${VERSION_CODENAME:-unknown}" >&2
   exit 1
 fi
 
@@ -26,7 +26,7 @@ if [[ -f /opt/hiddify-manager/VERSION ]]; then
 fi
 
 if [[ -d /opt/hiddify-manager && -n "$installed_version" && "$installed_version" != "$HIDDIFY_VERSION" ]]; then
-  echo "??? ??????????? $installed_version. ????? $HIDDIFY_VERSION. ??? ????? ?????????????? ??????????????." >&2
+  echo "other version installed: $installed_version; want $HIDDIFY_VERSION; stop" >&2
   exit 2
 fi
 
@@ -74,7 +74,7 @@ install_haproxy() {
   local ver
   ver="$(apt-cache madison haproxy | awk -F'|' '/3\.0\./ {gsub(/ /,"",$2); print $2; exit}')"
   if [[ -z "$ver" ]]; then
-    echo "? PPA ??? haproxy 3.0" >&2
+    echo "no haproxy 3.0 in PPA" >&2
     exit 1
   fi
   apt-get install "${apt_quiet[@]}" "haproxy=${ver}"
@@ -83,7 +83,6 @@ install_haproxy() {
 
 lock_panel() {
   apt-mark hold haproxy || true
-  # CLI после установки часто только в venv, не в PATH.
   local cli=""
   if command -v hiddify-panel-cli >/dev/null 2>&1; then
     cli="hiddify-panel-cli"
@@ -111,8 +110,12 @@ if [[ "$installed_version" == "$HIDDIFY_VERSION" ]]; then
   exit 0
 fi
 
-apt-get update
-apt-get upgrade "${apt_quiet[@]}"
+# apt upgrade already done on this host; skip if recent success marker
+if [[ ! -f /var/log/hiddify-apt-upgraded.ok ]]; then
+  apt-get update
+  apt-get upgrade "${apt_quiet[@]}"
+  date -u > /var/log/hiddify-apt-upgraded.ok
+fi
 install_sysctl
 ensure_swap
 install_haproxy
@@ -121,7 +124,7 @@ bash <(curl -fsSL "https://raw.githubusercontent.com/hiddify/Hiddify-Manager/ref
 
 got="$(tr -d ' \t\r\nv' < /opt/hiddify-manager/VERSION || true)"
 if [[ "$got" != "$HIDDIFY_VERSION" ]]; then
-  echo "????????? $HIDDIFY_VERSION, ? VERSION: ${got:-?????}" >&2
+  echo "want $HIDDIFY_VERSION, VERSION file: ${got:-empty}" >&2
   exit 3
 fi
 lock_panel
