@@ -16,11 +16,10 @@
     "tcp_enable",
     "tuic_enable",
     "vless_enable",
-    "wireguard_enable",
     "ws_enable"
   ],
   "hconfigs": {
-    "wireguard_enable": true,
+    "wireguard_enable": false,
     "ssh_server_enable": true,
     "tls_fragment_enable": false,
     "tls_mixed_case": false,
@@ -107,7 +106,8 @@
   "notes": {
     "auto_update": "always false after install and after profile apply",
     "admin_password": "set owner password from HIDDIFY_ADMIN_PASSWORD in local .env; never store the password in this file",
-    "quick_setup": "right after install: admin_lang=ru, lang=ru, country=other (UI label Others)"
+    "quick_setup": "right after install: admin_lang=ru, lang=ru, country=other (UI label Others)",
+    "wireguard": "disabled on Virtuozzo/CT hosts without kernel module; keep false in sample"
   },
   "proxies": [
     {
@@ -1331,7 +1331,7 @@
       "transport": "custom",
       "l3": "udp",
       "cdn": "direct",
-      "enable": true,
+      "enable": false,
       "params": {}
     },
     {
@@ -1340,7 +1340,7 @@
       "transport": "custom",
       "l3": "udp",
       "cdn": "relay",
-      "enable": true,
+      "enable": false,
       "params": {}
     },
     {
