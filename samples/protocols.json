@@ -98,12 +98,16 @@
     "mieru_multiplexing": "MULTIPLEXING_HIGH",
     "mieru_handshake": "HANDSHAKE_NO_WAIT",
     "auto_update": false,
-    "package_mode": "v12.3.3"
+    "package_mode": "v12.3.3",
+    "admin_lang": "ru",
+    "lang": "ru",
+    "country": "other"
   },
   "admin_password_env": "HIDDIFY_ADMIN_PASSWORD",
   "notes": {
     "auto_update": "always false after install and after profile apply",
-    "admin_password": "set owner password from HIDDIFY_ADMIN_PASSWORD in local .env; never store the password in this file"
+    "admin_password": "set owner password from HIDDIFY_ADMIN_PASSWORD in local .env; never store the password in this file",
+    "quick_setup": "right after install: admin_lang=ru, lang=ru, country=other (UI label Others)"
   },
   "proxies": [
     {

@@ -184,13 +184,15 @@ API после установки: домены, IP, custom proxies, users, dump
 
 Всегда ставить тег `v12.3.3`: панель с `HiddifyPanel@v12.3.3` и архив `Hiddify-Manager` релиза `v12.3.3`. Канал `release` качает последнюю версию, его не использовать.
 
-После установки обязательно:
+После установки обязательно (Quick Setup + фиксация версии):
 
 - `auto_update` = `false` в настройках панели (иначе панель сама уйдёт с `12.3.3` на свежий release)
 - `package_mode` = `v12.3.3`
+- язык админки и панели: `admin_lang` = `ru`, `lang` = `ru`
+- страна: `country` = `other` (в UI это «Others»)
 - пароль владельца панели = значение из `HIDDIFY_ADMIN_PASSWORD` в локальном `.env` (через `AdminUser.update_password`; сам пароль в git и в `samples/protocols.json` не писать). В образце поле `admin_password_env: HIDDIFY_ADMIN_PASSWORD`.
 
-Это же лежит в `samples/protocols.json` (`hconfigs.auto_update`, `hconfigs.package_mode`) и делает `scripts/install-hiddify.sh` в `lock_panel`. При apply профиля с образца `auto_update` снова принудительно выключается. Пароль админа выставлять отдельным шагом после установки и после apply.
+Это же лежит в `samples/protocols.json` (`hconfigs.auto_update`, `package_mode`, `admin_lang`, `lang`, `country`) и делает `scripts/install-hiddify.sh` в `lock_panel`. При apply профиля с образца эти поля снова выставляются. Пароль админа — отдельным шагом после установки и после apply.
 
 Подготовка из ручной процедуры, в таком виде:
 
@@ -227,11 +229,11 @@ API после установки: домены, IP, custom proxies, users, dump
 1. Создать VPS в облаке (Ubuntu 22.04), открыть 22/80/443 + нужные UDP порты протоколов.
 2. Дождаться SSH способом `auth` этой карточки.
 3. Поставить Hiddify только скриптом `scripts/install-hiddify.sh`. Версия всегда `12.3.3`. Не вызывать `i.hiddify.com/release` и не ставить последнюю. Не ставить поверх другой версии без фразы пользователя «переустанови».
-4. Сразу после установки: `auto_update=false`, `package_mode=v12.3.3`, пароль владельца панели из `HIDDIFY_ADMIN_PASSWORD`. Проверить в панели/через CLI, что автообновление выключено.
+4. Сразу после установки (Quick Setup): `admin_lang=ru`, `lang=ru`, `country=other`, плюс `auto_update=false`, `package_mode=v12.3.3`, пароль владельца из `HIDDIFY_ADMIN_PASSWORD`. Проверить, что автообновление выключено.
 5. Снять с панели `admin_uuid` и `proxy_path_admin`, записать в карточку.
 6. DNS: A-запись `{subdomain}` на каждой зоне из `cloudflare_zones`. IP — `host`, прокси Cloudflare выключен. Без `subdomain` записи не создавать.
 7. API: добавить server IP, домены (direct, cdn, reality, sub_link_only по задаче).
-8. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла. Вместе с протоколами снова выставить `auto_update=false` и `package_mode=v12.3.3` из образца.
+8. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла. Вместе с протоколами снова выставить из образца: `auto_update=false`, `package_mode=v12.3.3`, `admin_lang=ru`, `lang=ru`, `country=other`.
 9. SSH: `apply_configs.sh`. Дождаться конца, не убивать процесс сразу.
 10. API: создать пользователей, если просили.
 11. Проверки:

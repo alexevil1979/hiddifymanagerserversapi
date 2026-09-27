@@ -103,8 +103,11 @@ lock_panel() {
     cd /opt/hiddify-manager/hiddify-panel
     "$cli" set-setting -k auto_update -v false
     "$cli" set-setting -k package_mode -v "$HIDDIFY_TAG"
+    "$cli" set-setting -k admin_lang -v ru
+    "$cli" set-setting -k lang -v ru
+    "$cli" set-setting -k country -v other
   )
-  echo "panel locked: auto_update=false package_mode=$HIDDIFY_TAG"
+  echo "panel locked: auto_update=false package_mode=$HIDDIFY_TAG admin_lang=ru country=other"
 }
 
 if [[ "$installed_version" == "$HIDDIFY_VERSION" ]]; then
