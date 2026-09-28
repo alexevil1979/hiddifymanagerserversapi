@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "IMPORTANT: BS Turkmenistan working snapshot",
+      "body": "Клиент подтвердил работу Обход БС. Полные бэкапы console1+vp16 сохранены в backups/IMPORTANT-BS-Turkmenistan-working-2026-09-28/ и /var/backups/hiddify/*-BS-Turkmenistan-working.json. Рецепт без секретов: docs/bs-turkmenistan-working-recipe.json."
+    },
+    {
+      "date": "2026-09-28",
       "title": "BS-пара: show_domains IP+sslip + alias",
       "body": "После 12.3.3 в подписке console1 не было IP/sslip — клиент терял рабочий узел Обход БС. Вернули show_domains (IP+sslip+домены+Reality), alias «Обход БС» / «Выход EU». sockopt wg-bs-exit и WG handshake ок; e2e VLESS WS egress=vp16."
     },

@@ -1,0 +1,199 @@
+{
+  "title": "IMPORTANT: working BS pair for Turkmenistan",
+  "confirmed_by_client": "2026-09-28",
+  "note": "Full panel dumps with secrets stay in backups/IMPORTANT-BS-Turkmenistan-working-2026-09-28/ (gitignored). This file is a sanitized recipe only.",
+  "pair": {
+    "entry": "console1",
+    "exit": "vpn-vp16",
+    "wg_interface": "wg-bs-exit",
+    "wg_subnet": "10.88.88.0/24",
+    "wg_port_exit": 51888,
+    "sockopt": "freedom.streamSettings.sockopt.interface=wg-bs-exit",
+    "entry_alias": "🇷🇺 Обход БС",
+    "exit_alias": "🇪🇺 Выход EU",
+    "must_have_in_sub": [
+      "server_IP",
+      "IP.sslip.io",
+      "console1.* domains"
+    ]
+  },
+  "panels": [
+    {
+      "role": "entry",
+      "source_file": "console1-BS-Turkmenistan-working.json",
+      "hconfigs": {
+        "package_mode": "v12.3.3",
+        "auto_update": false,
+        "reality_enable": true,
+        "vless_enable": true,
+        "ws_enable": true,
+        "tcp_enable": true,
+        "h2_enable": true,
+        "tuic_enable": false,
+        "hysteria_enable": false,
+        "ssh_server_enable": false,
+        "wireguard_enable": false,
+        "grpc_enable": false,
+        "httpupgrade_enable": false,
+        "xhttp_enable": false,
+        "quic_enable": false,
+        "admin_lang": "ru",
+        "lang": "ru",
+        "country": "other",
+        "first_setup": false
+      },
+      "domains": [
+        {
+          "domain": "84.201.131.208",
+          "mode": "direct",
+          "alias": "🇷🇺 Обход БС",
+          "show_domains": [
+            "84.201.131.208",
+            "84.201.131.208.sslip.io",
+            "www.metacrawler.com",
+            "console1.sdfsdfsdfsd.store",
+            "console1.losttv.site",
+            "console1.linkusers3.online"
+          ]
+        },
+        {
+          "domain": "84.201.131.208.sslip.io",
+          "mode": "direct",
+          "alias": "🇷🇺 Обход БС",
+          "show_domains": [
+            "84.201.131.208",
+            "84.201.131.208.sslip.io",
+            "www.metacrawler.com",
+            "console1.sdfsdfsdfsd.store",
+            "console1.losttv.site",
+            "console1.linkusers3.online"
+          ]
+        },
+        {
+          "domain": "www.metacrawler.com",
+          "mode": "special_reality_tcp",
+          "alias": null,
+          "show_domains": []
+        },
+        {
+          "domain": "console1.sdfsdfsdfsd.store",
+          "mode": "direct",
+          "alias": "🇷🇺 Обход БС",
+          "show_domains": [
+            "84.201.131.208",
+            "84.201.131.208.sslip.io",
+            "www.metacrawler.com",
+            "console1.sdfsdfsdfsd.store",
+            "console1.losttv.site",
+            "console1.linkusers3.online"
+          ]
+        },
+        {
+          "domain": "console1.losttv.site",
+          "mode": "direct",
+          "alias": "🇷🇺 Обход БС",
+          "show_domains": [
+            "84.201.131.208",
+            "84.201.131.208.sslip.io",
+            "www.metacrawler.com",
+            "console1.sdfsdfsdfsd.store",
+            "console1.losttv.site",
+            "console1.linkusers3.online"
+          ]
+        },
+        {
+          "domain": "console1.linkusers3.online",
+          "mode": "direct",
+          "alias": "🇷🇺 Обход БС",
+          "show_domains": [
+            "84.201.131.208",
+            "84.201.131.208.sslip.io",
+            "www.metacrawler.com",
+            "console1.sdfsdfsdfsd.store",
+            "console1.losttv.site",
+            "console1.linkusers3.online"
+          ]
+        }
+      ],
+      "users_count": 5,
+      "admin_users_count": 1
+    },
+    {
+      "role": "exit",
+      "source_file": "vp16-BS-Turkmenistan-working.json",
+      "hconfigs": {
+        "package_mode": "v12.3.3",
+        "auto_update": false,
+        "reality_enable": true,
+        "vless_enable": true,
+        "ws_enable": true,
+        "tcp_enable": true,
+        "h2_enable": true,
+        "tuic_enable": true,
+        "hysteria_enable": true,
+        "ssh_server_enable": false,
+        "wireguard_enable": false,
+        "grpc_enable": true,
+        "httpupgrade_enable": false,
+        "xhttp_enable": false,
+        "quic_enable": true,
+        "admin_lang": "ru",
+        "lang": "ru",
+        "country": "other",
+        "first_setup": false
+      },
+      "domains": [
+        {
+          "domain": "185.249.154.200",
+          "mode": "direct",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "185.249.154.200.sslip.io",
+          "mode": "direct",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "adium.im",
+          "mode": "special_reality_tcp",
+          "alias": null,
+          "show_domains": []
+        },
+        {
+          "domain": "vp16.sdfsdfsdfsd.store",
+          "mode": "direct",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "vp16.losttv.site",
+          "mode": "direct",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "vp16.linkusers3.online",
+          "mode": "direct",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "vp16.telegrambot.website",
+          "mode": "cdn",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        },
+        {
+          "domain": "vp16.teleworker.fun",
+          "mode": "cdn",
+          "alias": "🇪🇺 Выход EU",
+          "show_domains": []
+        }
+      ],
+      "users_count": 5,
+      "admin_users_count": 1
+    }
+  ]
+}

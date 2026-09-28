@@ -209,6 +209,7 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality special: <code>adium.im</code>, alias «🇪🇺 Выход EU».</li>
         </ul>
         <p>После restore/apply: (1) sockopt <code>interface=wg-bs-exit</code> в <code>06_outbounds.json</code> и <code>.j2</code>; (2) в <code>show_domains</code> у console1.* должны быть <strong>IP</strong> и <strong>IP.sslip.io</strong> — иначе в клиенте нет узла «Обход БС» без домена, а на мобильном BS доменные A-записи часто падают (красные кресты), хотя балансер на IP работал; (3) сокет <code>@realityin_*</code>. E2E: VLESS WS → egress IP vp16.</p>
+        <p><strong>IMPORTANT (Туркменистан):</strong> рабочий снимок, подтверждённый клиентом 2026-09-28 — локально <code>backups/IMPORTANT-BS-Turkmenistan-working-2026-09-28/</code> (полный JSON, gitignore). Санитизированный рецепт без секретов: <code>docs/bs-turkmenistan-working-recipe.json</code>. На серверах: <code>/var/backups/hiddify/*-BS-Turkmenistan-working.json</code>.</p>
       </section>
 
       <section id="maps">
