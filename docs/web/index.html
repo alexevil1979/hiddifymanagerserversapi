@@ -248,6 +248,8 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li>hconfig vs StrConfig: после path restore сверять Redis/panel restart.</li>
           <li>Диск 92%+ на старом vp2 мешал; после OS reinstall — ок.</li>
           <li>Не открывать тысячи SSH разом на выборке.</li>
+          <li>HAProxy crash-loop + Cloudflare 521: битая пара <code>*.sslip.io.crt</code>/<code>*.crt.key</code> (modulus mismatch). Симптом: <code>haproxy -c</code> ALERT inconsistency, :443 нет. Лечение: пересобрать self-signed ECC для IP и <code>IP.sslip.io</code>, затем restart HAProxy. (vp12, 2026-09-28)</li>
+          <li>Корень <code>/</code> через CDN может таймаутить при живой панели — проверять admin path и подписку, не только <code>/</code>.</li>
         </ul>
       </section>
 

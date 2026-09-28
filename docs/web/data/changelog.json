@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "vp12: HAProxy sslip cert fix",
+      "body": "После CDN batch у vpn-vp12 Cloudflare 521: hiddify-haproxy в crash-loop из-за inconsistency sslip.io.crt/key. Пересобраны self-signed для IP и IP.sslip.io, HAProxy поднят. CDN: admin 302, подписка 200 на всех зонах; корень / может таймаутить."
+    },
+    {
+      "date": "2026-09-28",
       "title": "CDN batch: vp4/6/9–14/17–21",
       "body": "13 серверов: панель DomainType.cdn + Cloudflare proxied=true (без *-cdn). SSH у всех был direct, SOCKS не понадобился. vp4: также vp5.*."
     },
