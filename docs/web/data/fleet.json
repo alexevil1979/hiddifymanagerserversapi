@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28T01:17",
+  "updated": "2026-09-28T10:08",
   "servers": [
     {
       "id": "vpn-ru-1",
@@ -21,7 +21,10 @@
       "domain_modes": null,
       "panel_domain": "vp22.losttv.site",
       "status_note": null,
-      "status_updated_at": null
+      "status_updated_at": null,
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "console1",
@@ -43,7 +46,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "console1.linkusers3.online",
       "status_note": "RU entry BS; WG->vp16; sockopt wg-bs-exit; alias Обход БС",
-      "status_updated_at": "2026-09-27 23:13"
+      "status_updated_at": "2026-09-27 23:13",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp1",
@@ -63,9 +69,12 @@
         "vp1.linkusers3.online"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": null,
-      "status_note": "ready",
-      "status_updated_at": "2026-09-27 11:33"
+      "panel_domain": "null",
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn≠inv"
     },
     {
       "id": "vpn-vp2",
@@ -86,8 +95,11 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp2.losttv.site",
-      "status_note": "ready; sample+restore; domains CDN proxied",
-      "status_updated_at": "2026-09-28 00:06"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp3",
@@ -107,9 +119,12 @@
         "vp3.linkusers3.online"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": null,
-      "status_note": "ready",
-      "status_updated_at": "2026-09-27 11:34"
+      "panel_domain": "null",
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn≠inv"
     },
     {
       "id": "vpn-vp4",
@@ -134,7 +149,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp4.losttv.site",
       "status_note": "ready; CRM paths+uuid set",
-      "status_updated_at": "2026-09-27 13:35"
+      "status_updated_at": "2026-09-27 13:35",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp6",
@@ -156,7 +174,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp6.losttv.site",
       "status_note": "ready; sample+restore; maps fixed; ssh :22022",
-      "status_updated_at": "2026-09-27 22:28"
+      "status_updated_at": "2026-09-27 22:28",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp7ru",
@@ -176,9 +197,12 @@
         "vp7ru.linkusers3.online"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": null,
-      "status_note": "ready; проверить настройки позже",
-      "status_updated_at": "2026-09-27 20:23"
+      "panel_domain": "null",
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn≠inv"
     },
     {
       "id": "vpn-vp8",
@@ -200,7 +224,10 @@
       "domain_modes": "[cdn]",
       "panel_domain": "vp8.losttv.site",
       "status_note": "domains CDN proxied; was direct",
-      "status_updated_at": "2026-09-28 09:54"
+      "status_updated_at": "2026-09-27 15:51",
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp9",
@@ -221,8 +248,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp9.losttv.site",
-      "status_note": "ready; CRM paths+uuid set",
-      "status_updated_at": "2026-09-27 13:25"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp10",
@@ -244,7 +274,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp10.losttv.site",
       "status_note": "ready; sample+restore; maps fixed",
-      "status_updated_at": "2026-09-27 22:17"
+      "status_updated_at": "2026-09-27 22:17",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp11",
@@ -266,7 +299,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp11.losttv.site",
       "status_note": "ready; sample+restore; maps fixed",
-      "status_updated_at": "2026-09-27 19:58"
+      "status_updated_at": "2026-09-27 19:58",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp12",
@@ -287,8 +323,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp12.losttv.site",
-      "status_note": "ready; paths as in CRM",
-      "status_updated_at": "2026-09-27 13:06"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp13",
@@ -309,8 +348,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp13.losttv.site",
-      "status_note": "ready; sample protocols + users/paths from 2026-09-27 backup",
-      "status_updated_at": "2026-09-27 13:50"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp14",
@@ -331,8 +373,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp14.losttv.site",
-      "status_note": "ready; sample+restore; maps fixed",
-      "status_updated_at": "2026-09-27 22:17"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp16",
@@ -353,8 +398,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp16.losttv.site",
-      "status_note": "EU exit BS; wg-bs-exit :51888; Reality; alias EU напрямую",
-      "status_updated_at": "2026-09-27 23:13"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp17",
@@ -376,7 +424,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp17.losttv.site",
       "status_note": "ready; sample+restore; maps fixed",
-      "status_updated_at": "2026-09-27 22:20"
+      "status_updated_at": "2026-09-27 22:20",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp18",
@@ -397,8 +448,11 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp18.losttv.site",
-      "status_note": "ready; sample protocols + users/paths from 2026-09-27 backup",
-      "status_updated_at": "2026-09-27 15:40"
+      "status_note": "SSH password rotated; unique strong",
+      "status_updated_at": "2026-09-28 01:33",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp19",
@@ -420,7 +474,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp19.losttv.site",
       "status_note": "ready; sample + users/paths restored",
-      "status_updated_at": "2026-09-27 16:15"
+      "status_updated_at": "2026-09-27 16:15",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp20",
@@ -442,7 +499,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp20.losttv.site",
       "status_note": "ready; sample+restore",
-      "status_updated_at": "2026-09-27 19:47"
+      "status_updated_at": "2026-09-27 19:47",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     },
     {
       "id": "vpn-vp21",
@@ -464,7 +524,10 @@
       "domain_modes": "[direct]",
       "panel_domain": "vp21.losttv.site",
       "status_note": "ready; sample+restore",
-      "status_updated_at": "2026-09-27 19:45"
+      "status_updated_at": "2026-09-27 19:45",
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct"
     }
   ]
 }

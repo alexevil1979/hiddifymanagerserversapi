@@ -1,44 +1,49 @@
-{
-  "entries": [
-    {
-      "date": "2026-09-28",
-      "title": "vp8: direct → CDN",
-      "body": "vpn-vp8: три домена в панели DomainType.cdn + apply_configs; Cloudflare A vp8.* proxied=true на всех зонах. Подписка через CDN: HTTP 200 + cf-ray."
-    },
-    {
-      "date": "2026-09-28",
-      "title": "Ротация слабых SSH-паролей",
-      "body": "На 10 хостах с общим слабым паролем (vp1/2/3/7ru/9/12/13/14/16/18) выставлены уникальные 24-символьные пароли; значения только в локальном .env. Проверка входа ok (vp2 через SOCKS)."
-    },
-    {
-      "date": "2026-09-28",
-      "title": "Runbook: сборка по образцу",
-      "body": "Отдельная подробная инструкция: docs/obrazec-sborka.md и docs/web/obrazec.html (install 12.3.3, DNS direct/cdn, protocols, restore paths, проверки, чеклист)."
-    },
-    {
-      "date": "2026-09-28",
-      "title": "vp1/vp3 SSH пароли обновлены",
-      "body": "Пароли SSH_PASSWORD_VP1 и SSH_PASSWORD_VP3 обновлены; прямая проверка SSH ok на обоих хостах."
-    },
-    {
-      "date": "2026-09-28",
-      "title": "Веб-база знаний + CDN vp2",
-      "body": "Создан docs/web. vpn-vp2 собран по образцу 12.3.3 после OS reinstall: домены в режиме CDN (Cloudflare proxied), restore 57 users / 2 admins, доступ SSH через jump 192.168.1.152 и SOCKS 1084/1085."
-    },
-    {
-      "date": "2026-09-27",
-      "title": "BS-пара console1 + vp16",
-      "body": "console1 = RU entry (whitelist), vp16 = EU exit. WireGuard 10.88.88.0/24 :51888, sockopt freedom→wg-bs-exit, Reality на exit. Артефакты в artifacts/bs-pair/."
-    },
-    {
-      "date": "2026-09-27",
-      "title": "Массовые сборки vp* по образцу",
-      "body": "Пайплайн install 12.3.3 → DNS direct → protocols.json → restore users/paths → apply_configs. Фикс HAProxy maps после restore (PhoneRadar/400 decoy). Особый SSH-порт vp6 :22022."
-    },
-    {
-      "date": "2026-09-27",
-      "title": "Закрепление 12.3.3 и зон",
-      "body": "Только тег v12.3.3, auto_update=false, package_mode=v12.3.3, first_setup=false, язык ru, country=other. Зоны: sdfsdfsdfsd.store, losttv.site, linkusers3.online."
-    }
-  ]
+﻿{
+    "entries":  [
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "Колонка CDN в сводке парка",
+                        "body":  "В таблице статусов docs/web добавлена колонка CDN (факт Cloudflare proxied + inventory). Скрипт scripts/rebuild-fleet-json.py."
+                    },
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "vp8: direct в†’ CDN",
+                        "body":  "vpn-vp8: С‚СЂРё РґРѕРјРµРЅР° РІ РїР°РЅРµР»Рё DomainType.cdn + apply_configs; Cloudflare A vp8.* proxied=true РЅР° РІСЃРµС… Р·РѕРЅР°С…. РџРѕРґРїРёСЃРєР° С‡РµСЂРµР· CDN: HTTP 200 + cf-ray."
+                    },
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "Р РѕС‚Р°С†РёСЏ СЃР»Р°Р±С‹С… SSH-РїР°СЂРѕР»РµР№",
+                        "body":  "РќР° 10 С…РѕСЃС‚Р°С… СЃ РѕР±С‰РёРј СЃР»Р°Р±С‹Рј РїР°СЂРѕР»РµРј (vp1/2/3/7ru/9/12/13/14/16/18) РІС‹СЃС‚Р°РІР»РµРЅС‹ СѓРЅРёРєР°Р»СЊРЅС‹Рµ 24-СЃРёРјРІРѕР»СЊРЅС‹Рµ РїР°СЂРѕР»Рё; Р·РЅР°С‡РµРЅРёСЏ С‚РѕР»СЊРєРѕ РІ Р»РѕРєР°Р»СЊРЅРѕРј .env. РџСЂРѕРІРµСЂРєР° РІС…РѕРґР° ok (vp2 С‡РµСЂРµР· SOCKS)."
+                    },
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "Runbook: СЃР±РѕСЂРєР° РїРѕ РѕР±СЂР°Р·С†Сѓ",
+                        "body":  "РћС‚РґРµР»СЊРЅР°СЏ РїРѕРґСЂРѕР±РЅР°СЏ РёРЅСЃС‚СЂСѓРєС†РёСЏ: docs/obrazec-sborka.md Рё docs/web/obrazec.html (install 12.3.3, DNS direct/cdn, protocols, restore paths, РїСЂРѕРІРµСЂРєРё, С‡РµРєР»РёСЃС‚)."
+                    },
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "vp1/vp3 SSH РїР°СЂРѕР»Рё РѕР±РЅРѕРІР»РµРЅС‹",
+                        "body":  "РџР°СЂРѕР»Рё SSH_PASSWORD_VP1 Рё SSH_PASSWORD_VP3 РѕР±РЅРѕРІР»РµРЅС‹; РїСЂСЏРјР°СЏ РїСЂРѕРІРµСЂРєР° SSH ok РЅР° РѕР±РѕРёС… С…РѕСЃС‚Р°С…."
+                    },
+                    {
+                        "date":  "2026-09-28",
+                        "title":  "Р’РµР±-Р±Р°Р·Р° Р·РЅР°РЅРёР№ + CDN vp2",
+                        "body":  "РЎРѕР·РґР°РЅ docs/web. vpn-vp2 СЃРѕР±СЂР°РЅ РїРѕ РѕР±СЂР°Р·С†Сѓ 12.3.3 РїРѕСЃР»Рµ OS reinstall: РґРѕРјРµРЅС‹ РІ СЂРµР¶РёРјРµ CDN (Cloudflare proxied), restore 57 users / 2 admins, РґРѕСЃС‚СѓРї SSH С‡РµСЂРµР· jump 192.168.1.152 Рё SOCKS 1084/1085."
+                    },
+                    {
+                        "date":  "2026-09-27",
+                        "title":  "BS-РїР°СЂР° console1 + vp16",
+                        "body":  "console1 = RU entry (whitelist), vp16 = EU exit. WireGuard 10.88.88.0/24 :51888, sockopt freedomв†’wg-bs-exit, Reality РЅР° exit. РђСЂС‚РµС„Р°РєС‚С‹ РІ artifacts/bs-pair/."
+                    },
+                    {
+                        "date":  "2026-09-27",
+                        "title":  "РњР°СЃСЃРѕРІС‹Рµ СЃР±РѕСЂРєРё vp* РїРѕ РѕР±СЂР°Р·С†Сѓ",
+                        "body":  "РџР°Р№РїР»Р°Р№РЅ install 12.3.3 в†’ DNS direct в†’ protocols.json в†’ restore users/paths в†’ apply_configs. Р¤РёРєСЃ HAProxy maps РїРѕСЃР»Рµ restore (PhoneRadar/400 decoy). РћСЃРѕР±С‹Р№ SSH-РїРѕСЂС‚ vp6 :22022."
+                    },
+                    {
+                        "date":  "2026-09-27",
+                        "title":  "Р—Р°РєСЂРµРїР»РµРЅРёРµ 12.3.3 Рё Р·РѕРЅ",
+                        "body":  "РўРѕР»СЊРєРѕ С‚РµРі v12.3.3, auto_update=false, package_mode=v12.3.3, first_setup=false, СЏР·С‹Рє ru, country=other. Р—РѕРЅС‹: sdfsdfsdfsd.store, losttv.site, linkusers3.online."
+                    }
+                ]
 }

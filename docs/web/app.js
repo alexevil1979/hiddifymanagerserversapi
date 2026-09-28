@@ -29,9 +29,26 @@ function sshLabel(status) {
   return map[status] || status || "—";
 }
 
-function domainModes(s) {
-  if (!s.domain_modes) return "—";
-  return s.domain_modes.replace(/[\[\]]/g, "");
+function cdnLabel(s) {
+  const v = (s.cdn || "").toLowerCase();
+  if (v) return s.cdn;
+  if (s.domain_modes) return String(s.domain_modes).replace(/[\[\]\s]/g, "") || "—";
+  return "—";
+}
+
+function cdnClass(label) {
+  const v = String(label || "").toLowerCase();
+  if (v === "cdn") return "ok";
+  if (v.includes("≠") || v === "mixed") return "warn";
+  if (v === "direct") return "mute";
+  return "mute";
+}
+
+function domainsShort(s) {
+  const list = s.domains || [];
+  if (!list.length) return s.subdomain ? `${s.subdomain}.*` : "—";
+  if (list.length <= 2) return list.join(", ");
+  return `${list[0]} +${list.length - 1}`;
 }
 
 function renderFleet(fleet, ssh) {
@@ -43,31 +60,40 @@ function renderFleet(fleet, ssh) {
     const st = byId[s.id] || {};
     const sshStatus = st.ssh || "unchecked";
     const cls = sshClass(sshStatus);
+    const cdn = cdnLabel(s);
     const note = (s.status_note || st.detail || "").replace(/</g, "&lt;");
-    return `<tr data-q="${[s.id, s.host, s.location, s.state, sshStatus, note].join(" ").toLowerCase()}">
+    const cfTitle = (s.cf_detail || "").replace(/"/g, "&quot;");
+    return `<tr data-q="${[s.id, s.host, s.location, s.state, sshStatus, cdn, note].join(" ").toLowerCase()}">
       <td><strong>${s.id}</strong></td>
       <td><code>${s.host || ""}</code></td>
       <td>${s.location || "—"}</td>
       <td>${s.state || "—"}</td>
       <td><span class="ssh-badge ${cls}" title="${(st.detail || "").replace(/"/g, "&quot;")}">${sshLabel(sshStatus)}</span></td>
+      <td><span class="ssh-badge ${cdnClass(cdn)}" title="${cfTitle}">${cdn}</span></td>
       <td>${s.ssh_port || 22}</td>
       <td>${s.auth_method || "—"}</td>
-      <td>${domainModes(s)}</td>
+      <td title="${(s.domains || []).join(", ").replace(/"/g, "&quot;")}">${domainsShort(s)}</td>
       <td>${note}</td>
     </tr>`;
   }).join("");
   tbody.innerHTML = html;
 
   const counts = { ok: 0, proxy: 0, fail: 0, unchecked: 0 };
+  const cdnCounts = { cdn: 0, direct: 0, mixed: 0, other: 0 };
   rows.forEach((s) => {
     const st = (byId[s.id] || {}).ssh || "unchecked";
     if (st === "ok") counts.ok++;
     else if (st === "ok_socks" || st === "ok_proxy") counts.proxy++;
     else if (st === "unchecked") counts.unchecked++;
     else counts.fail++;
+    const c = cdnLabel(s);
+    if (c === "cdn") cdnCounts.cdn++;
+    else if (c === "direct") cdnCounts.direct++;
+    else if (c === "mixed") cdnCounts.mixed++;
+    else cdnCounts.other++;
   });
   document.getElementById("fleet-summary").textContent =
-    `Всего ${rows.length}: SSH ok ${counts.ok}, через proxy ${counts.proxy}, fail ${counts.fail}, не проверено ${counts.unchecked}.`;
+    `Всего ${rows.length}: SSH ok ${counts.ok}, через proxy ${counts.proxy}, fail ${counts.fail}, не проверено ${counts.unchecked}. CDN ${cdnCounts.cdn}, direct ${cdnCounts.direct}, mixed ${cdnCounts.mixed}, н/д ${cdnCounts.other}.`;
   document.getElementById("meta-count").textContent = `серверов: ${rows.length}`;
   document.getElementById("meta-updated").textContent =
     `данные: ${fleet.updated || "—"}${ssh.checked_at ? " · ssh: " + ssh.checked_at : ""}`;
