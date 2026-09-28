@@ -205,10 +205,10 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
       <section id="bs">
         <h2>BS-пара (bridge/exit)</h2>
         <ul>
-          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit, sockopt <code>wg-bs-exit</code>, alias «Обход БС». Reality special: <code>www.metacrawler.com</code> (нужен <code>reality_enable=true</code>).</li>
-          <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality special: <code>adium.im</code>, alias «EU напрямую».</li>
+          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit, sockopt <code>wg-bs-exit</code>, alias «🇷🇺 Обход БС». Reality special: <code>www.metacrawler.com</code> (<code>reality_enable=true</code>).</li>
+          <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality special: <code>adium.im</code>, alias «🇪🇺 Выход EU».</li>
         </ul>
-        <p>После <code>apply_configs</code> проверить сокет <code>@realityin_*</code> и что на console1 в <code>06_outbounds.json</code>/<code>.j2</code> остался <code>sockopt.interface=wg-bs-exit</code>. Артефакты: <code>artifacts/bs-*</code>. Runbook: fullvpnservice <code>HIDDIFY_WL_RU_EU_WG_RUNBOOK.md</code>.</p>
+        <p>После restore/apply: (1) sockopt <code>interface=wg-bs-exit</code> в <code>06_outbounds.json</code> и <code>.j2</code>; (2) в <code>show_domains</code> у console1.* должны быть <strong>IP</strong> и <strong>IP.sslip.io</strong> — иначе в клиенте нет узла «Обход БС» без домена, а на мобильном BS доменные A-записи часто падают (красные кресты), хотя балансер на IP работал; (3) сокет <code>@realityin_*</code>. E2E: VLESS WS → egress IP vp16.</p>
       </section>
 
       <section id="maps">

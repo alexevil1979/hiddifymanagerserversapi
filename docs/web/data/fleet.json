@@ -45,8 +45,8 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "console1.linkusers3.online",
-      "status_note": "BS pair OK: WG+sockopt; Reality special www.metacrawler.com",
-      "status_updated_at": "2026-09-28 18:25",
+      "status_note": "BS OK: sockopt; alias Обход БС; show_domains IP+sslip; e2e→vp16",
+      "status_updated_at": "2026-09-28 19:15",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct"
@@ -426,8 +426,8 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp16.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "BS exit; alias Выход EU; WG :51888",
+      "status_updated_at": "2026-09-28 19:15",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct"

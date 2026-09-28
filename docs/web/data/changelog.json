@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "BS-пара: show_domains IP+sslip + alias",
+      "body": "После 12.3.3 в подписке console1 не было IP/sslip — клиент терял рабочий узел Обход БС. Вернули show_domains (IP+sslip+домены+Reality), alias «Обход БС» / «Выход EU». sockopt wg-bs-exit и WG handshake ок; e2e VLESS WS egress=vp16."
+    },
+    {
+      "date": "2026-09-28",
       "title": "Доп. CDN-зоны telegrambot.website + teleworker.fun",
       "body": "На все 19 vpn-vp*: A-записи proxied в Cloudflare + DomainType.cdn в панелях + apply. В т.ч. vp16 (ранее не было в CF). Скрипт scripts/run-extra-cdn-zones.py. zones добавлены в domains.yml."
     },
