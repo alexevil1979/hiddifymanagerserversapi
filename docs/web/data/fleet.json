@@ -197,10 +197,10 @@
         "vp8.losttv.site",
         "vp8.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp8.losttv.site",
-      "status_note": "ready; restored to inventory after rollback",
-      "status_updated_at": "2026-09-27 15:51"
+      "status_note": "domains CDN proxied; was direct",
+      "status_updated_at": "2026-09-28 09:54"
     },
     {
       "id": "vpn-vp9",

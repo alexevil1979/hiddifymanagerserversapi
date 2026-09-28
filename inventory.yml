@@ -1,0 +1,701 @@
+﻿# Р В Р В°Р В±Р С•РЎвЂЎР С‘Р в„– РЎР‚Р ВµР ВµРЎРѓРЎвЂљРЎР‚. Р вЂ™ git Р Р…Р Вµ Р С”Р В»Р В°РЎРѓРЎвЂљРЎРЉ.
+
+version: 1
+
+defaults:
+  ssh_user: ubuntu
+  ssh_port: 22
+  auth:
+    method: key
+    key_path_env: SSH_KEY_PATH_VPN_RU_1
+    key_env: null
+    password_env: null
+  cloudflare_zone: null
+  zones_file: domains.yml
+  install:
+    hiddify_version: "12.3.3"
+    script: scripts/install-hiddify.sh
+  protocol_profile: samples/protocols.json
+  domains_from_profile: false
+  desired:
+    domain_modes: []
+    protocols_from: samples/protocols.json
+    users_preset: default
+    create_users: false
+
+servers:
+
+  - id: vpn-ru-1
+    host: 84.201.133.81
+    internal_host: 10.128.0.22
+    provider: yandex
+    group: ru
+    location: ru
+    tags: [yc, ru-central1-a]
+    subnet: default-ru-central1-a
+    ssh_user: wladmin
+    ssh_port: 22
+    auth:
+      method: key
+      key_path_env: SSH_KEY_PATH_VPN_RU_1
+    access:
+      port_22: open
+      shell: ok
+      os: "Ubuntu 22.04, kernel 5.15.0-191-generic"
+      hiddify: false
+      sudo: nopass
+    cloudflare_zones: all
+    subdomain: vp22
+    domains:
+      - vp22.sdfsdfsdfsd.store
+      - vp22.losttv.site
+      - vp22.linkusers3.online
+    domain: vp22.losttv.site
+    panel_domain: vp22.losttv.site
+    admin_proxy_path: fdQc6CAQiSsd5UNFnpkG1J
+    client_proxy_path: mjQ6AmxPfeJJdhjWel1
+    admin_uuid: c4d54d09-a385-41cb-afbf-8e5825cc2ae7
+    default_user: default
+    default_user_uuid: e27770da-06af-4952-9b2c-da05425bdc2e
+    state: configured
+
+
+  - id: console1
+    host: 84.201.131.208
+    bs_pair_eu: vpn-vp16
+    role: whitelist_entry
+    provider: yandex
+    group: ru
+    location: ru
+    tags: [console1]
+    ssh_user: wladmin
+    ssh_port: 22
+    auth:
+      method: key
+      key_path_env: SSH_KEY_PATH_CONSOLE1
+    cloudflare_zones: all
+    subdomain: console1
+    domains:
+      - console1.sdfsdfsdfsd.store
+      - console1.losttv.site
+      - console1.linkusers3.online
+
+    domain: console1.losttv.site
+    panel_domain: "console1.linkusers3.online"
+    admin_proxy_path: null
+    client_proxy_path: null
+    admin_uuid: null
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "RU entry BS; WG->vp16; sockopt wg-bs-exit; alias Обход БС"
+    status_updated_at: "2026-09-27 23:13"
+
+  - id: vpn-vp1
+    host: 185.207.133.3
+    provider: unknown
+    group: vp
+    location: de
+    tags: [vp1]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP1
+    cloudflare_zones: all
+    subdomain: vp1
+    domains:
+      - vp1.sdfsdfsdfsd.store
+      - vp1.losttv.site
+      - vp1.linkusers3.online
+    domain: vp1.losttv.site
+    panel_domain: null
+    admin_proxy_path: null
+    admin_uuid: null
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp2
+    host: 150.241.86.99
+    provider: unknown
+    group: vp
+    location: se
+    tags: [vp2]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP2
+    cloudflare_zones: all
+    subdomain: vp2
+    domains:
+      - vp2.sdfsdfsdfsd.store
+      - vp2.losttv.site
+      - vp2.linkusers3.online
+    domain: vp2.losttv.site
+    panel_domain: vp2.losttv.site
+    admin_proxy_path: byYmozBF8XhaKdJokW
+    client_proxy_path: WQQYPg2s5f
+    admin_uuid: 6dd7a6fe-cfa8-4d0f-bb87-a888de5ddaef
+    desired:
+      domain_modes: [cdn]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+
+  - id: vpn-vp3
+    host: 2.26.114.11
+    provider: unknown
+    group: vp
+    location: nl
+    tags: [vp3]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP3
+    cloudflare_zones: all
+    subdomain: vp3
+    domains:
+      - vp3.sdfsdfsdfsd.store
+      - vp3.losttv.site
+      - vp3.linkusers3.online
+    domain: vp3.losttv.site
+    panel_domain: null
+    admin_proxy_path: null
+    admin_uuid: null
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp4
+    host: 64.49.15.147
+    provider: unknown
+    group: vp
+    location: tr
+    tags: [vp4]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP4
+    cloudflare_zones: all
+    subdomain: vp4
+    extra_subdomains: [vp5]
+    domains:
+      - vp4.sdfsdfsdfsd.store
+      - vp4.losttv.site
+      - vp4.linkusers3.online
+      - vp5.sdfsdfsdfsd.store
+      - vp5.losttv.site
+      - vp5.linkusers3.online
+    domain: vp4.losttv.site
+    panel_domain: vp4.losttv.site
+    admin_proxy_path: XSyNAJxyE720VFtl
+    client_proxy_path: Nr5QupqNfbEI9u
+    admin_uuid: c627267f-2d3f-4f31-bd20-1269c5109863
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    default_user: default
+    default_user_uuid: 6115b982-5365-416c-a926-26e02e06de46
+    state: configured
+    status_note: "ready; CRM paths+uuid set"
+    status_updated_at: "2026-09-27 13:35"
+
+  - id: vpn-vp6
+    host: 203.161.39.40
+    provider: unknown
+    group: vp
+    location: us
+    tags: [vp6]
+    ssh_user: root
+    ssh_port: 22022
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP6
+    cloudflare_zones: all
+    subdomain: vp6
+    domains:
+      - vp6.sdfsdfsdfsd.store
+      - vp6.losttv.site
+      - vp6.linkusers3.online
+    domain: vp6.losttv.site
+    panel_domain: "vp6.losttv.site"
+    admin_proxy_path: "iGdzwTdn3DmkTFV0GdT5JKe"
+    client_proxy_path: "ZkRhqCoNkMBX1BIBBsBTFa"
+    admin_uuid: "0422d0f5-eefb-4485-b454-ef3807a89d34"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore; maps fixed; ssh :22022"
+    status_updated_at: "2026-09-27 22:28"
+  - id: vpn-vp7ru
+    host: 108.165.250.23
+    provider: unknown
+    group: vp
+    location: ru
+    tags: [vp7ru]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP7RU
+    cloudflare_zones: all
+    subdomain: vp7ru
+    domains:
+      - vp7ru.sdfsdfsdfsd.store
+      - vp7ru.losttv.site
+      - vp7ru.linkusers3.online
+    domain: vp7ru.losttv.site
+    panel_domain: null
+    admin_proxy_path: null
+    client_proxy_path: null
+    admin_uuid: null
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: ready
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp8
+    host: 193.37.213.114
+    provider: unknown
+    group: vp
+    location: bg
+    tags: [vp8]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP8
+    cloudflare_zones: all
+    subdomain: vp8
+    domains:
+      - vp8.sdfsdfsdfsd.store
+      - vp8.losttv.site
+      - vp8.linkusers3.online
+    domain: vp8.losttv.site
+    panel_domain: vp8.losttv.site
+    admin_proxy_path: J9GvLAUdi1rxezk9SDcdMdV4KncwU2
+    client_proxy_path: yzSX9TQfHw70N5HFdJOvzIYC7t
+    admin_uuid: a8d7c60f-470d-4d49-a319-0712d309e0f3
+    default_user: default
+    default_user_uuid: 1ffb020a-443a-478d-8db2-af0bc8af7d3e
+    desired:
+      domain_modes: [cdn]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "domains CDN proxied; was direct"
+    status_updated_at: "2026-09-27 15:51"
+  - id: vpn-vp9
+    host: 78.111.67.214
+    provider: unknown
+    group: vp
+    location: de
+    tags: [vp9]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP9
+    cloudflare_zones: all
+    subdomain: vp9
+    domains:
+      - vp9.sdfsdfsdfsd.store
+      - vp9.losttv.site
+      - vp9.linkusers3.online
+    domain: vp9.losttv.site
+    panel_domain: vp9.losttv.site
+    admin_proxy_path: MRpHj4w5WvWPPK
+    client_proxy_path: PZG4H0KMETJ1c9y9zUBFs81LVDI
+    admin_uuid: fca3d7f6-bd76-4312-983c-8a1a8b1ac6f1
+    default_user: default
+    default_user_uuid: 1de325c6-f0ab-40e3-9304-e005b62b04cb
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp10
+    host: 45.43.75.173
+    provider: unknown
+    group: vp
+    location: gb
+    tags: [vp10]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP10
+    cloudflare_zones: all
+    subdomain: vp10
+    domains:
+      - vp10.sdfsdfsdfsd.store
+      - vp10.losttv.site
+      - vp10.linkusers3.online
+    domain: vp10.losttv.site
+    panel_domain: "vp10.losttv.site"
+    admin_proxy_path: "y9nPr6JP9u"
+    admin_uuid: "08635d9e-2936-44aa-b189-6385b5c344e3"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore; maps fixed"
+    status_updated_at: "2026-09-27 22:17"
+    client_proxy_path: "qveyC2wd1UNwB"
+
+  - id: vpn-vp11
+    host: 191.217.224.93
+    provider: unknown
+    group: vp
+    location: gb
+    tags: [vp11]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP11
+    cloudflare_zones: all
+    subdomain: vp11
+    domains:
+      - vp11.sdfsdfsdfsd.store
+      - vp11.losttv.site
+      - vp11.linkusers3.online
+    domain: vp11.losttv.site
+    panel_domain: vp11.losttv.site
+    admin_proxy_path: C4IKTxK0Ra7IdgnjeRNo5Z4A6
+    client_proxy_path: arXKcHOGeyduHZKsIVSORzC4
+    admin_uuid: be295a45-6b28-4db9-9ef9-5f15f449392c
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore; maps fixed"
+    status_updated_at: "2026-09-27 19:58"
+
+  - id: vpn-vp12
+    host: 179.198.51.155
+    provider: unknown
+    group: vp
+    location: fi
+    tags: [vp12]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP12
+    cloudflare_zones: all
+    subdomain: vp12
+    domains:
+      - vp12.sdfsdfsdfsd.store
+      - vp12.losttv.site
+      - vp12.linkusers3.online
+    domain: vp12.losttv.site
+    panel_domain: vp12.losttv.site
+    admin_proxy_path: zWMJuZrlj0Y9PhNRZkrmz7EqC
+    client_proxy_path: swayHrWF9Ld9H9g4
+    admin_uuid: 2b08b42a-ab52-4c46-b081-2ea20ad74cb8
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    default_user: lol
+    default_user_uuid: 35ebddeb-b3d7-4438-af97-689a6fbbd4c8
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp13
+    host: 144.31.253.250
+    provider: unknown
+    group: vp
+    location: nl
+    tags: [vp13]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP13
+    cloudflare_zones: all
+    subdomain: vp13
+    domains:
+      - vp13.sdfsdfsdfsd.store
+      - vp13.losttv.site
+      - vp13.linkusers3.online
+    domain: vp13.losttv.site
+    panel_domain: vp13.losttv.site
+    admin_proxy_path: 4Ot01b0FAFg3RAzkkTrvG0O8oun
+    client_proxy_path: Wj689iVOLXpbXt6NgEEoCoyha
+    admin_uuid: 0c0ee148-ea33-4a2b-9c8c-21d3eda740ac
+    default_user: default
+    default_user_uuid: 18cafcd5-d88a-43a6-b846-7b41c1fcf827
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp14
+    host: 193.124.44.61
+    provider: unknown
+    group: vp
+    location: nl
+    tags: [vp14]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP14
+    cloudflare_zones: all
+    subdomain: vp14
+    domains:
+      - vp14.sdfsdfsdfsd.store
+      - vp14.losttv.site
+      - vp14.linkusers3.online
+    domain: vp14.losttv.site
+    panel_domain: "vp14.losttv.site"
+    admin_proxy_path: "W4QEo2UTDM5iQv7i"
+    client_proxy_path: "jd9kVHHvOU3SlxkDjdCXqptfTYcB"
+    admin_uuid: "e67d8629-078c-41e0-9df3-7e4bc32b2296"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+
+  - id: vpn-vp16
+    host: 185.249.154.200
+    bs_pair_ru: console1
+    role: exit
+    provider: unknown
+    group: vp
+    location: unknown
+    tags: [vp16]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP16
+    cloudflare_zones: all
+    subdomain: vp16
+    domains:
+      - vp16.sdfsdfsdfsd.store
+      - vp16.losttv.site
+      - vp16.linkusers3.online
+    domain: vp16.losttv.site
+    panel_domain: "vp16.losttv.site"
+    admin_proxy_path: "sEf0JIEN4Fb"
+    client_proxy_path: "gBm9BvqwyFlZRV8XxRdecyY"
+    admin_uuid: "7cf81264-fb8d-4685-9832-16fad5b096b6"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp17
+    host: 143.246.138.132
+    provider: unknown
+    group: vp
+    location: us
+    tags: [vp17]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP17
+    cloudflare_zones: all
+    subdomain: vp17
+    domains:
+      - vp17.sdfsdfsdfsd.store
+      - vp17.losttv.site
+      - vp17.linkusers3.online
+    domain: vp17.losttv.site
+    panel_domain: "vp17.losttv.site"
+    admin_proxy_path: "sAiJPsuevKhBS1GSpun"
+    admin_uuid: "88f8c78e-fe40-4ee8-b574-5d407b4b4968"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore; maps fixed"
+    status_updated_at: "2026-09-27 22:20"
+
+  - id: vpn-vp18
+    host: 144.31.192.182
+    provider: unknown
+    group: vp
+    location: de
+    tags: [vp18]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP18
+    cloudflare_zones: all
+    subdomain: vp18
+    domains:
+      - vp18.sdfsdfsdfsd.store
+      - vp18.losttv.site
+      - vp18.linkusers3.online
+    domain: vp18.losttv.site
+    panel_domain: vp18.losttv.site
+    admin_proxy_path: JO4H3yhrN61hPZoHBGIp
+    client_proxy_path: PALCJGcYcN2GXEy9nL
+    admin_uuid: 72c8610e-591c-41ba-9147-4aa76eb65350
+    default_user: default
+    default_user_uuid: 4b45a8df-c9d4-4e64-9e23-df84b43e2329
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "SSH password rotated; unique strong"
+    status_updated_at: "2026-09-28 01:33"
+
+  - id: vpn-vp19
+    host: 192.209.62.170
+    provider: unknown
+    group: vp
+    location: nl
+    tags: [vp19]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP19
+    cloudflare_zones: all
+    subdomain: vp19
+    domains:
+      - vp19.sdfsdfsdfsd.store
+      - vp19.losttv.site
+      - vp19.linkusers3.online
+    domain: vp19.losttv.site
+    panel_domain: vp19.losttv.site
+    admin_proxy_path: 4o4Krij4b2qZuduW6DG
+    client_proxy_path: oNjjsXkb99SW5YXxN
+    admin_uuid: 3dc49268-b214-41f5-8624-f11d4fa57449
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample + users/paths restored"
+    status_updated_at: "2026-09-27 16:15"
+
+  - id: vpn-vp20
+    host: 107.161.160.73
+    provider: unknown
+    group: vp
+    location: fr
+    tags: [vp20]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP20
+    cloudflare_zones: all
+    subdomain: vp20
+    domains:
+      - vp20.sdfsdfsdfsd.store
+      - vp20.losttv.site
+      - vp20.linkusers3.online
+    domain: vp20.losttv.site
+    panel_domain: vp20.losttv.site
+    admin_proxy_path: 4o4Krij4b2qZuduW6DG
+    admin_uuid: 0e60c60a-9385-4c2d-bea0-9914b4ae1809
+    client_proxy_path: oNjjsXkb99SW5YXxN
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore"
+    status_updated_at: "2026-09-27 19:47"
+
+  - id: vpn-vp21
+    host: 160.202.132.237
+    provider: unknown
+    group: vp
+    location: de
+    tags: [vp21]
+    ssh_user: root
+    ssh_port: 22
+    auth:
+      method: password
+      password_env: SSH_PASSWORD_VP21
+    cloudflare_zones: all
+    subdomain: vp21
+    domains:
+      - vp21.sdfsdfsdfsd.store
+      - vp21.losttv.site
+      - vp21.linkusers3.online
+    domain: vp21.losttv.site
+    panel_domain: vp21.losttv.site
+    admin_proxy_path: 4o4Krij4b2qZuduW6DG
+    admin_uuid: 810f84ab-e978-46c3-bcb5-614c48a40fc9
+    client_proxy_path: oNjjsXkb99SW5YXxN
+    status_updated_at: "2026-09-27 19:45"
+    desired:
+      domain_modes: [direct]
+      protocols_from: samples/protocols.json
+      users_preset: default
+      create_users: false
+    state: configured
+    status_note: "ready; sample+restore"
+P26-09-27 15:43"
+
