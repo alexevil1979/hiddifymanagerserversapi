@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "Ежедневная гигиена дисков на парке",
+      "body": "На всех серверах cron disk-hygiene: чистка journal/apt/логов/старых бэкапов без затрагивания панели; отчёт в операторский Telegram. Деплой: scripts/deploy-disk-hygiene.py."
+    },
+    {
+      "date": "2026-09-28",
       "title": "vp12: HAProxy sslip cert fix",
       "body": "После CDN batch у vpn-vp12 Cloudflare 521: hiddify-haproxy в crash-loop из-за inconsistency sslip.io.crt/key. Пересобраны self-signed для IP и IP.sslip.io, HAProxy поднят. CDN: admin 302, подписка 200 на всех зонах; корень / может таймаутить."
     },

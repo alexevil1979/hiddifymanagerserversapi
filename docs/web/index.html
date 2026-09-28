@@ -26,6 +26,7 @@
         <a href="#dns">DNS: direct / CDN</a>
         <a href="#bs">BS-пара</a>
         <a href="#maps">HAProxy maps</a>
+        <a href="#disk">Диск</a>
         <a href="#scripts">Скрипты</a>
         <a href="#pitfalls">Грабли</a>
         <a href="#changelog">Changelog</a>
@@ -221,6 +222,17 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
         </ol>
       </section>
 
+      <section id="disk">
+        <h2>Диск: ежедневная гигиена</h2>
+        <p>На каждой машине cron (~04:xx, минуты разнесены) запускает <code>/opt/hiddify-manager/scripts/disk-hygiene/disk-hygiene.sh</code> и шлёт отчёт в тот же Telegram-бот, что и операторские уведомления (<code>telegram.local.json</code>).</p>
+        <ul>
+          <li>Чистит безопасно: journal vacuum (80M / 7d), apt cache, ротированные логи, старые panel/var backups (оставляет N свежих + <code>*configured*</code>), tmp старше 3д, core dumps.</li>
+          <li>Не трогает: конфиги, SSL, Redis, БД панели, пользователей, активные логи &lt;100M.</li>
+          <li>Пороги: WARN ≥80%, CRIT ≥90%. <code>REPORT_MODE=always|warn|never</code> в <code>.env</code> на сервере.</li>
+          <li>Выкладка: <code>python scripts/deploy-disk-hygiene.py</code> (± id). vp2/vp8 — через jump SOCKS; key-хосты (wladmin) — OpenSSH.</li>
+        </ul>
+      </section>
+
       <section id="scripts">
         <h2>Скрипты и артефакты</h2>
         <table>
@@ -230,6 +242,8 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
             <tr><td><code>scripts/restore-users-admins.sh</code></td><td>Users/admins + 3 path + apply</td></tr>
             <tr><td><code>samples/protocols.json</code></td><td>Единственный профиль протоколов</td></tr>
             <tr><td><code>telegram-notify.ps1</code></td><td>Уведомления через jump+SOCKS</td></tr>
+            <tr><td><code>scripts/disk-hygiene/disk-hygiene.sh</code></td><td>Ежедневная чистка диска + отчёт в Telegram</td></tr>
+            <tr><td><code>scripts/deploy-disk-hygiene.py</code></td><td>Выкладка disk-hygiene + cron на парк</td></tr>
             <tr><td><code>artifacts/&lt;id&gt;/</code></td><td>Локальные логи/скрипты прогона (не секреты панели)</td></tr>
             <tr><td><code>backups/&lt;id&gt;/</code></td><td>Локальные бэкапы панели (gitignore)</td></tr>
           </tbody>
