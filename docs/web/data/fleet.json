@@ -45,8 +45,8 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "console1.linkusers3.online",
-      "status_note": "RU entry BS; WG->vp16; sockopt wg-bs-exit; alias Обход БС",
-      "status_updated_at": "2026-09-27 23:13",
+      "status_note": "BS pair OK: WG+sockopt; Reality special www.metacrawler.com",
+      "status_updated_at": "2026-09-28 18:25",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct"
@@ -398,8 +398,8 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp16.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "BS exit OK: WG :51888; Reality special adium.im",
+      "status_updated_at": "2026-09-28 18:25",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct"

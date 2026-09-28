@@ -205,10 +205,10 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
       <section id="bs">
         <h2>BS-пара (bridge/exit)</h2>
         <ul>
-          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit.</li>
-          <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality, sockopt freedom → <code>wg-bs-exit</code>.</li>
+          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit, sockopt <code>wg-bs-exit</code>, alias «Обход БС». Reality special: <code>www.metacrawler.com</code> (нужен <code>reality_enable=true</code>).</li>
+          <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality special: <code>adium.im</code>, alias «EU напрямую».</li>
         </ul>
-        <p>Артефакты: <code>artifacts/bs-pair/</code> (ключи публичные, setup/fix скрипты). Подробности также в docs fullvpnservice (вне репо).</p>
+        <p>После <code>apply_configs</code> проверить сокет <code>@realityin_*</code> и что на console1 в <code>06_outbounds.json</code>/<code>.j2</code> остался <code>sockopt.interface=wg-bs-exit</code>. Артефакты: <code>artifacts/bs-*</code>. Runbook: fullvpnservice <code>HIDDIFY_WL_RU_EU_WG_RUNBOOK.md</code>.</p>
       </section>
 
       <section id="maps">
@@ -264,6 +264,7 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li>Не открывать тысячи SSH разом на выборке.</li>
           <li>HAProxy crash-loop + Cloudflare 521: битая пара <code>*.sslip.io.crt</code>/<code>*.crt.key</code> (modulus mismatch). Симптом: <code>haproxy -c</code> ALERT inconsistency, :443 нет. Лечение: пересобрать self-signed ECC для IP и <code>IP.sslip.io</code>, затем restart HAProxy. (vp12, 2026-09-28)</li>
           <li>Корень <code>/</code> через CDN может таймаутить при живой панели — проверять admin path и подписку, не только <code>/</code>.</li>
+          <li>BS Reality: при <code>reality_enable=false</code> файл <code>05_inbounds_02_reality_main.json</code> пустой (2 байта), HAProxy SNI special всё равно маршрутизирует на <code>@realityin_*</code> → клиент не коннектится. Лечение: <code>set-setting reality_enable=true</code> + <code>apply_configs</code>, проверить <code>ss -xlp | grep realityin</code>.</li>
         </ul>
       </section>
 

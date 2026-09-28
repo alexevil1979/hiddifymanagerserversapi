@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-28",
+      "title": "BS-пара console1+vp16: Reality restored",
+      "body": "У console1 был reality_enable=false → пустой 05_inbounds_02_reality_main.json при живом HAProxy SNI www.metacrawler.com. Включили Reality + apply. На обоих поднят сокет realityin_22037; WG handshake ок; на console1 sockopt wg-bs-exit сохранился. vp16 Reality SNI=adium.im."
+    },
+    {
+      "date": "2026-09-28",
       "title": "Ежедневная гигиена дисков на парке",
       "body": "На всех серверах cron disk-hygiene: чистка journal/apt/логов/старых бэкапов без затрагивания панели; отчёт в операторский Telegram. Деплой: scripts/deploy-disk-hygiene.py."
     },
