@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28T10:08",
+  "updated": "2026-09-28T10:47",
   "servers": [
     {
       "id": "vpn-ru-1",
@@ -146,13 +146,13 @@
         "vp5.losttv.site",
         "vp5.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp4.losttv.site",
-      "status_note": "ready; CRM paths+uuid set",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 13:35",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp6",
@@ -171,13 +171,13 @@
         "vp6.losttv.site",
         "vp6.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp6.losttv.site",
-      "status_note": "ready; sample+restore; maps fixed; ssh :22022",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 22:28",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp7ru",
@@ -225,9 +225,9 @@
       "panel_domain": "vp8.losttv.site",
       "status_note": "domains CDN proxied; was direct",
       "status_updated_at": "2026-09-27 15:51",
-      "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
-      "cdn": "cdn"
+      "cf_proxied": false,
+      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cdn": "direct≠inv"
     },
     {
       "id": "vpn-vp9",
@@ -246,13 +246,13 @@
         "vp9.losttv.site",
         "vp9.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp9.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-28 01:33",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp10",
@@ -271,13 +271,13 @@
         "vp10.losttv.site",
         "vp10.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp10.losttv.site",
-      "status_note": "ready; sample+restore; maps fixed",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 22:17",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp11",
@@ -296,13 +296,13 @@
         "vp11.losttv.site",
         "vp11.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp11.losttv.site",
-      "status_note": "ready; sample+restore; maps fixed",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 19:58",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp12",
@@ -321,13 +321,13 @@
         "vp12.losttv.site",
         "vp12.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp12.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-28 01:33",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp13",
@@ -346,13 +346,13 @@
         "vp13.losttv.site",
         "vp13.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp13.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-28 01:33",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp14",
@@ -371,13 +371,13 @@
         "vp14.losttv.site",
         "vp14.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp14.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-28 01:33",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp16",
@@ -421,13 +421,13 @@
         "vp17.losttv.site",
         "vp17.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp17.losttv.site",
-      "status_note": "ready; sample+restore; maps fixed",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 22:20",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp18",
@@ -446,13 +446,13 @@
         "vp18.losttv.site",
         "vp18.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp18.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-28 01:33",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp19",
@@ -471,13 +471,13 @@
         "vp19.losttv.site",
         "vp19.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp19.losttv.site",
-      "status_note": "ready; sample + users/paths restored",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 16:15",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp20",
@@ -496,13 +496,13 @@
         "vp20.losttv.site",
         "vp20.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp20.losttv.site",
-      "status_note": "ready; sample+restore",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 19:47",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     },
     {
       "id": "vpn-vp21",
@@ -521,13 +521,13 @@
         "vp21.losttv.site",
         "vp21.linkusers3.online"
       ],
-      "domain_modes": "[direct]",
+      "domain_modes": "[cdn]",
       "panel_domain": "vp21.losttv.site",
-      "status_note": "ready; sample+restore",
+      "status_note": "domains CDN proxied",
       "status_updated_at": "2026-09-27 19:45",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "cf_proxied": true,
+      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cdn": "cdn"
     }
   ]
 }
