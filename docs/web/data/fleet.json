@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28T10:47",
+  "updated": "2026-09-28T19:20",
   "servers": [
     {
       "id": "vpn-ru-1",
@@ -66,12 +66,14 @@
       "domains": [
         "vp1.sdfsdfsdfsd.store",
         "vp1.losttv.site",
-        "vp1.linkusers3.online"
+        "vp1.linkusers3.online",
+        "vp1.telegrambot.website",
+        "vp1.teleworker.fun"
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "SSH password rotated; unique strong",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn≠inv"
@@ -91,12 +93,14 @@
       "domains": [
         "vp2.sdfsdfsdfsd.store",
         "vp2.losttv.site",
-        "vp2.linkusers3.online"
+        "vp2.linkusers3.online",
+        "vp2.telegrambot.website",
+        "vp2.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp2.losttv.site",
-      "status_note": "SSH password rotated; unique strong",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -116,12 +120,14 @@
       "domains": [
         "vp3.sdfsdfsdfsd.store",
         "vp3.losttv.site",
-        "vp3.linkusers3.online"
+        "vp3.linkusers3.online",
+        "vp3.telegrambot.website",
+        "vp3.teleworker.fun"
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "SSH password rotated; unique strong",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn≠inv"
@@ -144,12 +150,14 @@
         "vp4.linkusers3.online",
         "vp5.sdfsdfsdfsd.store",
         "vp5.losttv.site",
-        "vp5.linkusers3.online"
+        "vp5.linkusers3.online",
+        "vp4.telegrambot.website",
+        "vp4.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp4.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 13:35",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -169,12 +177,14 @@
       "domains": [
         "vp6.sdfsdfsdfsd.store",
         "vp6.losttv.site",
-        "vp6.linkusers3.online"
+        "vp6.linkusers3.online",
+        "vp6.telegrambot.website",
+        "vp6.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp6.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 22:28",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -194,12 +204,14 @@
       "domains": [
         "vp7ru.sdfsdfsdfsd.store",
         "vp7ru.losttv.site",
-        "vp7ru.linkusers3.online"
+        "vp7ru.linkusers3.online",
+        "vp7ru.telegrambot.website",
+        "vp7ru.teleworker.fun"
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "SSH password rotated; unique strong",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn≠inv"
@@ -219,12 +231,14 @@
       "domains": [
         "vp8.sdfsdfsdfsd.store",
         "vp8.losttv.site",
-        "vp8.linkusers3.online"
+        "vp8.linkusers3.online",
+        "vp8.telegrambot.website",
+        "vp8.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp8.losttv.site",
-      "status_note": "domains CDN proxied; was direct",
-      "status_updated_at": "2026-09-27 15:51",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct≠inv"
@@ -244,12 +258,14 @@
       "domains": [
         "vp9.sdfsdfsdfsd.store",
         "vp9.losttv.site",
-        "vp9.linkusers3.online"
+        "vp9.linkusers3.online",
+        "vp9.telegrambot.website",
+        "vp9.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp9.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -269,12 +285,14 @@
       "domains": [
         "vp10.sdfsdfsdfsd.store",
         "vp10.losttv.site",
-        "vp10.linkusers3.online"
+        "vp10.linkusers3.online",
+        "vp10.telegrambot.website",
+        "vp10.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp10.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 22:17",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -294,12 +312,14 @@
       "domains": [
         "vp11.sdfsdfsdfsd.store",
         "vp11.losttv.site",
-        "vp11.linkusers3.online"
+        "vp11.linkusers3.online",
+        "vp11.telegrambot.website",
+        "vp11.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp11.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 19:58",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -319,12 +339,14 @@
       "domains": [
         "vp12.sdfsdfsdfsd.store",
         "vp12.losttv.site",
-        "vp12.linkusers3.online"
+        "vp12.linkusers3.online",
+        "vp12.telegrambot.website",
+        "vp12.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp12.losttv.site",
-      "status_note": "HAProxy fixed sslip cert/key; CDN admin+sub OK",
-      "status_updated_at": "2026-09-28 15:55",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -344,12 +366,14 @@
       "domains": [
         "vp13.sdfsdfsdfsd.store",
         "vp13.losttv.site",
-        "vp13.linkusers3.online"
+        "vp13.linkusers3.online",
+        "vp13.telegrambot.website",
+        "vp13.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp13.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -369,12 +393,14 @@
       "domains": [
         "vp14.sdfsdfsdfsd.store",
         "vp14.losttv.site",
-        "vp14.linkusers3.online"
+        "vp14.linkusers3.online",
+        "vp14.telegrambot.website",
+        "vp14.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp14.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -394,12 +420,14 @@
       "domains": [
         "vp16.sdfsdfsdfsd.store",
         "vp16.losttv.site",
-        "vp16.linkusers3.online"
+        "vp16.linkusers3.online",
+        "vp16.telegrambot.website",
+        "vp16.teleworker.fun"
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp16.losttv.site",
-      "status_note": "BS exit OK: WG :51888; Reality special adium.im",
-      "status_updated_at": "2026-09-28 18:25",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": false,
       "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
       "cdn": "direct"
@@ -419,12 +447,14 @@
       "domains": [
         "vp17.sdfsdfsdfsd.store",
         "vp17.losttv.site",
-        "vp17.linkusers3.online"
+        "vp17.linkusers3.online",
+        "vp17.telegrambot.website",
+        "vp17.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp17.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 22:20",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -444,12 +474,14 @@
       "domains": [
         "vp18.sdfsdfsdfsd.store",
         "vp18.losttv.site",
-        "vp18.linkusers3.online"
+        "vp18.linkusers3.online",
+        "vp18.telegrambot.website",
+        "vp18.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp18.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-28 01:33",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -469,12 +501,14 @@
       "domains": [
         "vp19.sdfsdfsdfsd.store",
         "vp19.losttv.site",
-        "vp19.linkusers3.online"
+        "vp19.linkusers3.online",
+        "vp19.telegrambot.website",
+        "vp19.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp19.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 16:15",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -494,12 +528,14 @@
       "domains": [
         "vp20.sdfsdfsdfsd.store",
         "vp20.losttv.site",
-        "vp20.linkusers3.online"
+        "vp20.linkusers3.online",
+        "vp20.telegrambot.website",
+        "vp20.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp20.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 19:47",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"
@@ -519,12 +555,14 @@
       "domains": [
         "vp21.sdfsdfsdfsd.store",
         "vp21.losttv.site",
-        "vp21.linkusers3.online"
+        "vp21.linkusers3.online",
+        "vp21.telegrambot.website",
+        "vp21.teleworker.fun"
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp21.losttv.site",
-      "status_note": "domains CDN proxied",
-      "status_updated_at": "2026-09-27 19:45",
+      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
+      "status_updated_at": "2026-09-28 19:20",
       "cf_proxied": true,
       "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
       "cdn": "cdn"

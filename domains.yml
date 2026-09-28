@@ -22,3 +22,11 @@ zones:
     nameservers:
       - eva.ns.cloudflare.com
       - everton.ns.cloudflare.com
+
+  - name: telegrambot.website
+    dns: cloudflare
+    # доп. CDN-зоны для vp-парка (proxied)
+
+  - name: teleworker.fun
+    dns: cloudflare
+    # доп. CDN-зоны для vp-парка (proxied)
