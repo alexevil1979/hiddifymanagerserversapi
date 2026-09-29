@@ -157,7 +157,7 @@ echo $! > /var/log/hiddify-install.pid'</code></pre>
 
       <section id="restore">
         <h2>6. Restore users / admins / paths</h2>
-        <p>Только после свежей установки этой же сессии, когда установщик напечатал <code>Hiddify 12.3.3 installed</code>. Если панель уже стояла, restore не запускать, пока старый <code>/opt/hiddify-manager</code> не убран и установка не прошла заново.</p>
+        <p>Если на сервере уже есть любая версия Hiddify, сборка по образцу не стартует. Restore только после строки <code>Hiddify 12.3.3 installed</code> на машине, где до установки каталога панели не было.</p>
         <pre><code>export BACKUP_JSON=/tmp/restore-users.json
 export ADMIN_PASS_FILE=/tmp/admin.pass
 export SERVER_ID=vpn-vpN

@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "title": "Сборка по образцу не стартует на занятой панели",
+      "body": "Если на сервере уже есть любая версия Hiddify, кнопка в HiddifySales не запускается и ничего не меняет. Restore только после чистой установки 12.3.3 в том же запуске. Спецификация: fullvpnservice/docs/HIDDIFY_REINSTALL_BY_SAMPLE.md."
+    },
+    {
+      "date": "2026-09-29",
       "title": "Restore только после чистой установки",
       "body": "Кнопка переустановки по образцу в HiddifySales описана в fullvpnservice/docs/HIDDIFY_REINSTALL_BY_SAMPLE.md. Пользователей можно возвращать только после строки установщика Hiddify 12.3.3 installed, когда старого /opt/hiddify-manager уже нет. DNS Cloudflare входит в ту же задачу."
     },
