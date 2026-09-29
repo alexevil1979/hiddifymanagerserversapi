@@ -60,7 +60,7 @@
         "vp1.teleworker.fun"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": "null",
+      "panel_domain": "vp1.losttv.site",
       "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
       "status_updated_at": "2026-09-28 18:50",
       "domain_rows": [
@@ -158,7 +158,7 @@
         "vp3.teleworker.fun"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": "null",
+      "panel_domain": "vp3.losttv.site",
       "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
       "status_updated_at": "2026-09-28 18:50",
       "domain_rows": [
@@ -320,7 +320,7 @@
         "vp7ru.teleworker.fun"
       ],
       "domain_modes": "[direct]",
-      "panel_domain": "null",
+      "panel_domain": "vp7ru.linkusers3.online",
       "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
       "status_updated_at": "2026-09-28 18:50",
       "domain_rows": [

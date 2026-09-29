@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "title": "Пути панели vp1, vp3, vp7ru в inventory",
+      "body": "admin_proxy_path и client_proxy_path взяты с живых панелей (совпали с биллингом). panel_domain: vp1.losttv.site, vp3.losttv.site, vp7ru.linkusers3.online. admin_uuid не трогали."
+    },
+    {
+      "date": "2026-09-29",
       "title": "Сводка парка в XML",
       "body": "Полная сводка 20 серверов с доменами и режимом Cloudflare (cdn/direct) записана в docs/web/data/fleet.xml. Секретов нет."
     },

@@ -37,7 +37,7 @@
     <password_env>SSH_PASSWORD_VP1</password_env>
     <key_path_env></key_path_env>
     <subdomain>vp1</subdomain>
-    <panel_domain>null</panel_domain>
+    <panel_domain>vp1.losttv.site</panel_domain>
     <domain_modes>[direct]</domain_modes>
     <cdn>cdn≠inv</cdn>
     <cf_proxied>True</cf_proxied>
@@ -388,7 +388,7 @@
     <password_env>SSH_PASSWORD_VP3</password_env>
     <key_path_env></key_path_env>
     <subdomain>vp3</subdomain>
-    <panel_domain>null</panel_domain>
+    <panel_domain>vp3.losttv.site</panel_domain>
     <domain_modes>[direct]</domain_modes>
     <cdn>cdn≠inv</cdn>
     <cf_proxied>True</cf_proxied>
@@ -472,7 +472,7 @@
     <password_env>SSH_PASSWORD_VP7RU</password_env>
     <key_path_env></key_path_env>
     <subdomain>vp7ru</subdomain>
-    <panel_domain>null</panel_domain>
+    <panel_domain>vp7ru.linkusers3.online</panel_domain>
     <domain_modes>[direct]</domain_modes>
     <cdn>cdn≠inv</cdn>
     <cf_proxied>True</cf_proxied>
