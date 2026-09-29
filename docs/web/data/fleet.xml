@@ -82,7 +82,7 @@
   <server>
     <id>vpn-vp11</id>
     <host>191.217.224.93</host>
-    <location>gb</location>
+    <location>nl</location>
     <group>vp</group>
     <state>configured</state>
     <ssh_port>22</ssh_port>
@@ -163,7 +163,7 @@
   <server>
     <id>vpn-vp14</id>
     <host>193.124.44.61</host>
-    <location>nl</location>
+    <location>ru</location>
     <group>vp</group>
     <state>configured</state>
     <ssh_port>22</ssh_port>
@@ -190,7 +190,7 @@
   <server>
     <id>vpn-vp16</id>
     <host>185.249.154.200</host>
-    <location>unknown</location>
+    <location>nl</location>
     <group>vp</group>
     <state>configured</state>
     <ssh_port>22</ssh_port>
@@ -298,7 +298,7 @@
   <server>
     <id>vpn-vp2</id>
     <host>150.241.86.99</host>
-    <location>se</location>
+    <location>fi</location>
     <group>vp</group>
     <state>configured</state>
     <ssh_port>22</ssh_port>
@@ -490,7 +490,7 @@
   <server>
     <id>vpn-vp8</id>
     <host>193.37.213.114</host>
-    <location>bg</location>
+    <location>pl</location>
     <group>vp</group>
     <state>configured</state>
     <ssh_port>22</ssh_port>

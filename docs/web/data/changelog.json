@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "title": "Локации пяти серверов по стране HiddifySales",
+      "body": "vpn-vp2 se→fi, vpn-vp8 bg→pl, vpn-vp11 gb→nl, vpn-vp14 nl→ru, vpn-vp16 unknown→nl. Остальные страны уже совпадали с country_code биллинга."
+    },
+    {
+      "date": "2026-09-29",
       "title": "Пути панели vp1, vp3, vp7ru в inventory",
       "body": "admin_proxy_path и client_proxy_path взяты с живых панелей (совпали с биллингом). panel_domain: vp1.losttv.site, vp3.losttv.site, vp7ru.linkusers3.online. admin_uuid не трогали."
     },

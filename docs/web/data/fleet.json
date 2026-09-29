@@ -92,7 +92,7 @@
     {
       "id": "vpn-vp2",
       "host": "150.241.86.99",
-      "location": "se",
+      "location": "fi",
       "group": "vp",
       "state": "configured",
       "ssh_port": 22,
@@ -352,7 +352,7 @@
     {
       "id": "vpn-vp8",
       "host": "193.37.213.114",
-      "location": "bg",
+      "location": "pl",
       "group": "vp",
       "state": "configured",
       "ssh_port": 22,
@@ -499,7 +499,7 @@
     {
       "id": "vpn-vp11",
       "host": "191.217.224.93",
-      "location": "gb",
+      "location": "nl",
       "group": "vp",
       "state": "configured",
       "ssh_port": 22,
@@ -646,7 +646,7 @@
     {
       "id": "vpn-vp14",
       "host": "193.124.44.61",
-      "location": "nl",
+      "location": "ru",
       "group": "vp",
       "state": "configured",
       "ssh_port": 22,
@@ -695,7 +695,7 @@
     {
       "id": "vpn-vp16",
       "host": "185.249.154.200",
-      "location": "unknown",
+      "location": "nl",
       "group": "vp",
       "state": "configured",
       "ssh_port": 22,
