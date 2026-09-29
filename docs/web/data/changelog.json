@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "title": "Бекапы панелей выгружены в HiddifySales",
+      "body": "POST /api/v1/infra/servers/{id}/backups, kind=panel. Самый свежий JSON с диска панели у 17 машин — ночной дамп 2026-09-29. vpn-vp2, vpn-vp8 и vpn-vp13 по SSH не ответили, туда ушёл последний локальный файл 2026-09-27. Тот же файл vp4 записан и на дубль Turkey 1. Remnawave-строка без бекапа. Файлы в ответе API нет, только карточка."
+    },
+    {
+      "date": "2026-09-29",
       "title": "Локации пяти серверов по стране HiddifySales",
       "body": "vpn-vp2 se→fi, vpn-vp8 bg→pl, vpn-vp11 gb→nl, vpn-vp14 nl→ru, vpn-vp16 unknown→nl. Остальные страны уже совпадали с country_code биллинга."
     },
