@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fleet updated="2026-09-29T07:19" ssh_checked="2026-09-28T01:34" count="20">
+  <server>
+    <id>console1</id>
+    <host>84.201.131.208</host>
+    <location>ru</location>
+    <group>ru</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>wladmin</ssh_user>
+    <auth_method>key</auth_method>
+    <password_env></password_env>
+    <key_path_env>SSH_KEY_PATH_CONSOLE1</key_path_env>
+    <subdomain>console1</subdomain>
+    <panel_domain>console1.linkusers3.online</panel_domain>
+    <domain_modes>[direct]</domain_modes>
+    <cdn>direct</cdn>
+    <cf_proxied>False</cf_proxied>
+    <status_note>BS pair OK: WG+sockopt; Reality special www.metacrawler.com</status_note>
+    <status_updated_at>2026-09-28 18:25</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | compute-vm-2-1-10-hdd-1790534476837</ssh>
+    <domains>
+      <domain mode="direct">console1.sdfsdfsdfsd.store</domain>
+      <domain mode="direct">console1.losttv.site</domain>
+      <domain mode="direct">console1.linkusers3.online</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp1</id>
+    <host>185.207.133.3</host>
+    <location>de</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP1</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp1</subdomain>
+    <panel_domain>null</panel_domain>
+    <domain_modes>[direct]</domain_modes>
+    <cdn>cdn≠inv</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp1.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp1.losttv.site</domain>
+      <domain mode="cdn">vp1.linkusers3.online</domain>
+      <domain mode="cdn">vp1.telegrambot.website</domain>
+      <domain mode="cdn">vp1.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp10</id>
+    <host>45.43.75.173</host>
+    <location>gb</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP10</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp10</subdomain>
+    <panel_domain>vp10.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA56909596</ssh>
+    <domains>
+      <domain mode="cdn">vp10.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp10.losttv.site</domain>
+      <domain mode="cdn">vp10.linkusers3.online</domain>
+      <domain mode="cdn">vp10.telegrambot.website</domain>
+      <domain mode="cdn">vp10.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp11</id>
+    <host>191.217.224.93</host>
+    <location>gb</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP11</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp11</subdomain>
+    <panel_domain>vp11.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | vm1145881.hosted-by.u1host.com</ssh>
+    <domains>
+      <domain mode="cdn">vp11.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp11.losttv.site</domain>
+      <domain mode="cdn">vp11.linkusers3.online</domain>
+      <domain mode="cdn">vp11.telegrambot.website</domain>
+      <domain mode="cdn">vp11.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp12</id>
+    <host>179.198.51.155</host>
+    <location>fi</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP12</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp12</subdomain>
+    <panel_domain>vp12.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp12.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp12.losttv.site</domain>
+      <domain mode="cdn">vp12.linkusers3.online</domain>
+      <domain mode="cdn">vp12.telegrambot.website</domain>
+      <domain mode="cdn">vp12.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp13</id>
+    <host>144.31.253.250</host>
+    <location>nl</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP13</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp13</subdomain>
+    <panel_domain>vp13.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp13.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp13.losttv.site</domain>
+      <domain mode="cdn">vp13.linkusers3.online</domain>
+      <domain mode="cdn">vp13.telegrambot.website</domain>
+      <domain mode="cdn">vp13.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp14</id>
+    <host>193.124.44.61</host>
+    <location>nl</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP14</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp14</subdomain>
+    <panel_domain>vp14.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp14.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp14.losttv.site</domain>
+      <domain mode="cdn">vp14.linkusers3.online</domain>
+      <domain mode="cdn">vp14.telegrambot.website</domain>
+      <domain mode="cdn">vp14.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp16</id>
+    <host>185.249.154.200</host>
+    <location>unknown</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP16</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp16</subdomain>
+    <panel_domain>vp16.losttv.site</panel_domain>
+    <domain_modes>[direct]</domain_modes>
+    <cdn>mixed</cdn>
+    <cf_proxied>mixed</cf_proxied>
+    <status_note>BS exit; alias Выход EU; WG :51888; Reality adium.im</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="direct">vp16.sdfsdfsdfsd.store</domain>
+      <domain mode="direct">vp16.losttv.site</domain>
+      <domain mode="direct">vp16.linkusers3.online</domain>
+      <domain mode="cdn">vp16.telegrambot.website</domain>
+      <domain mode="cdn">vp16.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp17</id>
+    <host>143.246.138.132</host>
+    <location>us</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP17</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp17</subdomain>
+    <panel_domain>vp17.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA11927679</ssh>
+    <domains>
+      <domain mode="cdn">vp17.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp17.losttv.site</domain>
+      <domain mode="cdn">vp17.linkusers3.online</domain>
+      <domain mode="cdn">vp17.telegrambot.website</domain>
+      <domain mode="cdn">vp17.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp18</id>
+    <host>144.31.192.182</host>
+    <location>de</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP18</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp18</subdomain>
+    <panel_domain>vp18.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp18.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp18.losttv.site</domain>
+      <domain mode="cdn">vp18.linkusers3.online</domain>
+      <domain mode="cdn">vp18.telegrambot.website</domain>
+      <domain mode="cdn">vp18.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp19</id>
+    <host>192.209.62.170</host>
+    <location>nl</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP19</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp19</subdomain>
+    <panel_domain>vp19.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA23295943</ssh>
+    <domains>
+      <domain mode="cdn">vp19.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp19.losttv.site</domain>
+      <domain mode="cdn">vp19.linkusers3.online</domain>
+      <domain mode="cdn">vp19.telegrambot.website</domain>
+      <domain mode="cdn">vp19.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp2</id>
+    <host>150.241.86.99</host>
+    <location>se</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP2</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp2</subdomain>
+    <panel_domain>vp2.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok_socks" tcp="False" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp2.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp2.losttv.site</domain>
+      <domain mode="cdn">vp2.linkusers3.online</domain>
+      <domain mode="cdn">vp2.telegrambot.website</domain>
+      <domain mode="cdn">vp2.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp20</id>
+    <host>107.161.160.73</host>
+    <location>fr</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP20</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp20</subdomain>
+    <panel_domain>vp20.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA89171174</ssh>
+    <domains>
+      <domain mode="cdn">vp20.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp20.losttv.site</domain>
+      <domain mode="cdn">vp20.linkusers3.online</domain>
+      <domain mode="cdn">vp20.telegrambot.website</domain>
+      <domain mode="cdn">vp20.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp21</id>
+    <host>160.202.132.237</host>
+    <location>de</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP21</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp21</subdomain>
+    <panel_domain>vp21.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA13933302</ssh>
+    <domains>
+      <domain mode="cdn">vp21.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp21.losttv.site</domain>
+      <domain mode="cdn">vp21.linkusers3.online</domain>
+      <domain mode="cdn">vp21.telegrambot.website</domain>
+      <domain mode="cdn">vp21.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp3</id>
+    <host>2.26.114.11</host>
+    <location>nl</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP3</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp3</subdomain>
+    <panel_domain>null</panel_domain>
+    <domain_modes>[direct]</domain_modes>
+    <cdn>cdn≠inv</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp3.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp3.losttv.site</domain>
+      <domain mode="cdn">vp3.linkusers3.online</domain>
+      <domain mode="cdn">vp3.telegrambot.website</domain>
+      <domain mode="cdn">vp3.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp4</id>
+    <host>64.49.15.147</host>
+    <location>tr</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP4</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp4</subdomain>
+    <panel_domain>vp4.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | YTA89619103</ssh>
+    <domains>
+      <domain mode="cdn">vp4.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp4.losttv.site</domain>
+      <domain mode="cdn">vp4.linkusers3.online</domain>
+      <domain mode="cdn">vp5.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp5.losttv.site</domain>
+      <domain mode="cdn">vp5.linkusers3.online</domain>
+      <domain mode="cdn">vp4.telegrambot.website</domain>
+      <domain mode="cdn">vp4.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp6</id>
+    <host>203.161.39.40</host>
+    <location>us</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22022</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP6</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp6</subdomain>
+    <panel_domain>vp6.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22022">OK | vp17270926</ssh>
+    <domains>
+      <domain mode="cdn">vp6.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp6.losttv.site</domain>
+      <domain mode="cdn">vp6.linkusers3.online</domain>
+      <domain mode="cdn">vp6.telegrambot.website</domain>
+      <domain mode="cdn">vp6.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp7ru</id>
+    <host>108.165.250.23</host>
+    <location>ru</location>
+    <group>vp</group>
+    <state>ready</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP7RU</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp7ru</subdomain>
+    <panel_domain>null</panel_domain>
+    <domain_modes>[direct]</domain_modes>
+    <cdn>cdn≠inv</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp7ru.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp7ru.losttv.site</domain>
+      <domain mode="cdn">vp7ru.linkusers3.online</domain>
+      <domain mode="cdn">vp7ru.telegrambot.website</domain>
+      <domain mode="cdn">vp7ru.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp8</id>
+    <host>193.37.213.114</host>
+    <location>bg</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP8</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp8</subdomain>
+    <panel_domain>vp8.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>mixed</cdn>
+    <cf_proxied>mixed</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">OK | vps</ssh>
+    <domains>
+      <domain mode="direct">vp8.sdfsdfsdfsd.store</domain>
+      <domain mode="direct">vp8.losttv.site</domain>
+      <domain mode="direct">vp8.linkusers3.online</domain>
+      <domain mode="cdn">vp8.telegrambot.website</domain>
+      <domain mode="cdn">vp8.teleworker.fun</domain>
+    </domains>
+  </server>
+  <server>
+    <id>vpn-vp9</id>
+    <host>78.111.67.214</host>
+    <location>de</location>
+    <group>vp</group>
+    <state>configured</state>
+    <ssh_port>22</ssh_port>
+    <ssh_user>root</ssh_user>
+    <auth_method>password</auth_method>
+    <password_env>SSH_PASSWORD_VP9</password_env>
+    <key_path_env></key_path_env>
+    <subdomain>vp9</subdomain>
+    <panel_domain>vp9.losttv.site</panel_domain>
+    <domain_modes>[cdn]</domain_modes>
+    <cdn>cdn</cdn>
+    <cf_proxied>True</cf_proxied>
+    <status_note>extra CDN zones telegrambot.website, teleworker.fun</status_note>
+    <status_updated_at>2026-09-28 18:50</status_updated_at>
+    <ssh status="ok" tcp="True" port="22">password rotated 2026-09-28</ssh>
+    <domains>
+      <domain mode="cdn">vp9.sdfsdfsdfsd.store</domain>
+      <domain mode="cdn">vp9.losttv.site</domain>
+      <domain mode="cdn">vp9.linkusers3.online</domain>
+      <domain mode="cdn">vp9.telegrambot.website</domain>
+      <domain mode="cdn">vp9.teleworker.fun</domain>
+    </domains>
+  </server>
+</fleet>

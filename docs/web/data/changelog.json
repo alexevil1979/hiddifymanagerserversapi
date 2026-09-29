@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-09-29",
+      "title": "Сводка парка в XML",
+      "body": "Полная сводка 20 серверов с доменами и режимом Cloudflare (cdn/direct) записана в docs/web/data/fleet.xml. Секретов нет."
+    },
+    {
+      "date": "2026-09-29",
       "title": "vpn-ru-1 снят с парка",
       "body": "Сервер удалён оператором. Карточка убрана из inventory и из сводки docs/web (fleet + ssh-status)."
     },
