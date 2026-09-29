@@ -2,15 +2,6 @@
   "checked_at": "2026-09-28T01:34",
   "servers": [
     {
-      "id": "vpn-ru-1",
-      "host": "84.201.133.81",
-      "port": 22,
-      "auth": "key",
-      "tcp": true,
-      "ssh": "ok",
-      "detail": "OK | compute-vm-2-1-10-hdd-1790448310615"
-    },
-    {
       "id": "console1",
       "host": "84.201.131.208",
       "port": 22,

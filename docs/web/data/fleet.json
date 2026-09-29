@@ -1,31 +1,6 @@
 {
-  "updated": "2026-09-28T19:20",
+  "updated": "2026-09-29T07:19",
   "servers": [
-    {
-      "id": "vpn-ru-1",
-      "host": "84.201.133.81",
-      "location": "ru",
-      "group": "ru",
-      "state": "configured",
-      "ssh_port": 22,
-      "ssh_user": "wladmin",
-      "auth_method": "key",
-      "password_env": null,
-      "key_path_env": "SSH_KEY_PATH_VPN_RU_1",
-      "subdomain": "vp22",
-      "domains": [
-        "vp22.sdfsdfsdfsd.store",
-        "vp22.losttv.site",
-        "vp22.linkusers3.online"
-      ],
-      "domain_modes": null,
-      "panel_domain": "vp22.losttv.site",
-      "status_note": null,
-      "status_updated_at": null,
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
-    },
     {
       "id": "console1",
       "host": "84.201.131.208",
@@ -45,10 +20,24 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "console1.linkusers3.online",
-      "status_note": "IMPORTANT TM working BS entry; snapshot 2026-09-28",
-      "status_updated_at": "2026-09-28 19:30",
+      "status_note": "BS pair OK: WG+sockopt; Reality special www.metacrawler.com",
+      "status_updated_at": "2026-09-28 18:25",
+      "domain_rows": [
+        {
+          "domain": "console1.sdfsdfsdfsd.store",
+          "mode": "direct"
+        },
+        {
+          "domain": "console1.losttv.site",
+          "mode": "direct"
+        },
+        {
+          "domain": "console1.linkusers3.online",
+          "mode": "direct"
+        }
+      ],
       "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
+      "cf_detail": "console1.sdfsdfsdfsd.store:direct, console1.losttv.site:direct, console1.linkusers3.online:direct",
       "cdn": "direct"
     },
     {
@@ -72,10 +61,32 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp1.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp1.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp1.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp1.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp1.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp1.sdfsdfsdfsd.store:cdn, vp1.losttv.site:cdn, vp1.linkusers3.online:cdn, vp1.telegrambot.website:cdn, vp1.teleworker.fun:cdn",
       "cdn": "cdn≠inv"
     },
     {
@@ -99,10 +110,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp2.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp2.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp2.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp2.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp2.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp2.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp2.sdfsdfsdfsd.store:cdn, vp2.losttv.site:cdn, vp2.linkusers3.online:cdn, vp2.telegrambot.website:cdn, vp2.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -126,10 +159,32 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp3.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp3.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp3.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp3.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp3.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp3.sdfsdfsdfsd.store:cdn, vp3.losttv.site:cdn, vp3.linkusers3.online:cdn, vp3.telegrambot.website:cdn, vp3.teleworker.fun:cdn",
       "cdn": "cdn≠inv"
     },
     {
@@ -156,10 +211,44 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp4.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp4.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp4.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp4.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp5.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp5.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp5.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp4.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp4.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp4.sdfsdfsdfsd.store:cdn, vp4.losttv.site:cdn, vp4.linkusers3.online:cdn, vp5.sdfsdfsdfsd.store:cdn, vp5.losttv.site:cdn, vp5.linkusers3.online:cdn, vp4.telegrambot.website:cdn, vp4.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -183,10 +272,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp6.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp6.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp6.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp6.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp6.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp6.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp6.sdfsdfsdfsd.store:cdn, vp6.losttv.site:cdn, vp6.linkusers3.online:cdn, vp6.telegrambot.website:cdn, vp6.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -210,10 +321,32 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "null",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp7ru.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp7ru.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp7ru.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp7ru.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp7ru.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp7ru.sdfsdfsdfsd.store:cdn, vp7ru.losttv.site:cdn, vp7ru.linkusers3.online:cdn, vp7ru.telegrambot.website:cdn, vp7ru.teleworker.fun:cdn",
       "cdn": "cdn≠inv"
     },
     {
@@ -237,11 +370,33 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp8.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct≠inv"
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp8.sdfsdfsdfsd.store",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp8.losttv.site",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp8.linkusers3.online",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp8.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp8.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
+      "cf_proxied": "mixed",
+      "cf_detail": "vp8.sdfsdfsdfsd.store:direct, vp8.losttv.site:direct, vp8.linkusers3.online:direct, vp8.telegrambot.website:cdn, vp8.teleworker.fun:cdn",
+      "cdn": "mixed"
     },
     {
       "id": "vpn-vp9",
@@ -264,10 +419,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp9.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp9.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp9.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp9.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp9.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp9.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp9.sdfsdfsdfsd.store:cdn, vp9.losttv.site:cdn, vp9.linkusers3.online:cdn, vp9.telegrambot.website:cdn, vp9.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -291,10 +468,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp10.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp10.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp10.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp10.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp10.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp10.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp10.sdfsdfsdfsd.store:cdn, vp10.losttv.site:cdn, vp10.linkusers3.online:cdn, vp10.telegrambot.website:cdn, vp10.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -318,10 +517,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp11.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp11.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp11.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp11.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp11.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp11.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp11.sdfsdfsdfsd.store:cdn, vp11.losttv.site:cdn, vp11.linkusers3.online:cdn, vp11.telegrambot.website:cdn, vp11.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -345,10 +566,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp12.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp12.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp12.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp12.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp12.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp12.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp12.sdfsdfsdfsd.store:cdn, vp12.losttv.site:cdn, vp12.linkusers3.online:cdn, vp12.telegrambot.website:cdn, vp12.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -372,10 +615,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp13.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp13.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp13.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp13.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp13.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp13.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp13.sdfsdfsdfsd.store:cdn, vp13.losttv.site:cdn, vp13.linkusers3.online:cdn, vp13.telegrambot.website:cdn, vp13.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -399,10 +664,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp14.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp14.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp14.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp14.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp14.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp14.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp14.sdfsdfsdfsd.store:cdn, vp14.losttv.site:cdn, vp14.linkusers3.online:cdn, vp14.telegrambot.website:cdn, vp14.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -426,11 +713,33 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "vp16.losttv.site",
-      "status_note": "IMPORTANT TM working BS exit; snapshot 2026-09-28",
-      "status_updated_at": "2026-09-28 19:30",
-      "cf_proxied": false,
-      "cf_detail": "sdfsdfsdfsd.store:dns, losttv.site:dns, linkusers3.online:dns",
-      "cdn": "direct"
+      "status_note": "BS exit; alias Выход EU; WG :51888; Reality adium.im",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp16.sdfsdfsdfsd.store",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp16.losttv.site",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp16.linkusers3.online",
+          "mode": "direct"
+        },
+        {
+          "domain": "vp16.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp16.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
+      "cf_proxied": "mixed",
+      "cf_detail": "vp16.sdfsdfsdfsd.store:direct, vp16.losttv.site:direct, vp16.linkusers3.online:direct, vp16.telegrambot.website:cdn, vp16.teleworker.fun:cdn",
+      "cdn": "mixed"
     },
     {
       "id": "vpn-vp17",
@@ -453,10 +762,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp17.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp17.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp17.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp17.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp17.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp17.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp17.sdfsdfsdfsd.store:cdn, vp17.losttv.site:cdn, vp17.linkusers3.online:cdn, vp17.telegrambot.website:cdn, vp17.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -480,10 +811,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp18.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp18.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp18.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp18.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp18.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp18.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp18.sdfsdfsdfsd.store:cdn, vp18.losttv.site:cdn, vp18.linkusers3.online:cdn, vp18.telegrambot.website:cdn, vp18.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -507,10 +860,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp19.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp19.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp19.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp19.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp19.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp19.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp19.sdfsdfsdfsd.store:cdn, vp19.losttv.site:cdn, vp19.linkusers3.online:cdn, vp19.telegrambot.website:cdn, vp19.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -534,10 +909,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp20.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp20.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp20.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp20.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp20.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp20.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp20.sdfsdfsdfsd.store:cdn, vp20.losttv.site:cdn, vp20.linkusers3.online:cdn, vp20.telegrambot.website:cdn, vp20.teleworker.fun:cdn",
       "cdn": "cdn"
     },
     {
@@ -561,10 +958,32 @@
       ],
       "domain_modes": "[cdn]",
       "panel_domain": "vp21.losttv.site",
-      "status_note": "extra CDN: telegrambot.website + teleworker.fun",
-      "status_updated_at": "2026-09-28 19:20",
+      "status_note": "extra CDN zones telegrambot.website, teleworker.fun",
+      "status_updated_at": "2026-09-28 18:50",
+      "domain_rows": [
+        {
+          "domain": "vp21.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp21.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp21.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp21.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp21.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
       "cf_proxied": true,
-      "cf_detail": "sdfsdfsdfsd.store:proxied, losttv.site:proxied, linkusers3.online:proxied",
+      "cf_detail": "vp21.sdfsdfsdfsd.store:cdn, vp21.losttv.site:cdn, vp21.linkusers3.online:cdn, vp21.telegrambot.website:cdn, vp21.teleworker.fun:cdn",
       "cdn": "cdn"
     }
   ]

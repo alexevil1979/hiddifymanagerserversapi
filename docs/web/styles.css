@@ -235,6 +235,13 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   font-size: 0.78rem;
   font-weight: 600;
 }
+.dom-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.12rem 0;
+}
+.dom-line code { font-size: 0.78rem; }
 .ssh-badge.ok { background: rgba(62,207,142,0.15); color: var(--ok); }
 .ssh-badge.warn { background: rgba(240,180,41,0.15); color: var(--warn); }
 .ssh-badge.bad { background: rgba(255,107,107,0.15); color: var(--bad); }

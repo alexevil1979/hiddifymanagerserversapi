@@ -1,6 +1,11 @@
 {
   "entries": [
     {
+      "date": "2026-09-29",
+      "title": "vpn-ru-1 снят с парка",
+      "body": "Сервер удалён оператором. Карточка убрана из inventory и из сводки docs/web (fleet + ssh-status)."
+    },
+    {
       "date": "2026-09-28",
       "title": "IMPORTANT: BS Turkmenistan working snapshot",
       "body": "Клиент подтвердил работу Обход БС. Полные бэкапы console1+vp16 сохранены в backups/IMPORTANT-BS-Turkmenistan-working-2026-09-28/ и /var/backups/hiddify/*-BS-Turkmenistan-working.json. Рецепт без секретов: docs/bs-turkmenistan-working-recipe.json."

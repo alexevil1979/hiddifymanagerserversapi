@@ -44,11 +44,23 @@ function cdnClass(label) {
   return "mute";
 }
 
-function domainsShort(s) {
-  const list = s.domains || [];
-  if (!list.length) return s.subdomain ? `${s.subdomain}.*` : "—";
-  if (list.length <= 2) return list.join(", ");
-  return `${list[0]} +${list.length - 1}`;
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+function domainRows(s) {
+  if (Array.isArray(s.domain_rows) && s.domain_rows.length) return s.domain_rows;
+  return (s.domains || []).map((d) => ({ domain: d, mode: "—" }));
+}
+
+function domainsFull(s) {
+  const rows = domainRows(s);
+  if (!rows.length) return s.subdomain ? `${esc(s.subdomain)}.*` : "—";
+  return rows.map((r) => {
+    const mode = r.mode || "—";
+    const cls = mode === "cdn" ? "ok" : mode === "direct" ? "mute" : "warn";
+    return `<div class="dom-line"><code>${esc(r.domain)}</code> <span class="ssh-badge ${cls}">${esc(mode)}</span></div>`;
+  }).join("");
 }
 
 function renderFleet(fleet, ssh) {
@@ -63,16 +75,17 @@ function renderFleet(fleet, ssh) {
     const cdn = cdnLabel(s);
     const note = (s.status_note || st.detail || "").replace(/</g, "&lt;");
     const cfTitle = (s.cf_detail || "").replace(/"/g, "&quot;");
-    return `<tr data-q="${[s.id, s.host, s.location, s.state, sshStatus, cdn, note].join(" ").toLowerCase()}">
-      <td><strong>${s.id}</strong></td>
-      <td><code>${s.host || ""}</code></td>
-      <td>${s.location || "—"}</td>
-      <td>${s.state || "—"}</td>
-      <td><span class="ssh-badge ${cls}" title="${(st.detail || "").replace(/"/g, "&quot;")}">${sshLabel(sshStatus)}</span></td>
-      <td><span class="ssh-badge ${cdnClass(cdn)}" title="${cfTitle}">${cdn}</span></td>
-      <td>${s.ssh_port || 22}</td>
-      <td>${s.auth_method || "—"}</td>
-      <td title="${(s.domains || []).join(", ").replace(/"/g, "&quot;")}">${domainsShort(s)}</td>
+    const domQ = domainRows(s).map((r) => `${r.domain} ${r.mode}`).join(" ");
+    return `<tr data-q="${[s.id, s.host, s.location, s.state, sshStatus, cdn, domQ, note].join(" ").toLowerCase()}">
+      <td><strong>${esc(s.id)}</strong></td>
+      <td><code>${esc(s.host || "")}</code></td>
+      <td>${esc(s.location || "—")}</td>
+      <td>${esc(s.state || "—")}</td>
+      <td><span class="ssh-badge ${cls}" title="${esc(st.detail || "")}">${esc(sshLabel(sshStatus))}</span></td>
+      <td><span class="ssh-badge ${cdnClass(cdn)}" title="${cfTitle}">${esc(cdn)}</span></td>
+      <td>${esc(s.ssh_port || 22)}</td>
+      <td>${esc(s.auth_method || "—")}</td>
+      <td>${domainsFull(s)}</td>
       <td>${note}</td>
     </tr>`;
   }).join("");

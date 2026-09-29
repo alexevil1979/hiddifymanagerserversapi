@@ -12,7 +12,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INV = ROOT / "inventory.yml"
 OUT = ROOT / "docs" / "web" / "data" / "fleet.json"
-ZONES = ["sdfsdfsdfsd.store", "losttv.site", "linkusers3.online"]
+DOMAINS_YML = ROOT / "domains.yml"
+FALLBACK_ZONES = [
+    "sdfsdfsdfsd.store",
+    "losttv.site",
+    "linkusers3.online",
+    "telegrambot.website",
+    "teleworker.fun",
+]
 
 
 def load_dotenv() -> dict[str, str]:
@@ -29,6 +36,13 @@ def load_dotenv() -> dict[str, str]:
     return out
 
 
+def load_zones() -> list[str]:
+    if not DOMAINS_YML.is_file():
+        return list(FALLBACK_ZONES)
+    names = re.findall(r"(?m)^\s+- name:\s*(\S+)", DOMAINS_YML.read_text(encoding="utf-8", errors="replace"))
+    return names or list(FALLBACK_ZONES)
+
+
 def parse_inventory(path: Path) -> list[dict]:
     text = path.read_text(encoding="utf-8", errors="replace")
     parts = re.split(r"(?m)^(?=  - id:)", text)
@@ -42,11 +56,29 @@ def parse_inventory(path: Path) -> list[dict]:
             continue
         g = lambda pat, default=None: (m.group(1) if (m := re.search(pat, p)) else default)
         modes = g(r"(?m)^\s+domain_modes:\s*(\[[^\]]*\])")
-        # domains list
+        # domains list, plus dangling "- host" lines in the same card
         dm = re.search(r"(?ms)^\s+domains:\n((?:\s+- .+\n)+)", p)
         domains = []
         if dm:
             domains = re.findall(r"(?m)^\s+- (.+)$", dm.group(1))
+        sub = g(r"(?m)^\s+subdomain:\s*(\S+)")
+        zones = load_zones()
+        seen = set(domains)
+        for line in p.splitlines():
+            mline = re.match(r"^\s+- (\S+)$", line)
+            if not mline:
+                continue
+            host = mline.group(1)
+            if any(host.endswith("." + z) for z in zones) and host not in seen:
+                domains.append(host)
+                seen.add(host)
+        # ensure every inventory zone name is considered if the card uses this subdomain
+        if sub and sub not in ("null", "None"):
+            for z in zones:
+                name = f"{sub}.{z}"
+                if name not in seen:
+                    # only add later if Cloudflare has the record
+                    pass
         servers.append(
             {
                 "id": m_id.group(1),
@@ -63,8 +95,8 @@ def parse_inventory(path: Path) -> list[dict]:
                 "domains": domains,
                 "domain_modes": modes,
                 "panel_domain": g(r'(?m)^\s+panel_domain:\s*"?([^"\n]+)"?'),
-                "status_note": g(r'(?m)^\s+status_note:\s*"([^"]*)"'),
-                "status_updated_at": g(r'(?m)^\s+status_updated_at:\s*"([^"]*)"'),
+                "status_note": g(r'(?m)^\s*status_note:\s*"([^"]*)"'),
+                "status_updated_at": g(r'(?m)^\s*status_updated_at:\s*"([^"]*)"'),
             }
         )
     return servers
@@ -79,49 +111,78 @@ def cf_api(token: str, path: str) -> dict:
         return json.loads(resp.read().decode())
 
 
-def cf_proxied_map(token: str, servers: list[dict]) -> dict[str, dict]:
-    """Return id -> {proxied: bool|None, detail: str}."""
+def zone_of(domain: str, zones: list[str]) -> str | None:
+    for z in sorted(zones, key=len, reverse=True):
+        if domain == z or domain.endswith("." + z):
+            return z
+    return None
+
+
+def cf_domain_modes(token: str, servers: list[dict], zones: list[str]) -> None:
+    """Attach domain_rows [{domain, mode}] from Cloudflare A proxied flag."""
     zone_ids: dict[str, str] = {}
-    for z in ZONES:
+    for z in zones:
         r = cf_api(token, f"/zones?name={urllib.parse.quote(z)}")
         results = r.get("result") or []
-        if not results:
-            continue
-        zone_ids[z] = results[0]["id"]
+        if results:
+            zone_ids[z] = results[0]["id"]
 
-    out: dict[str, dict] = {}
-    for s in servers:
-        sub = s.get("subdomain")
-        if not sub or sub in ("null", "None"):
-            out[s["id"]] = {"cf_proxied": None, "cf_detail": "no subdomain"}
-            continue
-        flags = []
-        for z, zid in zone_ids.items():
-            name = f"{sub}.{z}"
-            q = urllib.parse.urlencode({"type": "A", "name": name})
-            try:
-                r = cf_api(token, f"/zones/{zid}/dns_records?{q}")
-            except Exception as e:
-                flags.append(f"{z}:err")
-                continue
-            recs = r.get("result") or []
-            if not recs:
-                flags.append(f"{z}:missing")
-            else:
-                flags.append(f"{z}:{'proxied' if recs[0].get('proxied') else 'dns'}")
-        proxied_n = sum(1 for f in flags if f.endswith(":proxied"))
-        dns_n = sum(1 for f in flags if f.endswith(":dns"))
-        if proxied_n == len(flags) and proxied_n > 0:
-            mode = True
-        elif dns_n == len(flags) and dns_n > 0:
-            mode = False
-        elif proxied_n == 0 and dns_n == 0:
-            mode = None
+    cache: dict[str, str] = {}
+
+    def mode_of(domain: str) -> str:
+        if domain in cache:
+            return cache[domain]
+        z = zone_of(domain, zones)
+        zid = zone_ids.get(z or "")
+        if not zid:
+            cache[domain] = "unknown"
+            return cache[domain]
+        q = urllib.parse.urlencode({"type": "A", "name": domain})
+        try:
+            r = cf_api(token, f"/zones/{zid}/dns_records?{q}")
+        except Exception:
+            cache[domain] = "err"
+            return cache[domain]
+        recs = r.get("result") or []
+        if not recs:
+            cache[domain] = "missing"
         else:
+            cache[domain] = "cdn" if recs[0].get("proxied") else "direct"
+        return cache[domain]
+
+    for s in servers:
+        names = list(s.get("domains") or [])
+        sub = s.get("subdomain")
+        seen = set(names)
+        if sub and sub not in ("null", "None"):
+            for z in zones:
+                name = f"{sub}.{z}"
+                if name not in seen:
+                    names.append(name)
+                    seen.add(name)
+        rows = []
+        flags = []
+        for name in names:
+            mode = mode_of(name)
+            if mode == "missing":
+                continue
+            rows.append({"domain": name, "mode": mode})
+            flags.append(f"{name}:{mode}")
+        s["domains"] = [r["domain"] for r in rows]
+        s["domain_rows"] = rows
+        proxied_n = sum(1 for r in rows if r["mode"] == "cdn")
+        direct_n = sum(1 for r in rows if r["mode"] == "direct")
+        if rows and proxied_n == len(rows):
+            mode = True
+        elif rows and direct_n == len(rows):
+            mode = False
+        elif proxied_n and direct_n:
             mode = "mixed"
-        out[s["id"]] = {"cf_proxied": mode, "cf_detail": ", ".join(flags)}
-        print(s["id"], out[s["id"]], flush=True)
-    return out
+        else:
+            mode = None
+        s["cf_proxied"] = mode
+        s["cf_detail"] = ", ".join(flags)
+        print(s["id"], s["cf_detail"], flush=True)
 
 
 def normalize_mode(modes: str | None, cf) -> str:
@@ -149,14 +210,33 @@ def normalize_mode(modes: str | None, cf) -> str:
 def main() -> int:
     env = load_dotenv()
     token = env.get("CLOUDFLARE_API_TOKEN", "")
+    zones = load_zones()
     servers = parse_inventory(INV)
-    cfmap = cf_proxied_map(token, servers) if token else {}
+    previous: dict[str, dict] = {}
+    if OUT.is_file():
+        try:
+            old = json.loads(OUT.read_text(encoding="utf-8"))
+            previous = {x["id"]: x for x in old.get("servers") or [] if x.get("id")}
+        except Exception:
+            previous = {}
+    for s in servers:
+        prev = previous.get(s["id"]) or {}
+        if not s.get("status_note") and prev.get("status_note"):
+            s["status_note"] = prev["status_note"]
+            s["status_updated_at"] = prev.get("status_updated_at")
+        for name in prev.get("domains") or []:
+            if name not in s["domains"]:
+                s["domains"].append(name)
+    if token:
+        cf_domain_modes(token, servers, zones)
+    else:
+        for s in servers:
+            s["domain_rows"] = [{"domain": d, "mode": "unknown"} for d in s.get("domains") or []]
+            s["cf_proxied"] = None
+            s["cf_detail"] = "no token"
 
     for s in servers:
-        cf = cfmap.get(s["id"], {})
-        s["cf_proxied"] = cf.get("cf_proxied")
-        s["cf_detail"] = cf.get("cf_detail")
-        s["cdn"] = normalize_mode(s.get("domain_modes"), cf.get("cf_proxied"))
+        s["cdn"] = normalize_mode(s.get("domain_modes"), s.get("cf_proxied"))
 
     payload = {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M"),
