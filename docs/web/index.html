@@ -157,7 +157,7 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li>DNS A-записи <code>{subdomain}.{зона}</code> на все зоны из <code>cloudflare_zones</code>.</li>
           <li>Профиль из <code>samples/protocols.json</code> + домены (direct или cdn).</li>
           <li><code>apply_configs.sh</code> (иногда дважды).</li>
-          <li>Restore users/admins + proxy paths из бэкапа этой машины.</li>
+          <li>Restore users/admins + proxy paths из бэкапа этой машины. Только если установка в этом прогоне была чистой (<code>Hiddify 12.3.3 installed</code>), без оставшейся старой панели.</li>
           <li>Проверки: dashboard не quick-setup, API status, подписка не пустая.</li>
         </ol>
         <p>Если на диске уже не 12.3.3 — <strong>стоп</strong>, пока пользователь не скажет «переустанови».</p>

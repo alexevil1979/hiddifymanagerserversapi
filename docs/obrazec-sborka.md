@@ -169,6 +169,10 @@ cat /opt/hiddify-manager/VERSION   # 12.3.3
 
 ## 6. Restore users / admins / paths
 
+Только на свежей установке `12.3.3` в этом же прогоне. В логе установщика должна быть строка `Hiddify 12.3.3 installed`. Если каталог `/opt/hiddify-manager` уже был (`already installed` или `other version installed`), restore не запускать: сначала переименовать старый каталог и поставить панель заново. На живую старую версию пользователей не накатывать.
+
+Кнопка в HiddifySales: `C:\Users\1\Documents\fullvpnservice\docs\HIDDIFY_REINSTALL_BY_SAMPLE.md`.
+
 Нужен, если на машине уже были клиенты/CRM и есть бэкап.
 
 Подготовить JSON (локально можно срезать до нужных ключей):
