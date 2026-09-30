@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29T07:19",
+  "updated": "2026-09-30T03:37",
   "servers": [
     {
       "id": "console1",
@@ -984,6 +984,55 @@
       ],
       "cf_proxied": true,
       "cf_detail": "vp21.sdfsdfsdfsd.store:cdn, vp21.losttv.site:cdn, vp21.linkusers3.online:cdn, vp21.telegrambot.website:cdn, vp21.teleworker.fun:cdn",
+      "cdn": "cdn"
+    },
+    {
+      "id": "vpn-vp22",
+      "host": "103.214.69.183",
+      "location": "ca",
+      "group": "vp",
+      "state": "configured",
+      "ssh_port": 22,
+      "ssh_user": "root",
+      "auth_method": "password",
+      "password_env": "SSH_PASSWORD_VP22",
+      "key_path_env": null,
+      "subdomain": "vp22",
+      "domains": [
+        "vp22.sdfsdfsdfsd.store",
+        "vp22.losttv.site",
+        "vp22.linkusers3.online",
+        "vp22.telegrambot.website",
+        "vp22.teleworker.fun"
+      ],
+      "domain_modes": "[cdn]",
+      "panel_domain": "vp22.losttv.site",
+      "status_note": "sample 12.3.3 without backup restore",
+      "status_updated_at": "2026-09-30",
+      "domain_rows": [
+        {
+          "domain": "vp22.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp22.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp22.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp22.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp22.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
+      "cf_proxied": true,
+      "cf_detail": "vp22.sdfsdfsdfsd.store:cdn, vp22.losttv.site:cdn, vp22.linkusers3.online:cdn, vp22.telegrambot.website:cdn, vp22.teleworker.fun:cdn",
       "cdn": "cdn"
     }
   ]
