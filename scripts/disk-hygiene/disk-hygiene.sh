@@ -131,6 +131,18 @@ note_free "truncate-huge-logs" bash -c '
   find /var/log -type f -name "*.log" -size +100M -exec truncate -s 0 {} \; 2>/dev/null || true
 '
 
+# 4b) SSH failed-login log. btmp is not named *.log, so step 4 never touches it.
+note_free "ssh-btmp" bash -c '
+  shopt -s nullglob
+  for f in /var/log/btmp /var/log/btmp.[0-9]* /var/log/btmp.old; do
+    [[ -e "$f" ]] || continue
+    case "$f" in
+      *.gz|*.xz|*.old|*.[0-9]|*.[0-9].*) rm -f -- "$f" ;;
+      *) truncate -s 0 -- "$f" ;;
+    esac
+  done
+'
+
 # 5) hiddify logs: keep under size budget (delete oldest *.log.* / large files)
 note_free "hiddify-logs" bash -c '
   d=/opt/hiddify-manager/log

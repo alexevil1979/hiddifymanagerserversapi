@@ -227,7 +227,7 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
         <h2>Диск: ежедневная гигиена</h2>
         <p>На каждой машине cron (~04:xx, минуты разнесены) запускает <code>/opt/hiddify-manager/scripts/disk-hygiene/disk-hygiene.sh</code> и шлёт отчёт в тот же Telegram-бот, что и операторские уведомления (<code>telegram.local.json</code>).</p>
         <ul>
-          <li>Чистит безопасно: journal vacuum (80M / 7d), apt cache, ротированные логи, старые panel/var backups (оставляет N свежих + <code>*configured*</code>), tmp старше 3д, core dumps.</li>
+          <li>Чистит безопасно: journal vacuum (80M / 7d), apt cache, ротированные логи, журнал неудачных SSH-входов <code>/var/log/btmp</code> (обнуляется; ротации удаляются), старые panel/var backups (оставляет N свежих + <code>*configured*</code>), tmp старше 3д, core dumps.</li>
           <li>Не трогает: конфиги, SSL, Redis, БД панели, пользователей, активные логи &lt;100M.</li>
           <li>Пороги: WARN ≥80%, CRIT ≥90%. <code>REPORT_MODE=always|warn|never</code> в <code>.env</code> на сервере.</li>
           <li>Выкладка: <code>python scripts/deploy-disk-hygiene.py</code> (± id). vp2/vp8 — через jump SOCKS; key-хосты (wladmin) — OpenSSH.</li>
