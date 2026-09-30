@@ -105,7 +105,7 @@ Hiddify 12.3.3 already installed
 cat /opt/hiddify-manager/VERSION   # 12.3.3
 ```
 
-После установки — пароль владельца из `HIDDIFY_ADMIN_PASSWORD` (через `AdminUser.update_password` или шаг restore-скрипта с `ADMIN_PASS_FILE`).
+После установки — пароль владельца из `HIDDIFY_ADMIN_PASSWORD` (через `AdminUser.update_password` или шаг restore-скрипта с `ADMIN_PASS_FILE`). На уже работающем парке у каждой панели свой пароль владельца; он лежит в HiddifySales в поле `panel_admin_password` и в ответ API не возвращается. Новая сборка по образцу снова ставит пароль из `HIDDIFY_ADMIN_PASSWORD`, не из карточки биллинга.
 
 ---
 

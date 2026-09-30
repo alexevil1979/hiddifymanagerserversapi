@@ -123,7 +123,7 @@ setsid bash /tmp/install-hiddify.sh > /var/log/hiddify-install.log 2>&amp;1 &lt;
 echo $! > /var/log/hiddify-install.pid'</code></pre>
         <p>Скрипт: apt upgrade → sysctl IPv6 off → swap → HAProxy 3.0 hold → download <code>v12.3.3</code> → <code>lock_panel</code>.</p>
         <p>Успех: в логе <code>Hiddify 12.3.3 installed</code>, файл <code>/opt/hiddify-manager/VERSION</code> = <code>12.3.3</code>.</p>
-        <p>Пароль владельца — из <code>HIDDIFY_ADMIN_PASSWORD</code> (отдельно или через restore).</p>
+        <p>Пароль владельца — из <code>HIDDIFY_ADMIN_PASSWORD</code> (отдельно или через restore). На уже работающем парке у каждой панели свой пароль, он записан в HiddifySales (<code>panel_admin_password</code>). Новая сборка берёт пароль из env, не из карточки.</p>
       </section>
 
       <section id="dns">
