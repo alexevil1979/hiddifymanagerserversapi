@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30T09:47",
+  "updated": "2026-10-01T05:59",
   "servers": [
     {
       "id": "console1",
@@ -1082,6 +1082,55 @@
       ],
       "cf_proxied": true,
       "cf_detail": "vp23.sdfsdfsdfsd.store:cdn, vp23.losttv.site:cdn, vp23.linkusers3.online:cdn, vp23.telegrambot.website:cdn, vp23.teleworker.fun:cdn",
+      "cdn": "cdn"
+    },
+    {
+      "id": "vpn-vp24",
+      "host": "45.148.31.193",
+      "location": "fi",
+      "group": "vp",
+      "state": "configured",
+      "ssh_port": 22,
+      "ssh_user": "root",
+      "auth_method": "password",
+      "password_env": "SSH_PASSWORD_VP24",
+      "key_path_env": null,
+      "subdomain": "vp24",
+      "domains": [
+        "vp24.sdfsdfsdfsd.store",
+        "vp24.losttv.site",
+        "vp24.linkusers3.online",
+        "vp24.telegrambot.website",
+        "vp24.teleworker.fun"
+      ],
+      "domain_modes": "[cdn]",
+      "panel_domain": "vp24.losttv.site",
+      "status_note": "sample 12.3.3 without backup restore",
+      "status_updated_at": "2026-10-01",
+      "domain_rows": [
+        {
+          "domain": "vp24.sdfsdfsdfsd.store",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp24.losttv.site",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp24.linkusers3.online",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp24.telegrambot.website",
+          "mode": "cdn"
+        },
+        {
+          "domain": "vp24.teleworker.fun",
+          "mode": "cdn"
+        }
+      ],
+      "cf_proxied": true,
+      "cf_detail": "vp24.sdfsdfsdfsd.store:cdn, vp24.losttv.site:cdn, vp24.linkusers3.online:cdn, vp24.telegrambot.website:cdn, vp24.teleworker.fun:cdn",
       "cdn": "cdn"
     }
   ]
