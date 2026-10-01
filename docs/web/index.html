@@ -154,12 +154,13 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li>Ubuntu 22.04 jammy, SSH способом из карточки.</li>
           <li><code>scripts/install-hiddify.sh</code> → строго <strong>12.3.3</strong>.</li>
           <li>Lock: <code>auto_update=false</code>, <code>package_mode=v12.3.3</code>, <code>admin_lang/lang=ru</code>, <code>country=other</code>, <code>first_setup=false</code>.</li>
-          <li>Пароль владельца из <code>HIDDIFY_ADMIN_PASSWORD</code>.</li>
           <li>DNS A-записи <code>{subdomain}.{зона}</code> на все зоны из <code>cloudflare_zones</code>.</li>
           <li>Профиль из <code>samples/protocols.json</code> + домены (direct или cdn).</li>
           <li><code>apply_configs.sh</code> (иногда дважды).</li>
-          <li>Restore users/admins + proxy paths из бэкапа этой машины. Кнопка не стартует, если на сервере уже есть любая версия Hiddify. Restore только после <code>Hiddify 12.3.3 installed</code> на чистой системе.</li>
-          <li>Проверки: dashboard не quick-setup, API status, подписка не пустая.</li>
+          <li>Свой длинный пароль панели и SSH → <code>.env</code> + HiddifySales (<code>panel_admin_password</code>, <code>ssh_password</code>).</li>
+          <li>Часовой пояс <code>Etc/GMT-4</code> (+0400); <code>scripts/deploy-disk-hygiene.py</code> на этот id.</li>
+          <li>Restore users/admins + proxy paths из бэкапа этой машины (опц.). Кнопка не стартует, если на сервере уже есть любая версия Hiddify. Restore только после <code>Hiddify 12.3.3 installed</code> на чистой системе; после restore снова ротация пароля панели.</li>
+          <li>Проверки: dashboard не quick-setup, API status, подписка не пустая, Sales <code>has_*</code>.</li>
         </ol>
         <p>Если на диске уже не 12.3.3 — <strong>стоп</strong>, пока пользователь не скажет «переустанови».</p>
       </section>

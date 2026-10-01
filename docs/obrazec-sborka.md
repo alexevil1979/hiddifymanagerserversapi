@@ -21,7 +21,10 @@ Hiddify Manager **12.3.3** + DNS + протоколы из `samples/protocols.js
 | Протоколы | только из `samples/protocols.json` |
 | Домены | зоны только из `domains.yml`, метка `subdomain` из карточки |
 | Режим домена | обычно `direct`; для CDN — `cdn` + Cloudflare `proxied: true` |
-| Пароль владельца панели | `HIDDIFY_ADMIN_PASSWORD` из локального `.env` |
+| Пароль владельца панели | Свой длинный на каждую панель → HiddifySales `panel_admin_password` (в ответ API не возвращается). Временный из `HIDDIFY_ADMIN_PASSWORD` только на установку, затем ротация |
+| Пароль SSH | Свой длинный на сервер → `.env` (`password_env`) и HiddifySales `ssh_password` |
+| Часовой пояс ОС | `Etc/GMT-4` (UTC+4, без летнего времени) |
+| Чистка диска | `scripts/deploy-disk-hygiene.py` + cron (~04:xx), в т.ч. обнуление `/var/log/btmp` |
 | Пользователи | не создавать «на всякий случай»; restore из бэкапа **этой** машины, если просили |
 
 Полный дамп чужой панели (`samples/initial/` и т.п.) **не** источник протоколов и доменов.
@@ -105,7 +108,7 @@ Hiddify 12.3.3 already installed
 cat /opt/hiddify-manager/VERSION   # 12.3.3
 ```
 
-После установки — пароль владельца из `HIDDIFY_ADMIN_PASSWORD` (через `AdminUser.update_password` или шаг restore-скрипта с `ADMIN_PASS_FILE`). На уже работающем парке у каждой панели свой пароль владельца; он лежит в HiddifySales в поле `panel_admin_password` и в ответ API не возвращается. Новая сборка по образцу снова ставит пароль из `HIDDIFY_ADMIN_PASSWORD`, не из карточки биллинга.
+После установки временно можно выставить пароль владельца из `HIDDIFY_ADMIN_PASSWORD`. **До сдачи сервера** обязательна ротация: свой длинный пароль панели и свой длинный SSH, запись в локальный `.env` и в HiddifySales (`panel_admin_password`, `ssh_password`). См. §7.
 
 ---
 
@@ -167,7 +170,36 @@ cat /opt/hiddify-manager/VERSION   # 12.3.3
 
 ---
 
-## 6. Restore users / admins / paths
+## 6. Секреты, часовой пояс, чистка диска
+
+Обязательный финал каждой сборки по образцу (до `state: configured`):
+
+1. **Пароль владельца панели** — сгенерировать длинный случайный (≥24), `AdminUser.update_password`, сохранить локально (не в git), `PATCH` биллинга:
+   ```json
+   { "panel_admin_password": "<secret>" }
+   ```
+   В ответе только `has_panel_admin_password: true`. Общий `HIDDIFY_ADMIN_PASSWORD` на сданной панели не оставлять.
+2. **Пароль SSH** (если `auth.method: password`) — сгенерировать длинный случайный, `chpasswd` на сервере, обновить `.env` (`password_env`), проверить вход новым паролем, `PATCH`:
+   ```json
+   { "ssh_password": "<secret>" }
+   ```
+   В ответе только `has_ssh_password: true`. Входной пароль провайдера после сборки не оставлять.
+3. **Часовой пояс ОС**:
+   ```bash
+   timedatectl set-timezone Etc/GMT-4
+   date +%z   # ожидание +0400
+   ```
+4. **Ежедневная чистка диска**:
+   ```bash
+   python scripts/deploy-disk-hygiene.py --no-test <id>
+   ```
+   На сервере: `/opt/hiddify-manager/scripts/disk-hygiene/disk-hygiene.sh`, cron `/etc/cron.d/hiddify-disk-hygiene`. Скрипт чистит journal/apt/логи, обнуляет `/var/log/btmp`, режет старые panel/var backups. Если прямой SSH timeout — выкладка через jump/SOCKS (как vp2/vp8/vp13).
+
+Секреты в git, docs и Telegram не писать.
+
+---
+
+## 7. Restore users / admins / paths
 
 Только если до установки на сервере не было никакой версии Hiddify. Если каталог `/opt/hiddify-manager`, файл `VERSION` или сервис `hiddify-*` уже есть, сборка по образцу не стартует и ничего не меняет. Restore после строки установщика `Hiddify 12.3.3 installed` в этом же прогоне. На живую старую версию пользователей не накатывать.
 
@@ -193,7 +225,7 @@ cat /opt/hiddify-manager/VERSION   # 12.3.3
 
 ```bash
 export BACKUP_JSON=/tmp/restore-users.json
-export ADMIN_PASS_FILE=/tmp/admin.pass          # содержимое = HIDDIFY_ADMIN_PASSWORD
+export ADMIN_PASS_FILE=/tmp/admin.pass          # временный; после restore снова ротация (§6) + Sales
 export SERVER_ID=vpn-vpN                        # id из inventory
 bash /tmp/restore-users-admins.sh
 ```
@@ -203,7 +235,7 @@ bash /tmp/restore-users-admins.sh
 1. Бэкап текущего состояния в `/var/backups/hiddify/`.
 2. Восстанавливает **только** admins + users (`set_settings=False`, домены/прокси не трогает).
 3. Пишет три path из бэкапа (чистая установка генерирует новые — без этого CRM/подписки ломаются).
-4. Сбрасывает пароль владельца из `ADMIN_PASS_FILE`.
+4. Сбрасывает пароль владельца из `ADMIN_PASS_FILE` (далее снова свой длинный + Sales).
 5. `apply-users` + полный `apply_configs.sh` (path меняет HAProxy/nginx maps).
 
 Записать в inventory восстановленные `admin_uuid`, `admin_proxy_path`, `client_proxy_path`.
@@ -217,7 +249,7 @@ bash /tmp/restore-users-admins.sh
 
 ---
 
-## 7. Проверки (обязательные)
+## 8. Проверки (обязательные)
 
 | Проверка | Ожидание |
 |----------|----------|
@@ -231,47 +263,55 @@ bash /tmp/restore-users-admins.sh
 | DNS | A на `host`; для CDN — proxied=true |
 | CDN без UUID в path | часто 400; с UUID — 200 |
 | Подписка пользователя | не пустая (если users восстановлены) |
+| `date +%z` | `+0400` |
+| disk-hygiene | скрипт + cron на месте |
+| HiddifySales | `has_ssh_password` / `has_panel_admin_password` = true (сами значения не в ответе) |
 
 Inventory: `state: configured`, обновить `status_note` / `status_updated_at`, `panel_domain`, paths, uuid.
 
 ---
 
-## 8. Чеклист одной строкой
+## 9. Чеклист одной строкой
 
 ```text
 [ ] карточка inventory + секреты в .env
 [ ] SSH ок (порт/ключ/пароль/socks)
 [ ] jammy, нет чужой версии (или «переустанови»)
 [ ] install-hiddify.sh → 12.3.3 + lock_panel
-[ ] пароль владельца HIDDIFY_ADMIN_PASSWORD
 [ ] DNS A × зоны (direct DNS-only / cdn proxied)
 [ ] protocols.json + домены (direct|cdn) + apply_configs
 [ ] first_setup=false
-[ ] (опц.) restore-users-admins.sh + maps ok
+[ ] свой SSH + пароль панели → .env + HiddifySales
+[ ] timezone Etc/GMT-4 (+0400)
+[ ] deploy-disk-hygiene.py на этот id
+[ ] (опц.) restore-users-admins.sh + maps ok + снова ротация пароля панели
 [ ] проверки UI/API/DNS
 [ ] inventory state=configured + docs/web data при изменении парка
 ```
 
 ---
 
-## 9. Чего не делать
+## 10. Чего не делать
 
 - Ставить `i.hiddify.com/release` или свежий release поверх 12.3.3.
 - Ставить поверх другой версии без фразы **«переустанови»**.
 - Брать протоколы/домены из полного бэкапа чужой панели.
 - Менять SSH-ключи/порт ОС без отдельной задачи.
+- Оставлять на сданной панели общий `HIDDIFY_ADMIN_PASSWORD` или пароль провайдера.
 - Массово создавать юзеров «на всякий случай».
 - Открывать все порты firewall.
 - Писать пароли, токены, полные admin URL с секретами в git/docs.
 
 ---
 
-## 10. Связанные файлы
+## 11. Связанные файлы
 
 | Файл | Роль |
 |------|------|
 | `scripts/install-hiddify.sh` | установка + lock |
 | `scripts/restore-users-admins.sh` | users/admins + 3 path |
+| `scripts/deploy-disk-hygiene.py` | выкладка чистки диска + cron |
+| `scripts/disk-hygiene/disk-hygiene.sh` | ежедневная чистка (в т.ч. btmp) |
 | `samples/protocols.json` | профиль протоколов |
 | `domains.yml` | разрешённые зоны |
 | `inventory.yml` | карточки (локально) |

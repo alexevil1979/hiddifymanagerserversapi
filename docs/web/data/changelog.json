@@ -2,6 +2,11 @@
   "entries": [
     {
       "date": "2026-10-01",
+      "title": "Образец: пароли, TZ, disk-hygiene",
+      "body": "В пайплайн сборки по образцу добавлены: свой SSH и пароль панели с записью в HiddifySales, timezone Etc/GMT-4, выкладка disk-hygiene. На vpn-vp24 шаги выполнены, карточка Finland 1 #28 синхронизирована."
+    },
+    {
+      "date": "2026-10-01",
       "title": "vpn-vp24 Финляндия по образцу",
       "body": "Finland 1, 45.148.31.193. Чистая установка 12.3.3, профиль samples/protocols.json, CDN на пяти зонах, без restore пользователей. Карточка HiddifySales #28, продажа выключена."
     },

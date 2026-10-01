@@ -232,15 +232,17 @@ API после установки: домены, IP, custom proxies, users, dump
 1. Создать VPS в облаке (Ubuntu 22.04), открыть 22/80/443 + нужные UDP порты протоколов.
 2. Дождаться SSH способом `auth` этой карточки.
 3. Поставить Hiddify только скриптом `scripts/install-hiddify.sh`. Версия всегда `12.3.3`. Не вызывать `i.hiddify.com/release` и не ставить последнюю. Не ставить поверх другой версии без фразы пользователя «переустанови».
-4. Сразу после установки (Quick Setup): `admin_lang=ru`, `lang=ru`, `country=other`, плюс `auto_update=false`, `package_mode=v12.3.3`, пароль владельца из `HIDDIFY_ADMIN_PASSWORD`. Проверить, что автообновление выключено.
+4. Сразу после установки (Quick Setup): `admin_lang=ru`, `lang=ru`, `country=other`, плюс `auto_update=false`, `package_mode=v12.3.3`. Временно пароль владельца можно из `HIDDIFY_ADMIN_PASSWORD`. Проверить, что автообновление выключено.
 5. Снять с панели `admin_uuid` и `proxy_path_admin`, записать в карточку.
-6. DNS: A-запись `{subdomain}` на каждой зоне из `cloudflare_zones`. IP — `host`, прокси Cloudflare выключен. Без `subdomain` записи не создавать.
+6. DNS: A-запись `{subdomain}` на каждой зоне из `cloudflare_zones`. IP — `host`, прокси Cloudflare выключен (для CDN — proxied). Без `subdomain` записи не создавать.
 7. API: добавить server IP, домены (direct, cdn, reality, sub_link_only по задаче).
 8. API: включить протоколы из `samples/protocols.json`. Не включать всё подряд и не брать домены из этого файла. Вместе с протоколами снова выставить из образца: `auto_update=false`, `package_mode=v12.3.3`, `admin_lang=ru`, `lang=ru`, `country=other`, `first_setup=false`.
 9. SSH: `apply_configs.sh`. Дождаться конца, не убивать процесс сразу.
 10. После настройки доменов/протоколов ещё раз явно: `first_setup=false` (`hiddifypanel set-setting -k first_setup -v false` или через BoolConfig). Без этого Dashboard редиректит на `/admin/quick-setup/`.
-11. API: создать пользователей, если просили.
-12. Проверки:
+11. Свой длинный пароль панели и (при password-auth) свой длинный SSH: записать в локальный `.env`, `PATCH` в HiddifySales поля `panel_admin_password` и `ssh_password`. Общий `HIDDIFY_ADMIN_PASSWORD` и пароль провайдера на сданной машине не оставлять.
+12. Часовой пояс ОС: `timedatectl set-timezone Etc/GMT-4` (ожидание `+0400`). Выкладка чистки: `python scripts/deploy-disk-hygiene.py --no-test <id>`.
+13. API: создать пользователей, если просили.
+14. Проверки:
     - панель открывается на дашборд, не на мастер Quick Setup
     - `first_setup` = `false`
     - `/api/v2/panel` или `/server_status/` отвечает
@@ -248,7 +250,9 @@ API после установки: домены, IP, custom proxies, users, dump
     - сертификат на 443 совпадает с доменом
     - подписка пользователя не пустая
     - `auto_update` остаётся `false`
-13. Обновить `state` этой карточки: `configured`. Ошибку этой машины писать в её `state: error`, не останавливая весь отчёт.
+    - `date +%z` = `+0400`, disk-hygiene + cron на месте
+    - в Sales `has_ssh_password` / `has_panel_admin_password` = true
+15. Обновить `state` этой карточки: `configured`. Ошибку этой машины писать в её `state: error`, не останавливая весь отчёт.
 
 # Пайплайн «донастроить / переделать»
 

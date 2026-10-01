@@ -40,6 +40,7 @@
         <a href="#install">Установка 12.3.3</a>
         <a href="#dns">DNS</a>
         <a href="#profile">Профиль</a>
+        <a href="#harden">Секреты / TZ / чистка</a>
         <a href="#restore">Restore</a>
         <a href="#verify">Проверки</a>
         <a href="#checklist">Чеклист</a>
@@ -59,6 +60,7 @@
         <a href="#install">install</a>
         <a href="#dns">DNS</a>
         <a href="#profile">профиль</a>
+        <a href="#harden">секреты</a>
         <a href="#restore">restore</a>
         <a href="#verify">проверки</a>
       </div>
@@ -78,7 +80,10 @@
               <tr><td>Протоколы</td><td>только <code>samples/protocols.json</code></td></tr>
               <tr><td>Домены</td><td>зоны из <code>domains.yml</code>, метка <code>subdomain</code></td></tr>
               <tr><td>Режим домена</td><td>обычно <code>direct</code>; CDN → <code>cdn</code> + CF proxied</td></tr>
-              <tr><td>Пароль владельца</td><td><code>HIDDIFY_ADMIN_PASSWORD</code></td></tr>
+              <tr><td>Пароль владельца</td><td>Свой длинный → Sales <code>panel_admin_password</code> (не общий env на сдаче)</td></tr>
+              <tr><td>Пароль SSH</td><td>Свой длинный → <code>.env</code> + Sales <code>ssh_password</code></td></tr>
+              <tr><td>Часовой пояс</td><td><code>Etc/GMT-4</code> (UTC+4)</td></tr>
+              <tr><td>Чистка диска</td><td><code>deploy-disk-hygiene.py</code> + cron</td></tr>
               <tr><td>Users</td><td>не плодить «на всякий»; restore из бэкапа <em>этой</em> машины</td></tr>
             </tbody>
           </table>
@@ -123,7 +128,7 @@ setsid bash /tmp/install-hiddify.sh > /var/log/hiddify-install.log 2>&amp;1 &lt;
 echo $! > /var/log/hiddify-install.pid'</code></pre>
         <p>Скрипт: apt upgrade → sysctl IPv6 off → swap → HAProxy 3.0 hold → download <code>v12.3.3</code> → <code>lock_panel</code>.</p>
         <p>Успех: в логе <code>Hiddify 12.3.3 installed</code>, файл <code>/opt/hiddify-manager/VERSION</code> = <code>12.3.3</code>.</p>
-        <p>Пароль владельца — из <code>HIDDIFY_ADMIN_PASSWORD</code> (отдельно или через restore). На уже работающем парке у каждой панели свой пароль, он записан в HiddifySales (<code>panel_admin_password</code>). Новая сборка берёт пароль из env, не из карточки.</p>
+        <p>Временно можно поставить владельца из <code>HIDDIFY_ADMIN_PASSWORD</code>. До сдачи — свой длинный пароль панели и SSH, синхрон в HiddifySales (§6).</p>
       </section>
 
       <section id="dns">
@@ -155,14 +160,25 @@ echo $! > /var/log/hiddify-install.pid'</code></pre>
         </ol>
       </section>
 
+      <section id="harden">
+        <h2>6. Секреты, часовой пояс, чистка</h2>
+        <ol class="steps">
+          <li>Свой длинный пароль панели → <code>AdminUser.update_password</code> → <code>PATCH panel_admin_password</code> в HiddifySales.</li>
+          <li>Свой длинный SSH → <code>chpasswd</code> → обновить <code>.env</code> → проверить вход → <code>PATCH ssh_password</code>.</li>
+          <li><code>timedatectl set-timezone Etc/GMT-4</code> (ожидание <code>+0400</code>).</li>
+          <li><code>python scripts/deploy-disk-hygiene.py --no-test &lt;id&gt;</code> (btmp, journal, старые бэкапы; при timeout — SOCKS).</li>
+        </ol>
+        <p>В ответах API только флаги <code>has_*</code>. Секреты в git/docs/Telegram не писать. Общий <code>HIDDIFY_ADMIN_PASSWORD</code> и пароль провайдера на сданной машине не оставлять.</p>
+      </section>
+
       <section id="restore">
-        <h2>6. Restore users / admins / paths</h2>
+        <h2>7. Restore users / admins / paths</h2>
         <p>Если на сервере уже есть любая версия Hiddify, сборка по образцу не стартует. Restore только после строки <code>Hiddify 12.3.3 installed</code> на машине, где до установки каталога панели не было.</p>
         <pre><code>export BACKUP_JSON=/tmp/restore-users.json
 export ADMIN_PASS_FILE=/tmp/admin.pass
 export SERVER_ID=vpn-vpN
 bash /tmp/restore-users-admins.sh</code></pre>
-        <p>Восстанавливает только users/admins + три path, затем <code>apply-users</code> и полный apply. Не делать полный <code>set_settings=True</code>.</p>
+        <p>Восстанавливает только users/admins + три path, затем <code>apply-users</code> и полный apply. Не делать полный <code>set_settings=True</code>. После restore снова ротация пароля панели (§6) и запись в Sales.</p>
         <div class="callout warn">
           После path restore при 400/decoy: проверить paths в БД, restart redis/panel, повторный apply_configs, restart haproxy, сверить maps в <code>/opt/hiddify-manager/haproxy/maps/path*</code>.
         </div>
@@ -170,7 +186,7 @@ bash /tmp/restore-users-admins.sh</code></pre>
       </section>
 
       <section id="verify">
-        <h2>7. Проверки</h2>
+        <h2>8. Проверки</h2>
         <ul>
           <li><code>VERSION</code> = 12.3.3, <code>auto_update=false</code>, <code>package_mode=v12.3.3</code>, <code>first_setup=false</code></li>
           <li>UI — dashboard, не Quick Setup</li>
@@ -178,40 +194,45 @@ bash /tmp/restore-users-admins.sh</code></pre>
           <li>DNS резолвится в host; CDN — proxied</li>
           <li>CDN: без UUID часто 400; с UUID — 200</li>
           <li>Подписка не пустая (если был restore)</li>
+          <li><code>date +%z</code> = <code>+0400</code>; disk-hygiene + cron на месте</li>
+          <li>Sales: <code>has_ssh_password</code> / <code>has_panel_admin_password</code></li>
           <li>Inventory: <code>state: configured</code></li>
         </ul>
       </section>
 
       <section id="checklist">
-        <h2>8. Чеклист</h2>
+        <h2>9. Чеклист</h2>
         <div class="card checklist">
           <label><input type="checkbox" /> карточка inventory + секреты в .env</label>
           <label><input type="checkbox" /> SSH ок (порт / ключ / пароль / socks)</label>
           <label><input type="checkbox" /> jammy, нет чужой версии (или «переустанови»)</label>
           <label><input type="checkbox" /> install-hiddify.sh → 12.3.3 + lock_panel</label>
-          <label><input type="checkbox" /> пароль владельца HIDDIFY_ADMIN_PASSWORD</label>
           <label><input type="checkbox" /> DNS A × зоны (direct / cdn)</label>
           <label><input type="checkbox" /> protocols.json + домены + apply_configs</label>
           <label><input type="checkbox" /> first_setup=false</label>
-          <label><input type="checkbox" /> (опц.) restore-users-admins.sh + maps ok</label>
+          <label><input type="checkbox" /> свой SSH + пароль панели → .env + HiddifySales</label>
+          <label><input type="checkbox" /> timezone Etc/GMT-4 (+0400)</label>
+          <label><input type="checkbox" /> deploy-disk-hygiene.py</label>
+          <label><input type="checkbox" /> (опц.) restore-users-admins.sh + maps ok + снова ротация панели</label>
           <label><input type="checkbox" /> проверки UI / API / DNS</label>
           <label><input type="checkbox" /> inventory configured + обновление docs/web при нужде</label>
         </div>
       </section>
 
       <section id="dont">
-        <h2>9. Чего не делать</h2>
+        <h2>10. Чего не делать</h2>
         <ul class="pitfalls">
           <li>Канал release / свежая версия поверх 12.3.3</li>
           <li>Установка поверх другой версии без «переустанови»</li>
           <li>Протоколы/домены из чужого полного бэкапа</li>
-          <li>Смена SSH ОС без задачи; массовые юзеры «на всякий»</li>
+          <li>Общий admin-пароль или пароль провайдера на сданной машине</li>
+          <li>Смена SSH ключей/порта ОС без задачи; массовые юзеры «на всякий»</li>
           <li>Секреты и полные admin URL в git/docs</li>
         </ul>
       </section>
 
       <footer class="page-footer">
-        Связано: <code>scripts/install-hiddify.sh</code>, <code>scripts/restore-users-admins.sh</code>, <code>samples/protocols.json</code>, <code>domains.yml</code>, <a href="index.html">база знаний</a>.
+        Связано: <code>scripts/install-hiddify.sh</code>, <code>scripts/restore-users-admins.sh</code>, <code>scripts/deploy-disk-hygiene.py</code>, <code>samples/protocols.json</code>, <code>domains.yml</code>, <a href="index.html">база знаний</a>.
       </footer>
     </main>
   </div>
