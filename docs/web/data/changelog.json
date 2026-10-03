@@ -1,6 +1,11 @@
 {
   "entries": [
     {
+      "date": "2026-10-03",
+      "title": "console1: 5 публичных IP Yandex",
+      "body": "К console1 привязаны 4 доп. адреса (157.18, 157.110, 129.97, 131.64) отдельными NIC. В ОС — netplan /32 и policy routing; в панели — Domain IP + IP.sslip.io на каждый. HTTPS admin path отвечает на всех пяти."
+    },
+    {
       "date": "2026-10-01",
       "title": "Образец: пароли, TZ, disk-hygiene",
       "body": "В пайплайн сборки по образцу добавлены: свой SSH и пароль панели с записью в HiddifySales, timezone Etc/GMT-4, выкладка disk-hygiene. На vpn-vp24 шаги выполнены, карточка Finland 1 #28 синхронизирована."

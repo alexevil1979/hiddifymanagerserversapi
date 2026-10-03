@@ -20,8 +20,9 @@
       ],
       "domain_modes": "[direct]",
       "panel_domain": "console1.linkusers3.online",
-      "status_note": "BS pair OK: WG+sockopt; Reality special www.metacrawler.com",
-      "status_updated_at": "2026-09-28 18:25",
+      "status_note": "BS pair OK; 5 public IPs (208+157.18/110+129.97+131.64); Reality www.metacrawler.com",
+      "status_updated_at": "2026-10-03 06:50",
+      "notes": "extra public IPs: 84.201.157.18, 84.201.157.110, 84.201.129.97, 84.201.131.64 (Yandex secondary NICs + policy routing)",
       "domain_rows": [
         {
           "domain": "console1.sdfsdfsdfsd.store",

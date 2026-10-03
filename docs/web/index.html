@@ -207,10 +207,11 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
       <section id="bs">
         <h2>BS-пара (bridge/exit)</h2>
         <ul>
-          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit, sockopt <code>wg-bs-exit</code>, alias «🇷🇺 Обход БС». Reality special: <code>www.metacrawler.com</code> (<code>reality_enable=true</code>).</li>
+          <li><strong>console1</strong> (ru) — whitelist entry, WG клиент к exit, sockopt <code>wg-bs-exit</code>, alias «🇷🇺 Обход БС». Reality special: <code>www.metacrawler.com</code> (<code>reality_enable=true</code>). Публичные IP: <code>84.201.131.208</code> + четыре доп. (<code>84.201.157.18</code>, <code>84.201.157.110</code>, <code>84.201.129.97</code>, <code>84.201.131.64</code>).</li>
           <li><strong>vp16</strong> (eu) — exit, WG <code>10.88.88.0/24 :51888</code>, Reality special: <code>adium.im</code>, alias «🇪🇺 Выход EU».</li>
         </ul>
-        <p>После restore/apply: (1) sockopt <code>interface=wg-bs-exit</code> в <code>06_outbounds.json</code> и <code>.j2</code>; (2) в <code>show_domains</code> у console1.* должны быть <strong>IP</strong> и <strong>IP.sslip.io</strong> — иначе в клиенте нет узла «Обход БС» без домена, а на мобильном BS доменные A-записи часто падают (красные кресты), хотя балансер на IP работал; (3) сокет <code>@realityin_*</code>. E2E: VLESS WS → egress IP vp16.</p>
+        <p>После restore/apply: (1) sockopt <code>interface=wg-bs-exit</code> в <code>06_outbounds.json</code> и <code>.j2</code>; (2) в <code>show_domains</code> у console1.* должны быть <strong>IP</strong> и <strong>IP.sslip.io</strong> на каждый публичный адрес — иначе в клиенте нет узла «Обход БС» без домена, а на мобильном BS доменные A-записи часто падают (красные кресты), хотя балансер на IP работал; (3) сокет <code>@realityin_*</code>. E2E: VLESS WS → egress IP vp16.</p>
+        <p><strong>Yandex Cloud multi-IP (console1, 2026-10-03):</strong> дополнительные публичные адреса — отдельные NIC на той же subnet (<code>attachNetworkInterface</code>, ВМ stop/start), не secondary IP на одном интерфейсе. В госте: netplan <code>/32</code> на eth1–eth4 + policy routing (tables 101–104, <code>from &lt;private&gt; lookup</code>, default via <code>10.128.0.1</code>), <code>rp_filter=2</code>. В панели — Domain direct на каждый IP и <code>IP.sslip.io</code>, затем <code>apply_configs</code>. Проверка снаружи: admin path / HTTPS по каждому IP (корень <code>/</code> может висеть — это норма для decoy).</p>
         <p><strong>IMPORTANT (Туркменистан):</strong> рабочий снимок, подтверждённый клиентом 2026-09-28 — локально <code>backups/IMPORTANT-BS-Turkmenistan-working-2026-09-28/</code> (полный JSON, gitignore). Санитизированный рецепт без секретов: <code>docs/bs-turkmenistan-working-recipe.json</code>. На серверах: <code>/var/backups/hiddify/*-BS-Turkmenistan-working.json</code>.</p>
       </section>
 
@@ -266,7 +267,8 @@ sshpass -e ssh -o ProxyCommand="…" root@150.241.86.99</code></pre>
           <li>Диск 92%+ на старом vp2 мешал; после OS reinstall — ок.</li>
           <li>Не открывать тысячи SSH разом на выборке.</li>
           <li>HAProxy crash-loop + Cloudflare 521: битая пара <code>*.sslip.io.crt</code>/<code>*.crt.key</code> (modulus mismatch). Симптом: <code>haproxy -c</code> ALERT inconsistency, :443 нет. Лечение: пересобрать self-signed ECC для IP и <code>IP.sslip.io</code>, затем restart HAProxy. (vp12, 2026-09-28)</li>
-          <li>Корень <code>/</code> через CDN может таймаутить при живой панели — проверять admin path и подписку, не только <code>/</code>.</li>
+          <li>Корень <code>/</code> через CDN или direct может таймаутить при живой панели — проверять admin path и подписку, не только <code>/</code>.</li>
+          <li>Yandex: второй+ публичный IP = новый NIC. Без policy routing ответы уходят не с того интерфейса (TCP SYN-ACK есть, HTTP/TLS «висит»). Лечение: <code>/32</code> + таблицы маршрутов from-source + <code>rp_filter=2</code>.</li>
           <li>BS Reality: при <code>reality_enable=false</code> файл <code>05_inbounds_02_reality_main.json</code> пустой (2 байта), HAProxy SNI special всё равно маршрутизирует на <code>@realityin_*</code> → клиент не коннектится. Лечение: <code>set-setting reality_enable=true</code> + <code>apply_configs</code>, проверить <code>ss -xlp | grep realityin</code>.</li>
         </ul>
       </section>
